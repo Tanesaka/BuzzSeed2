@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :answers, only:[:index, :create, :new, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      resources :reviews, only: [:create, :update]
     end
   end
 end

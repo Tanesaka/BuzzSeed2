@@ -15,9 +15,18 @@
  */
 
 
+// bulmaの使用は検討
+// @import "bulma";
+
 // 取り急ぎ
 img{
   background-color: gray;
   width: 200px; height: 200px;
   object-fit: contain;
+}
+
+.rating-box .ratings .fa {
+  font-size: 30px;
+  color: #ffcc00;
+  coursor: pointer;
 }

@@ -29,6 +29,25 @@
 
   <% end %>
 
+  <!--レビュー部分-->
+  <p>レビューを書く</p>
+<%= form_with model: Review, url: answer_reviews_path(answer), local: true do |f| %>
+<div class="rating-box">
+  <div class="ratings">
+<span class="fa fa-star-o" id="star"></span>
+<span class="fa fa-star-o" id="star"></span>
+<span class="fa fa-star-o" id="star"></span>
+<span class="fa fa-star-o" id="star"></span>
+<span class="fa fa-star-o" id="star"></span>
+  </div>
+<span>0</span>/5
+</div>
+<%= f.hidden_field :answer_id, value: answer.id %>
+<%= f.hidden_field :score, id: "rating-value" %>
+<%= f.submit "保存", class: "button" %>
+<% end %>
+
+
 <p><%= link_to "#{answer.comments.count} コメント", answer_path(answer.id) %></p>
 
 <% end %>

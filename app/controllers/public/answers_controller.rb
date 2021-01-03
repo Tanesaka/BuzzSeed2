@@ -14,6 +14,8 @@ class Public::AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @theme = @answer.theme
     @comment = Comment.new
+    
+    @review = Review.new
   end
 
   def index
