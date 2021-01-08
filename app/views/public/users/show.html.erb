@@ -1,31 +1,56 @@
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> <%= @user.name %>
+      </h2>
 
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
-<table>
+  <div class="row mt-2">
+    <div class="col-4 mt-2">
+<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle"; %>
+  </div>
+
+
+<div class="col-7 offset-1 mt-3">
+<table class="h5">
   <tbody>
     <tr>
-      <th>ニックネーム</th>
-      <td><%= @user.name %></td>
+      <th><i class="fas fa-heart text-danger"></i>総数：</th>
+      <td><%= @favorites_count %></td>
     </tr>
     <tr>
-      <th>BuzzSeed ID</th>
+      <th><i class="fas fa-seedling"></i>ID：</th>
       <td><%= @user.unique_code %></td>
     </tr>
-    <tr>
-      <th>総合いいね数</th>
-      <td><%= @favorites_count %></td>
+      <tr>
+      <th>フォロー：</th>
+      <td><%= @user.followings.count %></td>
+    </tr>
+    </tr>
+      <tr>
+      <th>フォロワー：</th>
+      <td><%= @user.followers.count %></td>
     </tr>
   </tbody>
 </table>
 
+<%= render 'public/relations/follow_btn', user: @user %>
 
+<% if current_user == User.find_by(email: 'guest@example.com') %>
+<% elsif @user.id == current_user.id %>
+  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn w-50 mt-2 btn-sm"; %>
+<% end %>
 
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+  </div>
+</div>
 
-  <p><%= @user.name %>の回答一覧</p>
-
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> ヒトコト
+      </h2>
 
 <!--そのユーザーの回答一覧-->
   <%= render 'public/answers/list', answers: @answers %>
+   </div>
+  </div>
+</div>

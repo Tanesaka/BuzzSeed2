@@ -1,6 +1,17 @@
-<h1>お題画像投稿フォーム</h1>
-<%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :image %>
-  <%= f.submit '投稿' %>
-<% end %>
+<%= render "layouts/error_messeages", resource: @theme %>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+    <h2 class="border-bottom border-gray mt-4">
+      <i class="fab fa-pagelines"></i> お題投稿
+    </h2>
+    <%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
+     <div class="form-body p-4">
+       <%= f.attachment_field :image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
+       <p class="mt-2">※原則お題は削除できませんので、内容にご注意ください。</p>
+       <%= f.submit '投稿する', class: "mt-4 btn btn-secondary btn-block w-25" %>
+    <% end %>
+     </div>
+   </div>
+  </div>
+</div>

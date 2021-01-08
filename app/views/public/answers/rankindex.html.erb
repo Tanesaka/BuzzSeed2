@@ -1,6 +1,20 @@
-<h2>回答一覧</h2>
-
-<h3><%= link_to "新着順", answers_path %></h3>
-<h3><%= link_to "いいね数順", answers_rankindex_path %></h3>
-
-<%= render 'public/answers/list', answers: @answers %>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> 回答一覧（人気順）
+      </h2>
+      <nav class="navbar-expand">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ml-4 h4">
+            <%= link_to "新着", answers_path %>
+          </li>
+          <li class="nav-item ml-4 h4">
+            <%= link_to "人気", answers_rankindex_path %>
+          </li>
+        </ul>
+      </nav>
+       <%= render 'public/answers/list', answers: @answers %>
+   </div>
+  </div>
+</div>

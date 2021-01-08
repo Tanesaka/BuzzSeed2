@@ -5,13 +5,13 @@
   <% end %>
 
   <p>お題by:
-  <%= link_to user_path(theme.user.id) do %>
+  <%= link_to admins_user_path(theme.user.id) do %>
   <%= theme.user.name %>
   <% end %>
   </p>
 
   <p>回答数:
-  <%= link_to theme_path(theme.id) do %>
+  <%= link_to admins_theme_path(theme.id) do %>
   <%= theme.answers.count %>
   <% end %>
   </p>

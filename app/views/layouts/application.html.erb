@@ -2,58 +2,92 @@
 <html>
   <head>
     <title>BuzzSeed</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9c0bf09418.js" crossorigin="anonymous"></script>
   </head>
+<header class="shadow-sm sticky-top w-100">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <body>
+      <div class="container">
+        <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav pt-5 ml-auto">
+            <% if user_signed_in? %>
+             <li class="nav-item ml-4 h4">
+               <%= link_to 'ヒトコト', answers_path %>
+             </li>
+             <li class="nav-item ml-4 h4">
+               <%= link_to 'お題', themes_path %>
+             </li>
+             <li class="nav-item ml-4 h3">
+               <%= link_to destroy_user_session_path, method: :delete do %>
+               <i class="fas fa-sign-out-alt"></i>
+               <% end %>
+             </li>
+             <li class="nav-item ml-4 h4">
+               <%= link_to user_path(current_user) do %>
+               <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle"; %>
+               <% end %>
+             </li>
+           <% elsif admin_signed_in? %>
+            <p>管理者ログイン中です</p>
+            <li class="nav-item">
+              <%= link_to 'お題一覧', admins_themes_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '回答一覧', admins_answers_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ユーザー一覧', admins_users_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "about", about_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "管理者新規登録", new_admin_registration_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "管理者ログイン", new_admin_session_path %>
+           </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+  <% if notice.present? %>
+    <h3><%= flash[:notice] %></h3>
+  <% end %>
+  <% if alert.present? %>
+    <h3><%= flash[:alert] %></h3>
+  <% end %>
+  <%= yield %>
 
-  <body>
-        <% if user_signed_in? %>
-      <li>
-        <%= link_to 'お題投稿', new_theme_path %>
-      </li>
-      <li>
-        <%= link_to 'お題一覧', themes_path %>
-      </li>
-      <li>
-        <%= link_to '回答一覧', answers_path %>
-      </li>
-      <li>
-        <%= link_to 'マイページ', user_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-       <% elsif admin_signed_in? %>
-       <p>管理者ログイン中です</p>
-      <li>
-        <%= link_to 'お題一覧', admins_themes_path %>
-      </li>
-      <li>
-        <%= link_to '回答一覧', admins_answers_path %>
-      </li>
-      <li>
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-       <% else %>
-      <li>
-        <%= link_to "about", about_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "管理者新規登録", new_admin_registration_path %>
-      </li>
-      <li>
-        <%= link_to "管理者ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
-    <%= yield %>
-  </body>
+<footer class="mt-5 pt-5">
+<div>
+  <%= link_to "管理者ログイン", new_admin_session_path, class:"text-white"; %>
+</div>
+</footer>
+
+   </body>
 </html>

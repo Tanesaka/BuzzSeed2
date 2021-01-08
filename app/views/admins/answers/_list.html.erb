@@ -11,7 +11,7 @@
   <% end %>
 </h1>
 <p>回答by:
-<%= link_to user_path(answer.user.id) do %>
+<%= link_to admins_user_path(answer.user.id) do %>
 <%= answer.user.name %>
 <% end %>
 </p>

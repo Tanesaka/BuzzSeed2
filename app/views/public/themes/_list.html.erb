@@ -1,22 +1,30 @@
+
 <% themes.each do |theme| %>
-
-  <%= link_to theme_path(theme.id) do %>
-  <%= attachment_image_tag theme, :image %>
-  <% end %>
-
-  <p>お題by:
-  <%= link_to user_path(theme.user.id) do %>
-  <%= theme.user.name %>
-  <% end %>
-  </p>
-
-  <p>回答数:
-  <%= link_to theme_path(theme.id) do %>
-  <%= theme.answers.count %>
-  <% end %>
-  </p>
-
-
+ <article class="mt-4 shadow-lg">
+   <%= link_to theme_path(theme.id) do %>
+    <%= attachment_image_tag theme, :image, class:"card-img-top"; %>
+   <% end %>
+      <nav class="navbar-expand mt-2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ml-4 h4">
+            <%= link_to user_path(theme.user.id) do %>
+            <i class="fas fa-user"></i>
+             <%= theme.user.name %>
+              <% end %>
+          </li>
+          <li class="nav-item ml-4 h4">
+              <%= link_to theme_path(theme.id) do %>
+              <i class="fas fa-seedling"></i>
+              <%= theme.answers.count %>
+              <% end %>
+          </li>
+        </ul>
+      </nav>
+  </article>
 <% end %>
+<div class="row">
+  <div class="mx-auto mt-2 h2">
+    <%= paginate themes %>
+  </div>
+</div>
 
-<%= paginate themes %>

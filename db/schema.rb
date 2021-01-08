@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_093116) do
+ActiveRecord::Schema.define(version: 2021_01_08_173958) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,24 @@ ActiveRecord::Schema.define(version: 2021_01_03_093116) do
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "answer_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_reviews_on_answer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "themes", force: :cascade do |t|

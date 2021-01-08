@@ -3,8 +3,12 @@ class Public::CommentsController < ApplicationController
     answer = Answer.find(params[:answer_id])
     comment = current_user.comments.new(comment_params)
     comment.answer_id = answer.id
-    comment.save
+    if comment.save
     redirect_to answer_path(answer)
+    else
+      # 回答一覧画面へ推移
+      redirect_to answers_path, alert: 'コメントを反映できませんでした…。※1文字以上入力してください。'
+    end
   end
 
   def destroy

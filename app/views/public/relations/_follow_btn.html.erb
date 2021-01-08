@@ -1,0 +1,13 @@
+<% unless current_user == user %>
+  <% if current_user.following?(user) %>
+    <%= form_for(current_user.relations.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'フォローを外す', class: 'btn btn-outline-danger btn-block w-50 mt-2 btn-sm' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.relations.build) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'フォローする', class: 'btn btn-outline-info btn-block w-50 mt-2 btn-sm' %>
+    <% end %>
+  <% end %>
+<% end %>

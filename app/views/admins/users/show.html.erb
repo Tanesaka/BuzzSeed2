@@ -1,0 +1,24 @@
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+<table>
+  <tbody>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>BuzzSeed ID</th>
+      <td><%= @user.unique_code %></td>
+    </tr>
+    <tr>
+      <th>総合いいね数</th>
+      <td><%= @favorites_count %></td>
+    </tr>
+  </tbody>
+</table>
+
+  <p><%= @user.name %>の回答一覧</p>
+
+
+<!--そのユーザーの回答一覧-->
+  <%= render 'admins/answers/list', answers: @answers %>

@@ -1,0 +1,22 @@
+
+
+<table>
+  <thread>
+    <tr>
+      <th>ニックネーム</th>
+      <th>BuzzSeed ID</th>
+    </tr>
+  </thread>
+<tbody>
+<% @users.each do |user| %>
+    <tr>
+       <td>
+         <%= link_to admins_user_path(user.id) do %>
+         <%= user.name %>
+         <% end %>
+        </td>
+      <td><%= user.unique_code %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

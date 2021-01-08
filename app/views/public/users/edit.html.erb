@@ -1,14 +1,25 @@
-<h2>プロフィール編集</h2>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">ニックネーム</label>
-  <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム"%>
+<%= render "layouts/error_messeages", resource: @user %>
 
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+    <h2 class="border-bottom border-gray mt-4">
+      <i class="fab fa-pagelines"></i> プロフィール編集
+    </h2>
+    <%= form_with model:@user, local:true do |f| %>
+     <div class="form-body p-4">
+       <label>ニックネーム</label>
+       <br>
+       <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム", class: "w-50 mt-2"%>
+       <br>
 <!--IDは変更できないようにする-->
   <!--<label for="inputName">BuzzSeed ID</label>-->
   <%#= f.text_field :unique_code, autofocus: true, placeholder:"BuzzSeed ID"%>
-
-    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <label for="inputImage">プロフィール画像</label>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+       <label class="mt-4">プロフィール画像</label>
+       <%= f.attachment_field :profile_image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
+      <%= f.submit "保存", class: "mt-1 btn btn-secondary btn-block w-25" %>
+    <% end %>
+     </div>
+   </div>
+  </div>
+</div>
