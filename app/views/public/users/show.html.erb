@@ -8,7 +8,7 @@
 
   <div class="row mt-2">
     <div class="col-4 mt-2">
-<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle"; %>
+<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
   </div>
 
 
@@ -25,12 +25,18 @@
     </tr>
       <tr>
       <th>フォロー：</th>
-      <td><%= @user.followings.count %></td>
+      <td> <%= link_to user_following_path(@user) do %>
+        <%= @user.followings.count %>
+        <% end %>
+        </td>
     </tr>
     </tr>
       <tr>
       <th>フォロワー：</th>
-      <td><%= @user.followers.count %></td>
+      <td><%= link_to user_follower_path(@user) do %>
+        <%= @user.followers.count %>
+        <% end %>
+        </td>
     </tr>
   </tbody>
 </table>
