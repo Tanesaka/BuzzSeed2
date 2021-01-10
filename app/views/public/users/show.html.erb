@@ -41,7 +41,9 @@
   </tbody>
 </table>
 
+<span class="show-follow-btn">
 <%= render 'public/relations/follow_btn', user: @user %>
+</span>
 
 <% if current_user == User.find_by(email: 'guest@example.com') %>
 <% elsif @user.id == current_user.id %>

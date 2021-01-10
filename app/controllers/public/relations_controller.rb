@@ -3,22 +3,24 @@ class Public::RelationsController < ApplicationController
 
   def create
     following = current_user.follow(@user)
-    if following.save
-      redirect_to request.referer
-    else
-      flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-      redirect_to request.referer
-    end
+    following.save
+    # if following.save
+    #   redirect_to request.referer
+    # else
+    #   flash.now[:alert] = 'ユーザーのフォローに失敗しました'
+    #   redirect_to request.referer
+    # end
   end
 
   def destroy
     following = current_user.unfollow(@user)
-    if following.destroy
-      redirect_to request.referer
-    else
-      flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_to request.referer
-    end
+    following.destroy
+    # if following.destroy
+    #   redirect_to request.referer
+    # else
+    #   flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
+    #   redirect_to request.referer
+    # end
   end
 
   private
