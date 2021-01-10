@@ -1,1 +1,2 @@
 $("#answer_<%= @answer.id %> .favorite-btn").html("<%= j(render 'public/favorites/favorites_btn', answer: @answer) %>");
+$(".favorites-count").html("<%= @favorites_count %>");

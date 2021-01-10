@@ -1,13 +1,13 @@
 <% unless current_user == user %>
   <% if current_user.following?(user) %>
-    <%= form_for(current_user.relations.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+    <%= form_for(current_user.relations.find_by(follow_id: user.id), html: { method: :delete }, remote: true) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit 'フォロー中', class: 'btn btn-info w-50 mt-2 btn-sm font-weight-bold' %>
+      <%= f.submit 'フォロー中', class: 'btn btn-info mt-2 btn-sm font-weight-bold btn-block' %>
     <% end %>
   <% else %>
-    <%= form_for(current_user.relations.build) do |f| %>
+    <%= form_for(current_user.relations.build, remote: true) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit 'フォローする', class: 'btn btn-outline-info w-50 mt-2 btn-sm font-weight-bold' %>
+      <%= f.submit 'フォローする', class: 'btn btn-outline-info mt-2 btn-sm font-weight-bold btn-block' %>
     <% end %>
   <% end %>
 <% end %>

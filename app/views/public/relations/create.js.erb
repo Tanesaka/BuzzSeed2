@@ -1,0 +1,2 @@
+$("#user_<%= @user.id %> .follow-btn").html("<%= j(render 'public/relations/follow_btn', user: @user) %>");
+$(".show-follow-btn").html("<%= j(render 'public/relations/follow_btn', user: @user) %>");

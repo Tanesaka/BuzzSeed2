@@ -39,10 +39,11 @@ class Public::ThemesController < ApplicationController
     @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
     @count = 0
 
-    # 基本的に回答付きのお題が出るようにする。5回繰り返して全て回答なしであれば繰り返し処理終了。
+    # 基本的に回答付きのお題が出るようにする。繰り返して全て回答なしであれば繰り返し処理終了。
     while @theme.answers.blank? do
       @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
       @count += 1
+      # 確率を操作する場合は下記数字を変更
       if @count == 5
         break
       end

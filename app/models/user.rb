@@ -36,7 +36,7 @@ class User < ApplicationRecord
     relation = self.relations.find_by(follow_id: other_user.id)
     relation.destroy if relations
   end
-User
+
   def following?(other_user)
     self.followings.include?(other_user)
   end
@@ -44,7 +44,7 @@ User
 
 
   validates :name, :unique_code, :email, presence: true
-  validates :name, length: { minimum: 2, maximum: 20}
+  validates :name, length: { minimum: 1, maximum: 20}
   validates :unique_code, uniqueness: true
   # 5-12文字の半角英数字
   validates :unique_code, format: { with: /\A[a-z0-9]+\z/i,message: "は半角英数字である必要があります"}

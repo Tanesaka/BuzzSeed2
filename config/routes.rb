@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :users, only:[:edit, :update, :show, :index]
+    resources :users, only:[:edit, :update, :show, :index] do
+      get 'following' => 'users#following'
+      get 'follower' => 'users#follower'
+    end
     resources :relations, only: [:create, :destroy]
     get 'themes/rankindex' => 'themes#rankindex'
     get 'themes/random' => 'themes#random'

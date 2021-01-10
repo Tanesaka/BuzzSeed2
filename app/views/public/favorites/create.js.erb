@@ -1,1 +1,3 @@
 $("#answer_<%= @answer.id %> .favorite-btn").html("<%= j(render 'public/favorites/favorites_btn', answer: @answer) %>");
+<!--下記変数を渡せていないため空欄になる。用検討-->
+$(".favorites-count").html("<%= @favorites_count %>");
