@@ -17,7 +17,12 @@
   <tbody>
     <tr>
       <th><i class="fas fa-heart text-danger"></i>総数：</th>
-      <td><%= @favorites_count %></td>
+      <td>
+        <!--非同期のためのクラス、-->
+        <span class="favorites-count">
+        <%= @favorites_count %>
+        </span>
+        </td>
     </tr>
     <tr>
       <th><i class="fas fa-seedling"></i>ID：</th>
@@ -47,7 +52,7 @@
 
 <% if current_user == User.find_by(email: 'guest@example.com') %>
 <% elsif @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn w-50 mt-2 btn-sm"; %>
+  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
 <% end %>
 
   </div>
@@ -58,7 +63,7 @@
       </h2>
 
 <!--そのユーザーの回答一覧-->
-  <%= render 'public/answers/list', answers: @answers %>
+  <%= render 'public/answers/list', answers: @mypage_answers %>
    </div>
   </div>
 </div>

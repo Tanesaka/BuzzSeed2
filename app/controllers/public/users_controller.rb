@@ -14,9 +14,11 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @answers = @user.answers.page(params[:page]).reverse_order
+    # いいね総数の合計元の回答数と分けるために別途変数を定義
+    @mypage_answers = @user.answers.page(params[:page]).reverse_order
 
     # ユーザーが持つ全投稿のいいね合計
+    @answers = @user.answers
     @favorites_count = 0
     @answers.each do |answer|
       @favorites_count += answer.favorites.count

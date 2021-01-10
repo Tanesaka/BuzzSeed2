@@ -6,6 +6,14 @@ class Public::FavoritesController < ApplicationController
     favorite.save
     # いいね非同期化のためリダイレクトしない
     # redirect_to request.referer
+
+# 非同期のjsファイルにある@favorites_countを反映させるためにここで再定義※destroyも同じく。
+    @user = @answer.user
+    @answers = @user.answers
+    @favorites_count = 0
+    @answers.each do |answer|
+      @favorites_count += answer.favorites.count
+    end
   end
 
   def destroy
@@ -13,6 +21,13 @@ class Public::FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(answer_id: @answer.id)
     favorite.destroy
     # redirect_to request.referer
+
+    @user = @answer.user
+    @answers = @user.answers
+    @favorites_count = 0
+    @answers.each do |answer|
+      @favorites_count += answer.favorites.count
+    end
   end
 
   # private
