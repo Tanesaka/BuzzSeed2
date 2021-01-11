@@ -16,6 +16,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     # いいね総数の合計元の回答数と分けるために別途変数を定義
     @mypage_answers = @user.answers.page(params[:page]).reverse_order
+    
+    # ユーザー検索フォームに受け渡す変数
+    @q = User.ransack(params[:q])
 
     # ユーザーが持つ全投稿のいいね合計
     @answers = @user.answers
@@ -26,7 +29,10 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    # ユーザー検索フォームに受け渡す変数
+  @q = User.ransack(params[:q])
+  # 検索フォームから帰ってきた
+  @users = @q.result(distinct: true)
   end
 
   def following
