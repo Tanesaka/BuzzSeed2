@@ -52,7 +52,14 @@ class User < ApplicationRecord
 
 
   attachment :profile_image
-  
 
-  
+
+#有効会員はtrue、退会済み会員はfalse
+  enum is_active: {有効: true, 無効: false}
+
+#is_activeが有効の場合は有効会員(ログイン可能)
+  def active_for_authentication?
+      super && (self.is_active === "有効")
+  end
+
 end

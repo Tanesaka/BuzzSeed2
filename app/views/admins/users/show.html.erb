@@ -10,9 +10,11 @@
         <div class="col-4 mt-2 text-center">
           <%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
 
-
-            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
-
+<%= form_with model:@user, url: admins_user_path(@user.id), method: :patch, local:true do |f| %>
+    <p>会員ステータス</p>
+<%= f.select :is_active, [ ["有効"], ["無効"] ] %>
+    <%= f.submit '変更を保存する', class:"btn btn-primary" %>
+<% end %>
         </div>
         <div class="col-7 offset-1 mt-3">
           <table class="h5">
@@ -28,11 +30,18 @@
                   <% end %>
                 </td>
               </tr>
+              <tr>
                  <th>回答：</th>
                 <td>
                   <%= link_to admins_user_myanswer_path(@user) do %>
                     <%= @user.themes.count %>
                   <% end %>
+                </td>
+              </tr>
+              <tr>
+                 <th>会員ステータス：</th>
+                <td>
+                    <%= @user.is_active %>
                 </td>
               </tr>
             </tbody>

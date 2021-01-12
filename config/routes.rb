@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :users, only:[:index, :show] do
+    resources :users, only:[:index, :show, :update] do
       get 'mytheme' => 'users#mytheme'
       get 'myanswer' => 'users#myanswer'
     end
