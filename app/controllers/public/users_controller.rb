@@ -45,6 +45,11 @@ class Public::UsersController < ApplicationController
     @users = user.followers
   end
 
+  def mytheme
+    @user = User.find(params[:user_id])
+    @mypage_themes = @user.themes.page(params[:page]).reverse_order
+  end
+
   private
 
   def user_params

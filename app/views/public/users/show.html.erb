@@ -4,75 +4,74 @@
       <h2 class="border-bottom border-gray mt-4">
         <i class="fab fa-pagelines"></i> <%= @user.name %>
       </h2>
-
-
-  <div class="row mt-2">
-    <div class="col-4 mt-2 text-center">
-<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
-<span class="show-follow-btn">
-<%= render 'public/relations/follow_btn', user: @user %>
-</span>
-
-<% if current_user == User.find_by(email: 'guest@example.com') %>
-<% elsif @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
-<% end %>
-</div>
-
-
-<div class="col-7 offset-1 mt-3">
-<table class="h5">
-  <tbody>
-    <tr>
-      <th><i class="fas fa-heart text-danger"></i>総数：</th>
-      <td>
+      <div class="row mt-2">
+        <div class="col-4 mt-2 text-center">
+          <%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
+          <span class="show-follow-btn">
+            <%= render 'public/relations/follow_btn', user: @user %>
+          </span>
+          <% if current_user == User.find_by(email: 'guest@example.com') %>
+          <% elsif @user.id == current_user.id %>
+            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
+          <% end %>
+        </div>
+        <div class="col-7 offset-1 mt-3">
+          <table class="h5">
+            <tbody>
+              <tr>
+                <th><i class="fas fa-heart text-danger"></i>総数：</th>
+                <td>
         <!--非同期のためのクラス、-->
-        <span class="favorites-count">
-        <%= @favorites_count %>
-        </span>
-        </td>
-    </tr>
-      <tr>
-      <th>フォロー：</th>
-      <td> <%= link_to user_following_path(@user) do %>
-        <%= @user.followings.count %>
-        <% end %>
-        </td>
-    </tr>
-    </tr>
-      <tr>
-      <th>フォロワー：</th>
-      <td><%= link_to user_follower_path(@user) do %>
-        <%= @user.followers.count %>
-        <% end %>
-        </td>
-    </tr>
-        <tr>
-      <th><i class="fas fa-seedling"></i>ID：</th>
-      <td><%= @user.unique_code %></td>
-    </tr>
-  </tbody>
-</table>
-
-
+                  <span class="favorites-count">
+                    <%= @favorites_count %>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th>フォロー：</th>
+                <td>
+                  <%= link_to user_following_path(@user) do %>
+                    <%= @user.followings.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>フォロワー：</th>
+                <td>
+                  <%= link_to user_follower_path(@user) do %>
+                    <%= @user.followers.count %>
+                  <% end %>
+                </td>
+                </tr>
+                <tr>
+                <th><i class="fas fa-seedling"></i>ID：</th>
+                <td><%= @user.unique_code %></td>
+              </tr>
+                <tr>
+                <th>お題：</th>
+                <td>
+                  <%= link_to user_mytheme_path(@user) do %>
+                    <%= @user.themes.count %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 <!--検索フォーム-->
-<div class="mt-2">
-<%= search_form_for @q, url: users_path do |f| %>
-
-  <%= f.search_field :unique_code_cont , placeholder: "IDで検索"%>
-
-  <%= f.submit "検索", class:"btn-secondary btn mt-2 btn-sm"; %>
-<% end %>
-</div>
-</div>
-
-
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> ヒトコト
-      </h2>
-
+        <div class="mt-2">
+          <%= search_form_for @q, url: users_path do |f| %>
+            <%= f.search_field :unique_code_cont , placeholder: "IDで友人を探す"%>
+              <%= f.submit "検索", class:"btn-secondary btn mt-2 btn-sm"; %>
+            <% end %>
+        </div>
+      </div>
+<!--プロフィール終わり-->
+    </div>
+    <h2 class="border-bottom border-gray mt-4">
+      <i class="fab fa-pagelines"></i> ヒトコト（全<%= @mypage_answers.count %>件）
+    </h2>
 <!--そのユーザーの回答一覧-->
-  <%= render 'public/answers/list', answers: @mypage_answers %>
+    <%= render 'public/answers/list', answers: @mypage_answers %>
    </div>
   </div>
 </div>

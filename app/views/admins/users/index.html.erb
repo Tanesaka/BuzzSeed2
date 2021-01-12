@@ -23,6 +23,7 @@
     <tr>
       <th>Name</th>
       <th>ID</th>
+      <th>会員</th>
     </tr>
   </thread>
 <tbody>
@@ -34,6 +35,7 @@
          <% end %>
         </td>
       <td><%= user.unique_code %></td>
+      <td><%= user.is_active %></td>
  </tr>
     <% end %>
   </tbody>
