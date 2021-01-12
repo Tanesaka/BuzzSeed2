@@ -1,1 +1,82 @@
-<h1>トップページ</h1>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="mt-4">
+        <i class="fab fa-pagelines"></i> BuzzSeed 総合データ
+      </h2>
+
+          <table class="h4 mt-3 table">
+            <tbody>
+                <tr>
+                <th>お題数</th>
+                <td>
+                  <%= link_to themes_path do %>
+                    <%= @themes.count %>
+                    <% end %>
+                </td>
+              </tr>
+                <tr>
+                <th>ヒトコト数</th>
+                <td>
+                  <%= link_to answers_path do %>
+                    <%= @answers.count %>
+                    <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><i class="fas fa-heart text-danger"></i>合計</th>
+                <td>
+                    <%= @favorites.count %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+<%= link_to "BuzzSeedの使い方",about_path, class:"btn-info btn mt-3 w-100"; %>
+
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> ピックアップ
+      </h2>
+      <article class="mt-4 shadow-lg" id="answer_<%= @answer.id %>">
+        <%= attachment_image_tag @answer.theme, :image, class:"card-img-top"; %>
+        <h1 class="font-weight-bold m-3">
+          <%= @answer.content %>
+        </h1>
+        <nav class="navbar-expand mt-2">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ml-4 h4">
+              <%= link_to user_path(@answer.user.id) do %>
+                <i class="fas fa-user"></i>
+                <%= @answer.user.name %>
+              <% end %>
+            </li>
+            <li class="nav-item ml-4 h4">
+              <%= link_to answer_path(@answer) do %>
+              <i class="fas fa-comment"></i>
+              <%= @answer.comments.count %>
+              <% end %>
+            </li>
+            <!--非同期のためクラスを追加-->
+      <li class="nav-item ml-4 h4 favorite-btn">
+        <% if user_signed_in? %>
+          <%= render 'public/favorites/favorites_btn', answer: @answer %>
+          <% else %>
+          <%= link_to answer_path(@answer) do %>
+          <i class="far fa-heart"></i><%= @answer.favorites.count %>
+          <% end %>
+          <% end %>
+      </li>
+            <% if @answer.user == current_user %>
+              <li class="nav-item ml-4 h4">
+                <%= link_to answer_path, method: :delete do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+
+
+   </div>
+  </div>
+</div>
