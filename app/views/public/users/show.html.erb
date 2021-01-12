@@ -7,9 +7,17 @@
 
 
   <div class="row mt-2">
-    <div class="col-4 mt-2">
+    <div class="col-4 mt-2 text-center">
 <%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
-  </div>
+<span class="show-follow-btn">
+<%= render 'public/relations/follow_btn', user: @user %>
+</span>
+
+<% if current_user == User.find_by(email: 'guest@example.com') %>
+<% elsif @user.id == current_user.id %>
+  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
+<% end %>
+</div>
 
 
 <div class="col-7 offset-1 mt-3">
@@ -23,10 +31,6 @@
         <%= @favorites_count %>
         </span>
         </td>
-    </tr>
-    <tr>
-      <th><i class="fas fa-seedling"></i>ID：</th>
-      <td><%= @user.unique_code %></td>
     </tr>
       <tr>
       <th>フォロー：</th>
@@ -43,20 +47,25 @@
         <% end %>
         </td>
     </tr>
+        <tr>
+      <th><i class="fas fa-seedling"></i>ID：</th>
+      <td><%= @user.unique_code %></td>
+    </tr>
   </tbody>
 </table>
 
-<span class="show-follow-btn">
-<%= render 'public/relations/follow_btn', user: @user %>
-</span>
 
-<% if current_user == User.find_by(email: 'guest@example.com') %>
-<% elsif @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
+<!--検索フォーム-->
+<div class="mt-2">
+<%= search_form_for @q, url: users_path do |f| %>
+
+  <%= f.search_field :unique_code_cont , placeholder: "IDで検索"%>
+
+  <%= f.submit "検索", class:"btn-secondary btn mt-2 btn-sm"; %>
 <% end %>
-
-  </div>
 </div>
+</div>
+
 
       <h2 class="border-bottom border-gray mt-4">
         <i class="fab fa-pagelines"></i> ヒトコト

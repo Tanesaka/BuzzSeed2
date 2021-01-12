@@ -7,7 +7,8 @@ class Public::FavoritesController < ApplicationController
     # いいね非同期化のためリダイレクトしない
     # redirect_to request.referer
 
-# 非同期のjsファイルにある@favorites_countを反映させるためにここで再定義※destroyも同じく。
+# 非同期のjsファイルにある@favorites_countを反映させるために
+# Usersコントローラーに続き、ここでも再定義※destroyも同じく。
     @user = @answer.user
     @answers = @user.answers
     @favorites_count = 0

@@ -5,6 +5,15 @@
         <i class="fab fa-pagelines"></i> ユーザー一覧
       </h2>
 
+<!--ユーザー検索機能-->
+<div class="mt-2  text-center">
+<%= search_form_for @q, url: users_path do |f| %>
+
+  <%= f.search_field :unique_code_cont , placeholder: "IDで検索"%>
+
+  <%= f.submit "検索", class:"btn-secondary btn mt-2 btn-sm"; %>
+<% end %>
+<div>
 
 <span>
 <%= render 'public/users/list', users: @users %>

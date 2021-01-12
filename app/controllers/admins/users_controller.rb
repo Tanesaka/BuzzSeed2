@@ -1,6 +1,9 @@
 class Admins::UsersController < ApplicationController
   def index
-    @users = User.all
+  # ユーザー検索フォームに受け渡す変数
+  @q = User.ransack(params[:q])
+  # 検索フォームから帰ってきた結果
+  @users = @q.result(distinct: true)
   end
 
   def show
