@@ -1,7 +1,11 @@
-<% answers.each do |answer| %>
+<% if answers.blank? %>
+  <p class="mt-4 h4">まだヒトコトはありません…。</p>
+<% end %>
 
+<% answers.each do |answer| %>
+<article class="mt-4 shadow-lg">
 <%= link_to admins_theme_path(answer.theme.id) do %>
-<%= attachment_image_tag answer.theme, :image %>
+<%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
 <% end %>
 
 
@@ -10,17 +14,31 @@
   <%= answer.content %>
   <% end %>
 </h1>
-<p>回答by:
-<%= link_to admins_user_path(answer.user.id) do %>
-<%= answer.user.name %>
-<% end %>
-</p>
+ <nav class="navbar-expand mt-2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ml-4 h4">
+        <%= link_to admins_user_path(answer.user.id) do %>
+          <i class="fas fa-user"></i>
+        <%= answer.user.name %>
+        <% end %>
+      </li>
+      <li class="nav-item ml-4 h4">
+        <%= link_to admins_answer_path(answer.id) do %>
+          <i class="fas fa-comment"></i>
+        <%= answer.comments.count %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 
-<div>
-<%= link_to "この回答を削除", admins_answer_path(answer), method: :delete %>
+<div class="h4">
+<%= link_to "この回答を削除", admins_answer_path(answer), method: :delete, data: {confirm: "削除しますか？"} %>
 </div>
-
-<p><%= link_to "#{answer.comments.count} コメント", admins_answer_path(answer.id) %></p>
+ </article>
 
 <% end %>
+<div class="row">
+  <div class="mx-auto mt-2 h2">
 <%= paginate answers %>
+  </div>
+</div>
