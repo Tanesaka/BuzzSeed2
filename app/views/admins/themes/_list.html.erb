@@ -22,7 +22,7 @@
         </ul>
       </nav>
       <div>
-<%= link_to "このお題を削除", admins_theme_path(theme), method: :delete, data: {confirm: "削除しますか？"} %>
+<%= link_to "このお題を削除", admins_theme_path(theme), method: :delete, data: {confirm: "削除しますか？紐づく回答も削除されます"} %>
 </div>
   </article>
 <% end %>

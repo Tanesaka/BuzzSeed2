@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :users, only:[:index, :show]
+    resources :users, only:[:index, :show] do
+      get 'mytheme' => 'users#mytheme'
+      get 'myanswer' => 'users#myanswer'
+    end
     resources :themes, only:[:index, :show, :destroy]
     resources :answers, only:[:index, :show, :destroy] do
       resources :comments, only:[:destroy]
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
     resources :users, only:[:edit, :update, :show, :index] do
       get 'following' => 'users#following'
       get 'follower' => 'users#follower'
+      get 'mytheme' => 'users#mytheme'
     end
     resources :relations, only: [:create, :destroy]
     get 'themes/rankindex' => 'themes#rankindex'

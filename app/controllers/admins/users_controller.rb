@@ -16,4 +16,16 @@ class Admins::UsersController < ApplicationController
       @favorites_count += answer.favorites.count
     end
   end
+
+  def mytheme
+    @user = User.find(params[:user_id])
+    @mypage_themes = @user.themes.page(params[:page]).reverse_order
+  end
+
+  def myanswer
+    @user = User.find(params[:user_id])
+    @mypage_answers = @user.answers.page(params[:page]).reverse_order
+  end
+
+
 end
