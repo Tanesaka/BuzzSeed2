@@ -5,16 +5,17 @@
       <table class="table table-striped mt-4">
   <thread>
     <tr>
-      <th>Name</th>
+      <th class="text-left">Name</th>
       <th>ID</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thread>
 <tbody>
 <% users.each do |user| %>
     <tr id="user_<%= user.id %>">
-       <td>
+       <td class="text-left">
          <%= link_to user_path(user.id) do %>
+         <%= attachment_image_tag user, :profile_image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class:"rounded-circle shadow-sm"; %>
          <%= user.name %>
          <% end %>
         </td>
@@ -32,4 +33,8 @@
 
 <% end %>
 
+<div class="row">
+  <div class="mx-auto mt-2 h2">
 <%= paginate users %>
+  </div>
+</div>

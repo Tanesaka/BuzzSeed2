@@ -10,7 +10,7 @@
 
 <div class="ml-3">
   <%= link_to user_path(visitor) do %>
-  <p><%= attachment_image_tag visitor, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle"; %>
+  <p><%= attachment_image_tag visitor, :profile_image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class:"rounded-circle shadow-sm"; %>
     <%= visitor.name %>
     さんが</p>
   <% end %>
