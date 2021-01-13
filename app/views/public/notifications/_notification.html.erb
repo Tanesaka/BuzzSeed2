@@ -1,0 +1,40 @@
+
+
+
+
+<% notifications.each do |notification| %>
+
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+
+
+  <%= link_to user_path(visitor) do %>
+    <%= visitor.name %>
+    <p>さんが</p>
+  <% end %>
+
+  <% case notification.action
+    when 'follow' %>
+    <p>あなたをフォローしました</p>
+
+    <% when 'like' %>
+      <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+      <p>にいいねしました</p>
+
+    <% when 'comment' %>
+      <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+      <p>にコメントしました</p>
+      <p><%= Comment.find_by(id: notification.comment_id)&.comment %></p>
+
+    <% when 'answer' %>
+      <%= link_to "あなたのお題", answer_path(notification.theme) %>
+      <p>にヒトコトを投稿しました</p>
+  <% end %>
+
+  <small>
+    <%= time_ago_in_words(notification.created_at).upcase %>
+  </small>
+  <hr>
+<% end %>
+
+<%= paginate notifications %>

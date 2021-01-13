@@ -66,13 +66,6 @@
           <% end %>
           <% end %>
       </li>
-            <% if @answer.user == current_user %>
-              <li class="nav-item ml-4 h4">
-                <%= link_to answer_path, method: :delete do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-              </li>
-            <% end %>
           </ul>
         </nav>
 

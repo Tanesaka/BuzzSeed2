@@ -3,6 +3,10 @@ class Public::CommentsController < ApplicationController
     @answer = Answer.find(params[:answer_id])
     comment = current_user.comments.new(comment_params)
     comment.answer_id = @answer.id
+    # ここから通知のメゾッド定義（モデルに記載してます）
+    @answer.create_notification_comment!(current_user, comment.id)
+    # ここまで
+    # 非同期化のためリダイレクトしない
     unless comment.save
       redirect_to answers_path, alert: 'コメントを反映できませんでした。※1文字以上入力してください。'
     end
