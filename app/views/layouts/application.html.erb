@@ -27,6 +27,16 @@
                <%= link_to 'お題', themes_path %>
              </li>
              <li class="nav-item ml-4 h3">
+               <%= link_to notifications_path do %>
+                  <% if unchecked_notifications.any? %>
+                   <i class="fas fa-circle noticemark"></i>
+                   <i class="fas fa-bell"></i>
+                 <% else %>
+                   <i class="fas fa-bell"></i>
+                 <% end %>
+               <% end %>
+             </li>
+             <li class="nav-item ml-4 h3">
                <%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fas fa-sign-out-alt"></i>
                <% end %>
