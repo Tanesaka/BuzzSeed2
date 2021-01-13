@@ -8,7 +8,7 @@ class Public::AnswersController < ApplicationController
     answer.user_id = current_user.id
     if answer.save
       @theme = answer.theme
-      @theme.create_notification_comment!(current_user, answer.id)
+      @theme.create_notification_answer!(current_user, answer.id)
       redirect_to theme_path(answer.theme_id)
     else
       # お題一覧画面へ推移

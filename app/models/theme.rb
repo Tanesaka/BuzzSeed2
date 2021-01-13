@@ -11,6 +11,7 @@ class Theme < ApplicationRecord
 
   # Answerの通知作成メゾッド
   def create_notification_answer!(current_user, answer_id)
+    save_notification_answer!(current_user, answer_id, user_id)
   end
 
   def save_notification_answer!(current_user, answer_id, visited_id)

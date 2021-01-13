@@ -3,14 +3,16 @@
 
 
 <% notifications.each do |notification| %>
+<article class="mt-3 h6">
 
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
 
-
+<div class="ml-3">
   <%= link_to user_path(visitor) do %>
+  <p><%= attachment_image_tag visitor, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle"; %>
     <%= visitor.name %>
-    <p>さんが</p>
+    さんが</p>
   <% end %>
 
   <% case notification.action
@@ -18,23 +20,31 @@
     <p>あなたをフォローしました</p>
 
     <% when 'like' %>
-      <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
-      <p>にいいねしました</p>
+      <p><%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+      にいいねしました</p>
 
     <% when 'comment' %>
-      <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
-      <p>にコメントしました</p>
-      <p><%= Comment.find_by(id: notification.comment_id)&.comment %></p>
+      <p><%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+      にコメントしました</p>
 
     <% when 'answer' %>
-      <%= link_to "あなたのお題", answer_path(notification.theme) %>
-      <p>にヒトコトを投稿しました</p>
+      <p><%= link_to "あなたのお題", theme_path(notification.theme) %>
+      でヒトコトを投稿しました</p>
   <% end %>
 
   <small>
-    <%= time_ago_in_words(notification.created_at).upcase %>
+    <%= time_ago_in_words(notification.created_at).upcase %>前
   </small>
+
+  </div>
+
   <hr>
+
+  <article>
 <% end %>
 
+<div class="row">
+  <div class="mx-auto mt-2 h2">
 <%= paginate notifications %>
+  </div>
+</div>
