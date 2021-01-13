@@ -41,6 +41,22 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+# active_notifications：自分からの通知※疑似クラス
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+# passive_notifications：相手からの通知※疑似クラス
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+# フォローの通知作成メゾッド
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
 
   validates :name, :unique_code, :email, presence: true
@@ -56,7 +72,6 @@ class User < ApplicationRecord
 
 #有効会員はtrue、退会済み会員はfalse
   enum is_active: {有効: true, 無効: false}
-
 #is_activeが有効の場合は有効会員(ログイン可能)
   def active_for_authentication?
       super && (self.is_active === "有効")

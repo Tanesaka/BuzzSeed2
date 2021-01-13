@@ -7,7 +7,9 @@ class Public::AnswersController < ApplicationController
     answer = Answer.new(answer_params)
     answer.user_id = current_user.id
     if answer.save
-    redirect_to theme_path(answer.theme_id)
+      @theme = answer.theme
+      @theme.create_notification_answer!(current_user, answer.id)
+      redirect_to theme_path(answer.theme_id)
     else
       # お題一覧画面へ推移
       redirect_to themes_path, alert: '回答を反映できませんでした…。※1文字以上入力してください。'

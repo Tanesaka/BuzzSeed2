@@ -45,6 +45,7 @@ time, mark, audio, video {
 body {
     line-height:1;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: "Yu Gothic Medium", "游ゴシック体", YuGothic, "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 article,aside,details,figcaption,figure,
@@ -138,3 +139,10 @@ footer{
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
+.noticemark {
+    position: absolute;
+    padding-left: 1rem;
+    padding-top: 0.4rem;
+    color: #DC3545;
+    font-size:1px;
+}
