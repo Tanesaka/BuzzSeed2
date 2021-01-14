@@ -3,7 +3,7 @@
 
 
 <% notifications.each do |notification| %>
-<article class="mt-3 h6">
+<article class="h6">
 
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
@@ -21,7 +21,7 @@
 
     <% when 'like' %>
       <p><%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
-      にいいねしました</p>
+      にGood!<i class="fas fa-thumbs-up text-danger"></i>しました</p>
 
     <% when 'comment' %>
       <p><%= link_to "あなたのヒトコト", answer_path(notification.answer) %>

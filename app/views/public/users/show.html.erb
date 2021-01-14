@@ -11,6 +11,10 @@
             <%= render 'public/relations/follow_btn', user: @user %>
           </span>
           <% if current_user == User.find_by(email: 'guest@example.com') %>
+         <div> <small>ゲストログイン時は機能が制限されます。
+          また、定期的に投稿データは削除されますのでご了承ください。</small></div>
+<div class="mt-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-info btn-block btn-sm w-100"; %>
+          </div>
           <% elsif @user.id == current_user.id %>
             <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-3 btn-sm btn-block"; %>
           <% end %>
@@ -52,7 +56,7 @@
                 </td>
                 </tr>
                 <tr>
-                <th><i class="fab fa-pagelines"></i> ID</th>
+                <th>BuzzSeed ID</th>
                 <td><%= @user.unique_code %></td>
               </tr>
             </tbody>
