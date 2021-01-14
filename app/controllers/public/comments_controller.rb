@@ -11,7 +11,7 @@ class Public::CommentsController < ApplicationController
     # ここまで
     # 非同期化のためリダイレクトしない
     else
-        redirect_to answers_path, alert: 'コメントを反映できませんでした。※1文字以上入力してください。'
+      redirect_to answers_path, alert: 'コメントを反映できませんでした…。※1文字以上入力してください。'
     end
   end
 

@@ -48,7 +48,7 @@
           <%= form_with model:[@answer, @comment], remote: true do |f| %>
             <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
 
-             <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
+             <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
           <% end %>
         </div>
       </article>

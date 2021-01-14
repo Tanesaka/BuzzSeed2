@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'themes/introduction' => 'themes#introduction'
     resources :themes, only:[:index, :create, :new, :show]
     get 'answers/rankindex' => 'answers#rankindex'
+    get 'answers/followanswer' => 'answers#followanswer'
     resources :answers, only:[:index, :create, :new, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]

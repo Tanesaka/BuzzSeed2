@@ -90,10 +90,10 @@
   </nav>
 </header>
   <% if notice.present? %>
-    <h3><%= flash[:notice] %></h3>
+    <div class="time-limit h5 font-weight-bold alert alert-primary"><%= flash[:notice] %></div>
   <% end %>
   <% if alert.present? %>
-    <h3><%= flash[:alert] %></h3>
+    <div class="time-limit h5 font-weight-bold alert alert-warning"><%= flash[:alert] %></div>
   <% end %>
   <%= yield %>
 

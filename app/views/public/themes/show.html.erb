@@ -26,13 +26,13 @@
       <%= form_with model:@answer, url: answers_path, local:true do |f| %>
         <%= f.hidden_field :theme_id, value: @theme.id %>
         <%= f.text_area :content, rows:'4',autofocus: true, class: "mt-2 w-100", placeholder: "このお題でヒトコト!!" %>
-        <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
+        <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
       <% end %>
 
 <!--そのお題の回答一覧-->
 
       <h2 class="border-bottom border-gray mt-4 font-weight-bold">
-        <i class="fas fa-globe-asia"></i> ヒトコト一覧
+        <i class="fas fa-seedling"></i>  ヒトコト一覧
       </h2>
       <%= render 'public/answers/list', answers: @answers %>
    </div>

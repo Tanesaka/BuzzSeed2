@@ -4,6 +4,23 @@
       <h2 class="border-bottom border-gray mt-4 text-dange">
         <i class="fas fa-globe-asia"></i> このお題でヒトコト
       </h2>
+        <nav class="navbar-expand mt-2">
+        <ul class="navbar-nav ml-auto nav-tabs">
+          <li class="nav-item ml-4 h4 nav-link">
+            <%= link_to "新着", themes_path %>
+          </li>
+          <li class="nav-item ml-4 h4 nav-link">
+            <%= link_to "人気", themes_rankindex_path %>
+          </li>
+          <li class="nav-item ml-4 h4 nav-link active">
+            <%= link_to 'ランダム1問', themes_introduction_path %>
+          </li>
+          <li class="nav-item ml-4 h4 nav-link">
+            <%= link_to 'お題投稿', new_theme_path %>
+            <i class="fas fa-file-upload"></i>
+          </li>
+        </ul>
+      </nav>
       <article class="mt-4 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
         <nav class="navbar-expand mt-2">

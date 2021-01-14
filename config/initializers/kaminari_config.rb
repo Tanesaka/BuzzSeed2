@@ -13,5 +13,5 @@ Kaminari.configure do |config|
   # config.params_on_first_page = false
 
   # 1ページに表示させる投稿数
-  config.default_per_page = 5
+  config.default_per_page = 10
 end
