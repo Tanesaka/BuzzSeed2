@@ -18,6 +18,10 @@ class Public::FavoritesController < ApplicationController
     @answers.each do |answer|
       @favorites_count += answer.favorites.count
     end
+
+    # Topページのいいね非同期化
+    @all_favorites = Favorite.all
+
   end
 
   def destroy
@@ -32,6 +36,9 @@ class Public::FavoritesController < ApplicationController
     @answers.each do |answer|
       @favorites_count += answer.favorites.count
     end
+
+        # Topページのいいね非同期化
+    @all_favorites = Favorite.all
   end
 
   # private

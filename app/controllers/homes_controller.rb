@@ -3,7 +3,7 @@ class HomesController < ApplicationController
     @answers = Answer.all
     # randomに取得し、idに代入、最後に一倍最初のidを1つ取得
     @answer = Answer.where( 'id >= ?', rand(Answer.first.id..Answer.last.id) ).first
-    @favorites = Favorite.all
+    @all_favorites = Favorite.all
     @themes = Theme.all
   end
 

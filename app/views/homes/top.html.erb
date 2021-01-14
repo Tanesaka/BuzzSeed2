@@ -1,7 +1,7 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="mt-4">
+      <h2 class="mt-4 font-weight-bold">
         <i class="fab fa-pagelines"></i> BuzzSeed 総合データ
       </h2>
 
@@ -9,7 +9,7 @@
             <tbody>
                 <tr>
                 <th>お題数</th>
-                <td>
+                <td class="h2 font-weight-bold">
                   <%= link_to themes_path do %>
                     <%= @themes.count %>
                     <% end %>
@@ -17,7 +17,7 @@
               </tr>
                 <tr>
                 <th>ヒトコト数</th>
-                <td>
+                <td class="h2 font-weight-bold">
                   <%= link_to answers_path do %>
                     <%= @answers.count %>
                     <% end %>
@@ -25,8 +25,10 @@
               </tr>
               <tr>
                 <th>全ユーザー<i class="fas fa-heart text-danger"></i>計</th>
-                <td>
-                    <%= @favorites.count %>
+                <td class="h2 font-weight-bold">
+                  <span class="all-favorites-count">
+                    <%= @all_favorites.count %>
+                    <span>
                 </td>
               </tr>
             </tbody>
@@ -34,7 +36,7 @@
 
 <%= link_to "BuzzSeedの使い方",about_path, class:"btn-info btn mt-3 w-100"; %>
 
-      <h2 class="border-bottom border-gray mt-4">
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fab fa-pagelines"></i> ピックアップ
       </h2>
       <article class="mt-4 shadow-lg" id="answer_<%= @answer.id %>">
