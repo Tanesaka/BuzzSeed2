@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get 'mytheme' => 'users#mytheme'
       get 'myanswer' => 'users#myanswer'
     end
-    resources :themes, only:[:index, :show, :destroy]
+    resources :themes, only:[:index, :destroy]
     resources :answers, only:[:index, :show, :destroy] do
       resources :comments, only:[:destroy]
     end

@@ -2,9 +2,7 @@
 
 <% themes.each do |theme| %>
  <article class="mt-4 shadow-lg">
-   <%= link_to admins_theme_path(theme.id) do %>
     <%= attachment_image_tag theme, :image, class:"card-img-top"; %>
-   <% end %>
       <nav class="navbar-expand mt-2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item ml-4 h4">
@@ -14,10 +12,8 @@
               <% end %>
           </li>
           <li class="nav-item ml-4 h4">
-              <%= link_to admins_theme_path(theme.id) do %>
               <i class="fas fa-seedling"></i>
               <%= theme.answers.count %>
-              <% end %>
           </li>
         </ul>
       </nav>
