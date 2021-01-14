@@ -21,10 +21,14 @@
           <ul class="navbar-nav pt-5 ml-auto">
             <% if user_signed_in? %>
              <li class="nav-item ml-4 h4">
-               <%= link_to 'ヒトコト', answers_path %>
+               <%= link_to answers_path do %>
+               <i class="fas fa-seedling"></i>
+               <% end %>
              </li>
              <li class="nav-item ml-4 h4">
-               <%= link_to 'お題', themes_path %>
+               <%= link_to themes_path do %>
+               <i class="fas fa-globe-asia"></i>
+              <% end %>
              </li>
              <li class="nav-item ml-4 h3">
                <%= link_to notifications_path do %>
@@ -37,7 +41,7 @@
                <% end %>
              </li>
              <li class="nav-item ml-4 h3">
-               <%= link_to destroy_user_session_path, method: :delete do %>
+               <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} do %>
                <i class="fas fa-sign-out-alt"></i>
                <% end %>
              </li>
@@ -48,16 +52,16 @@
              </li>
            <% elsif admin_signed_in? %>
             <p>管理者ログイン中です</p>
-            <li class="nav-item">
+            <li class="nav-item ml-4 h4">
               <%= link_to 'お題一覧', admins_themes_path %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-4 h4">
               <%= link_to '回答一覧', admins_answers_path %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-4 h4">
               <%= link_to 'ユーザー一覧', admins_users_path %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-4 h4">
               <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
           <% else %>

@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
       <h2 class="mt-4 font-weight-bold">
-        <i class="fab fa-pagelines"></i> BuzzSeed 総合データ
+        <i class="fab fa-font-awesome-flag"></i> BuzzSeed 総合データ
       </h2>
 
-          <table class="h4 mt-3 ml-2 table col-md-9 col-xs-10">
+          <table class="h3 mt-3 ml-2 table col-md-9 col-xs-10">
             <tbody>
                 <tr>
                 <th>お題数</th>
@@ -24,7 +24,7 @@
                 </td>
               </tr>
               <tr>
-                <th>全ユーザー<i class="fas fa-heart text-danger"></i>計</th>
+                <th>Good!<i class="fas fa-thumbs-up text-danger"></i></i>数</th>
                 <td class="h2 font-weight-bold">
                   <span class="all-favorites-count">
                     <%= @all_favorites.count %>
@@ -37,7 +37,7 @@
 <%= link_to "BuzzSeedの使い方",about_path, class:"btn-info btn mt-3 w-100"; %>
 
       <h2 class="border-bottom border-gray mt-4 font-weight-bold">
-        <i class="fab fa-pagelines"></i> ピックアップ
+        <i class="fas fa-seedling"></i> ヒトコトPick Up!
       </h2>
       <article class="mt-4 shadow-lg" id="answer_<%= @answer.id %>">
         <%= attachment_image_tag @answer.theme, :image, class:"card-img-top"; %>

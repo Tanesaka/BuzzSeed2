@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -39,12 +39,12 @@ class Public::UsersController < ApplicationController
 
   def following
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.page(params[:page]).per(20)
   end
 
   def follower
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers.page(params[:page]).per(20)
   end
 
   def mytheme

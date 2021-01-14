@@ -1,8 +1,8 @@
 <div class="containar">
   <div class="row">
-    <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> このお題でヒトコト
+    <div class="col-md-5 col-xs-10 mx-auto ">
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-globe-asia"></i> このお題でヒトコト
       </h2>
       <article class="mt-4 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
@@ -31,8 +31,8 @@
 
 <!--そのお題の回答一覧-->
 
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> ヒトコト一覧
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-globe-asia"></i> ヒトコト一覧
       </h2>
       <%= render 'public/answers/list', answers: @answers %>
    </div>
