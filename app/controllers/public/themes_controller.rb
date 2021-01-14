@@ -1,4 +1,5 @@
 class Public::ThemesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @theme = Theme.new
   end
