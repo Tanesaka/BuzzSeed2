@@ -1,4 +1,6 @@
 class Admins::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
   # ユーザー検索フォームに受け渡す変数
   @q = User.ransack(params[:q])

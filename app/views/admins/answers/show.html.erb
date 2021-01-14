@@ -1,11 +1,20 @@
-<h1>回答詳細</h1>
-<%= attachment_image_tag @theme, :image %>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> ヒトコト詳細
+      </h2>
+
+<article class="mt-4 shadow-lg">
+<%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
 <p>お題by:<%= @theme.user.name %></p>
 
 <h1><%= @answer.content %></h1>
-<p>ヒトコトby:<%= @answer.user.name %></p>
+<%= link_to admins_user_path(@answer.user.id) do %>
+<p><i class="fas fa-user"></i><%= @answer.user.name %></p>
+<% end %>
 
-    <%= link_to "この回答を削除", admins_answer_path, method: :delete %>
+    <%= link_to "この回答を削除", admins_answer_path, method: :delete, data: {confirm: "削除しますか？"} %>
 
 <p>コメント件数：<%= @answer.comments.count %></p>
 <% @answer.comments.each do |comment| %>
@@ -17,6 +26,10 @@
   </div>
 
     <div>
-    <%= link_to "このコメントを削除", admins_answer_comment_path(comment.answer, comment), method: :delete %>
+    <%= link_to "このコメントを削除", admins_answer_comment_path(comment.answer, comment), method: :delete, data: {confirm: "削除しますか？"} %>
     </div>
   <% end %>
+</article>
+   </div>
+  </div>
+</div>
