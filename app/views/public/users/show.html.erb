@@ -1,25 +1,29 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> <%= @user.name %>
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-user"></i> <%= @user.name %>
       </h2>
       <div class="row mt-2">
-        <div class="col-4 mt-2 text-center">
-          <%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
+        <div class="col-4 mt-3 text-center">
+          <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", size: "120x120", class:"rounded-circle shadow-sm"; %>
           <span class="show-follow-btn">
             <%= render 'public/relations/follow_btn', user: @user %>
           </span>
           <% if current_user == User.find_by(email: 'guest@example.com') %>
+         <div> <small>ゲストログイン時は機能が制限されます。
+          また、定期的に投稿データは削除されますのでご了承ください。</small></div>
+<div class="mt-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-info btn-block btn-sm w-100"; %>
+          </div>
           <% elsif @user.id == current_user.id %>
-            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-2 btn-sm btn-block"; %>
+            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-3 btn-sm btn-block"; %>
           <% end %>
         </div>
         <div class="col-7 offset-1 mt-3">
-          <table class="h6  table-sm">
+          <table class="h6  table-sm font-weight-bold">
             <tbody>
               <tr>
-                <th><i class="fas fa-heart text-danger"></i>総数</th>
+                <th><i class="fas fa-thumbs-up text-danger"></i> 総数</th>
                 <td>
         <!--非同期のためのクラス、-->
                   <span class="favorites-count">
@@ -28,7 +32,15 @@
                 </td>
               </tr>
               <tr>
-                <th>フォロー</th>
+                <th><i class="fas fa-globe-asia"></i> お題</th>
+                <td>
+                  <%= link_to user_mytheme_path(@user) do %>
+                    <%= @user.themes.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><i class="fas fa-user-friends"></i> フォロー</th>
                 <td>
                   <%= link_to user_following_path(@user) do %>
                     <%= @user.followings.count %>
@@ -36,23 +48,15 @@
                 </td>
               </tr>
               <tr>
-                <th>フォロワー</th>
+                <th><i class="fas fa-user-friends"></i> フォロワー</th>
                 <td>
                   <%= link_to user_follower_path(@user) do %>
                    <%= @user.followers.count %>
                   <% end %>
                 </td>
                 </tr>
-               <tr>
-                <th>お題</th>
-                <td>
-                  <%= link_to user_mytheme_path(@user) do %>
-                    <%= @user.themes.count %>
-                  <% end %>
-                </td>
-              </tr>
                 <tr>
-                <th><i class="fas fa-seedling"></i>ID</th>
+                <th>BuzzSeed ID</th>
                 <td><%= @user.unique_code %></td>
               </tr>
             </tbody>
@@ -67,8 +71,8 @@
       </div>
 <!--プロフィール終わり-->
     </div>
-    <h2 class="border-bottom border-gray mt-4">
-      <i class="fab fa-pagelines"></i> ヒトコト（全<%= @mypage_answers.count %>件）
+    <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+      <i class="fas fa-seedling"></i> ヒトコト（全<%= @mypage_answers.count %>件）
     </h2>
 <!--そのユーザーの回答一覧-->
     <%= render 'public/answers/list', answers: @mypage_answers %>

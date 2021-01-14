@@ -20,3 +20,7 @@
 //= require rails-ujs
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(function(){
+  setTimeout("$('.time-limit').fadeOut('slow')", 2000)
+});

@@ -1,9 +1,9 @@
 <% if answer.favorited_by?(current_user) %>
   <%= link_to answer_favorites_path(answer), method: :delete, remote: true do %>
-    <i class="fas fa-heart text-danger"></i><%= answer.favorites.count %>
+    Good!<i class="fas fa-thumbs-up text-danger"></i><%= answer.favorites.count %>
   <% end %>
 <% else %>
   <%= link_to answer_favorites_path(answer), method: :post, remote: true do %>
-    <i class="far fa-heart"></i><%= answer.favorites.count %>
+    Good!<i class="far fa-thumbs-up"></i><%= answer.favorites.count %>
   <% end %>
 <% end %>

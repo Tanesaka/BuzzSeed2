@@ -3,11 +3,11 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-    <h2 class="border-bottom border-gray mt-4">
-      <i class="fab fa-pagelines"></i> プロフィール編集
+    <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+      <i class="fas fa-user"></i> プロフィールを編集する
     </h2>
     <%= form_with model:@user, local:true do |f| %>
-     <div class="form-body p-4">
+     <div class="form-body p-4 font-weight-bold">
        <label>ニックネーム</label>
        <br>
        <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム", class: "w-50 mt-2"%>

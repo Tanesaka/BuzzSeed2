@@ -73,3 +73,5 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 gem 'ransack'
 gem 'rails-i18n'
+
+gem 'jquery-rails'

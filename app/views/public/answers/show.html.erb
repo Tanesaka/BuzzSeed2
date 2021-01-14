@@ -1,8 +1,8 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> コメント
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-comment"></i> コメントする
       </h2>
 
       <!--非同期のためidを追加-->
@@ -48,7 +48,7 @@
           <%= form_with model:[@answer, @comment], remote: true do |f| %>
             <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
 
-             <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
+             <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
           <% end %>
         </div>
       </article>
