@@ -11,9 +11,9 @@
             <%= render 'public/relations/follow_btn', user: @user %>
           </span>
           <% if current_user == User.find_by(email: 'guest@example.com') %>
-         <div> <small>ゲストログイン時は機能が制限されます。
-          また、定期的に投稿データは削除されますのでご了承ください。</small></div>
-<div class="mt-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-info btn-block btn-sm w-100"; %>
+         <div> <small>※ゲストログイン時は機能が制限されます。
+          また、投稿データは定期的に削除されます。</small></div>
+<div class="mt-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-secondary btn-block btn-sm w-100"; %>
           </div>
           <% elsif @user.id == current_user.id %>
             <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-3 btn-sm btn-block"; %>
@@ -69,8 +69,51 @@
             <% end %>
         </div>
       </div>
-<!--プロフィール終わり-->
     </div>
+    <!--プロフィール終わり-->
+    <% if @user != current_user %>
+    <% elsif @user.themes.present? && @user.answers.present? && @user.favorites.count >= 3 %>
+      <p>チュートリアル終了！</p>
+      <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn mt-3 w-100"; %>
+    <% else %>
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-info-circle"></i> チュートリアル
+      </h2>
+      <div class="mt-3 ml-2">
+          <h4 class="mt-4 mb-1 font-weight-bold">
+            <i class="fas fa-walking"></i>
+            <%= link_to 'お題を投稿する', about_path(anchor: 'about3') %>
+          </h4>
+        <% if @user == current_user && @user.themes.blank? %>
+          <p class="ml-4">1つ以上お題を投稿しよう！</p>
+        <% else %>
+          <p>クリア！</p>
+        <% end %>
+
+          <h4 class="mt-4 mb-1 font-weight-bold">
+            <i class="fas fa-walking"></i>
+            <%= link_to 'ヒトコトを投稿する', about_path(anchor: 'about3') %>
+          </h4>
+        <% if @user == current_user && @user.answers.blank? %>
+          <p class="ml-4">1つ以上ヒトコトを投稿しよう！</p>
+        <% else %>
+          <p>クリア！</p>
+        <% end %>
+
+          <h4 class="mt-4 mb-1 font-weight-bold">
+            <i class="fas fa-walking"></i>
+            <%= link_to 'Goodをする', about_path(anchor: 'about3') %>
+          </h4>
+        <% if @user == current_user && @user.favorites.count < 3 %>
+          <p class="ml-4">3つ以上のヒトコトにGoodしよう！
+          <strong>(<%= @user.favorites.count %> / 3)</strong></p>
+        <% else %>
+          <p>クリア！</p>
+        <% end %>
+      </div>
+      <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn mt-3 w-100"; %>
+    <% end %>
+    <!--チュートリアル終わり-->
     <h2 class="border-bottom border-gray mt-4 font-weight-bold">
       <i class="fas fa-seedling"></i> ヒトコト（全<%= @mypage_answers.count %>件）
     </h2>
