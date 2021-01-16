@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-
-
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
   }
 
   devise_scope :user do
@@ -15,22 +13,22 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
-    sessions: 'admins/sessions'
+    sessions: 'admins/sessions',
   }
 
   namespace :admins do
-    resources :users, only:[:index, :show, :update] do
+    resources :users, only: [:index, :show, :update] do
       get 'mytheme' => 'users#mytheme'
       get 'myanswer' => 'users#myanswer'
     end
-    resources :themes, only:[:index, :destroy]
-    resources :answers, only:[:index, :show, :destroy] do
-      resources :comments, only:[:destroy]
+    resources :themes, only: [:index, :destroy]
+    resources :answers, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
     end
   end
 
   scope module: :public do
-    resources :users, only:[:edit, :update, :show, :index] do
+    resources :users, only: [:edit, :update, :show, :index] do
       get 'following' => 'users#following'
       get 'follower' => 'users#follower'
       get 'mytheme' => 'users#mytheme'
@@ -39,13 +37,13 @@ Rails.application.routes.draw do
     get 'themes/rankindex' => 'themes#rankindex'
     get 'themes/random' => 'themes#random'
     get 'themes/introduction' => 'themes#introduction'
-    resources :themes, only:[:index, :create, :new, :show]
+    resources :themes, only: [:index, :create, :new, :show]
     get 'answers/rankindex' => 'answers#rankindex'
     get 'answers/followanswer' => 'answers#followanswer'
-    resources :answers, only:[:index, :create, :new, :show, :destroy] do
+    resources :answers, only: [:index, :create, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-  resources :notifications, only: :index
+    resources :notifications, only: :index
   end
 end

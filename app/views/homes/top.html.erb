@@ -16,7 +16,7 @@
         </div>
 
 <% unless user_signed_in? %>
-<%= link_to "アカウントを作成する",new_user_registration_path, class:"btn-info btn mt-3 w-100"; %>
+<%= link_to "ログインはこちら",new_user_session_path, class:"btn-info btn mt-3 w-100"; %>
 <% end %>
 
 <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>

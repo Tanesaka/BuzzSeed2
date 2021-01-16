@@ -6,8 +6,8 @@ class Public::CommentsController < ApplicationController
     comment.answer_id = @answer.id
 
     if comment.save
-          # ここから通知のメゾッド定義（モデルに記載してます）
-    @answer.create_notification_comment!(current_user, comment.id)
+      # ここから通知のメゾッド定義（モデルに記載してます）
+      @answer.create_notification_comment!(current_user, comment.id)
     # ここまで
     # 非同期化のためリダイレクトしない
     else

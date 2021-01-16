@@ -6,11 +6,10 @@ class Public::RelationsController < ApplicationController
     following = current_user.follow(@user)
     following.save
 
-
     # ここから通知のメゾッド定義（モデルに記載してます）
     @user.create_notification_follow!(current_user)
     # ここまで
-    
+
     # 非同期化のためリダイレクトしない
   end
 
@@ -26,8 +25,8 @@ class Public::RelationsController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:follow_id])
   end
-
 end

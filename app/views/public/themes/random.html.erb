@@ -38,17 +38,13 @@
           </ul>
         </nav>
       </article>
-
 <!--ヒトコト投稿フォーム-->
       <%= form_with model:@answer, url: answers_path, local:true do |f| %>
         <%= f.hidden_field :theme_id, value: @theme.id %>
         <%= f.text_area :content, rows:'4',autofocus: true, class: "mt-2 w-100", placeholder: "このお題でヒトコト!!" %>
         <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
       <% end %>
-
-<%= link_to '他のユーザーのヒトコトを見る', theme_path(@theme), class: "mt-2 btn btn-secondary btn-block w-100" %>
-
-
-   </div>
+      <%= link_to '他のユーザーのヒトコトを見る', theme_path(@theme), class: "mt-2 btn btn-secondary btn-block w-100" %>
+    </div>
   </div>
 </div>

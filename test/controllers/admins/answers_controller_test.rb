@@ -15,5 +15,4 @@ class Admins::AnswersControllerTest < ActionDispatch::IntegrationTest
     get admins_answers_destroy_url
     assert_response :success
   end
-
 end

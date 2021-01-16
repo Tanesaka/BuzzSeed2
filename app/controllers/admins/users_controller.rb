@@ -2,10 +2,10 @@ class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-  # ユーザー検索フォームに受け渡す変数
-  @q = User.ransack(params[:q])
-  # 検索フォームから帰ってきた結果
-  @users = @q.result(distinct: true)
+    # ユーザー検索フォームに受け渡す変数
+    @q = User.ransack(params[:q])
+    # 検索フォームから帰ってきた結果
+    @users = @q.result(distinct: true)
   end
 
   def show
@@ -38,5 +38,4 @@ class Admins::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :unique_code, :is_active)
   end
-
 end

@@ -24,13 +24,13 @@
               <!--非同期のためクラスを追加。FontawsomeはJsファイルでエラーがでました。
               レイアウト維持のためspanタグを使用-->
               <span class="comments-count">
-              <%= @answer.comments.count %>
+                <%= @answer.comments.count %>
               </span>
             </li>
             <!--非同期のためクラスを追加-->
-      <li class="nav-item ml-4 h4 favorite-btn">
-          <%= render 'public/favorites/favorites_btn', answer: @answer %>
-      </li>
+            <li class="nav-item ml-4 h4 favorite-btn">
+              <%= render 'public/favorites/favorites_btn', answer: @answer %>
+            </li>
             <% if @answer.user == current_user %>
               <li class="nav-item ml-4 h4">
                 <%= link_to answer_path, method: :delete do %>
@@ -41,17 +41,16 @@
           </ul>
         </nav>
         <!--非同期のためクラスを追加-->
-<div class="w-75 ml-3 comments-list">
-<%= render 'public/comments/comments_list', answer: @answer %>
-</div>
+        <div class="w-75 ml-3 comments-list">
+          <%= render 'public/comments/comments_list', answer: @answer %>
+        </div>
         <div>
           <%= form_with model:[@answer, @comment], remote: true do |f| %>
             <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
-
-             <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
+            <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
           <% end %>
         </div>
       </article>
-   </div>
+    </div>
   </div>
 </div>
