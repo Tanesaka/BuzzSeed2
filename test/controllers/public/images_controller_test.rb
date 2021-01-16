@@ -20,5 +20,4 @@ class Public::ImagesControllerTest < ActionDispatch::IntegrationTest
     get public_images_index_url
     assert_response :success
   end
-
 end

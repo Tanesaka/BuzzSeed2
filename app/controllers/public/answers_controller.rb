@@ -29,7 +29,7 @@ class Public::AnswersController < ApplicationController
 
   # いいね数順の回答一覧
   def rankindex
-    answer = Answer.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+    answer = Answer.all.sort { |a, b| b.favorites.count <=> a.favorites.count }
     @answers = Kaminari.paginate_array(answer).page(params[:page])
   end
 
@@ -44,7 +44,6 @@ class Public::AnswersController < ApplicationController
     answer.destroy
     redirect_to answers_path
   end
-
 
   private
 

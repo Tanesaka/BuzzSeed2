@@ -10,5 +10,4 @@ class Admins::ThemesControllerTest < ActionDispatch::IntegrationTest
     get admins_themes_destroy_url
     assert_response :success
   end
-
 end
