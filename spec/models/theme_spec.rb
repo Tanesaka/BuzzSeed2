@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
 require 'rails_helper'
-
 
 describe 'モデルのテスト' do
   # 下記でアソシエーションは自動的に組まれる

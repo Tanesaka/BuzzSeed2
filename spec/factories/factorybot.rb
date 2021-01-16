@@ -15,7 +15,13 @@ FactoryBot.define do
   end
   factory :theme do
     # fixture_file_uploadはfactorybotで使えないためRack::Test::UploadedFile.newと記載
-    # やっていることは
-   image { Rack::Test::UploadedFile.new('public/uploads/test.png') }
+    # やっていることは同じ
+    image { Rack::Test::UploadedFile.new('public/uploads/test.png') }
+  end
+  factory :answer do
+    content { Faker::Lorem.characters(number:20) }
+  end
+  factory :comment do
+    content { Faker::Lorem.characters(number:20) }
   end
 end
