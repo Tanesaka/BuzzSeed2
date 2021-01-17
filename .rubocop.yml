@@ -17,4 +17,4 @@ AllCops:
 # RubocopのLine is too longを無視するための記述
 # 理想は100文字以内
 Metrics/LineLength:
-  Max: 140
+  Max: 150

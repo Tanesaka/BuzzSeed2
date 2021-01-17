@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 describe 'ユーザー一覧画面のテスト' do
   # let(:user) { FactoryBot.create(:user) }
@@ -7,10 +8,12 @@ describe 'ユーザー一覧画面のテスト' do
     sign_in @user
     visit users_path
   end
+
   after do
-  # サインアウト
+    # サインアウト
     sign_out @user
   end
+
   it "users_pathが/usersか" do
     expect(current_path).to eq('/users')
   end

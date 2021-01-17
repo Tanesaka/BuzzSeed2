@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'adminモデルのテスト' do
@@ -9,5 +10,4 @@ describe 'adminモデルのテスト' do
     admin = Admin.new(email: "", password: "exampass", password_confirmation: "exampass")
     expect(admin).to be_invalid
   end
-
 end

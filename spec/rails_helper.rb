@@ -62,6 +62,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-# letを使用したときに、FactoryBotが使用できるように設定
+  # letを使用したときに、FactoryBotが使用できるように設定
   config.include FactoryBot::Syntax::Methods
 end

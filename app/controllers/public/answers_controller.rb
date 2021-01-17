@@ -42,7 +42,7 @@ class Public::AnswersController < ApplicationController
   def destroy
     answer = Answer.find(params[:id])
     answer.destroy
-    redirect_to answers_path
+    redirect_to user_path(current_user)
   end
 
   private

@@ -5,8 +5,8 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { password }
     password_confirmation { password }
-    name { Faker::Lorem.characters(number:5) }
-    unique_code { Faker::Lorem.characters(number:8) }
+    name { Faker::Lorem.characters(number: 5) }
+    unique_code { Faker::Lorem.characters(number: 8) }
   end
   factory :admin do
     email { Faker::Internet.email }
@@ -22,12 +22,12 @@ FactoryBot.define do
   factory :answer do
     association :theme
     user { theme.user }
-    content { Faker::Lorem.characters(number:20) }
+    content { Faker::Lorem.characters(number: 20) }
   end
   factory :comment do
     association :answer
     user { answer.user }
-    content { Faker::Lorem.characters(number:20) }
+    content { Faker::Lorem.characters(number: 20) }
   end
   factory :favorite do
     association :answer
