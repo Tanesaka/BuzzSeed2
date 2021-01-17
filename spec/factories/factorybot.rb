@@ -33,4 +33,8 @@ FactoryBot.define do
     association :answer
     user { answer.user }
   end
+  factory :relation do
+    association :user
+    association :follow, factory: :user
+  end
 end
