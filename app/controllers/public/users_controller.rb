@@ -32,9 +32,9 @@ class Public::UsersController < ApplicationController
 
   def index
     # ユーザー検索フォームに受け渡す変数
-  @q = User.ransack(params[:q])
-  # 検索フォームから帰ってきた結果
-  @users = @q.result(distinct: true).page(params[:page]).per(20)
+    @q = User.ransack(params[:q])
+    # 検索フォームから帰ってきた結果
+    @users = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def following

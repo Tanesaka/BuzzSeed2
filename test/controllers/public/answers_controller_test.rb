@@ -25,5 +25,4 @@ class Public::AnswersControllerTest < ActionDispatch::IntegrationTest
     get public_answers_show_url
     assert_response :success
   end
-
 end

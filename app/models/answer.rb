@@ -12,11 +12,11 @@ class Answer < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-# いいねの通知作成メゾッド
-# メソッド名に「!」を付けているのは、「メソッド内でデータ登録もやっているので、呼び出す際は気をつけてね」というのをわかりやすくするため（つけなくても動作する）
+  # いいねの通知作成メゾッド
+  # メソッド名に「!」を付けているのは、「メソッド内でデータ登録もやっているので、呼び出す際は気をつけてね」というのをわかりやすくするため（つけなくても動作する）
   def create_notification_like!(current_user)
-        # すでに「いいね」されているか検索
-        # プレースホルダ※「?」を指定した値で置き換える。SQLインジェクションを防ぐ
+    # すでに「いいね」されているか検索
+    # プレースホルダ※「?」を指定した値で置き換える。SQLインジェクションを防ぐ
     temp = Notification.where(["visitor_id = ? and visited_id = ? and answer_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成(いたずら防止。いいねを連続でした場合でも、1度しか相手に通知がいかないようにする)
     if temp.blank?
@@ -53,5 +53,4 @@ class Answer < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
 end

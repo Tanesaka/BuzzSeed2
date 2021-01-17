@@ -4,16 +4,13 @@
       <h2 class="border-bottom border-gray mt-4 mb-4">
         <i class="fas fa-bell"></i> 通知一覧
       </h2>
-
  <!--自分の投稿に対するいいね、コメントは通知に表示しない-->
-<% @notifications = @notifications.where.not(visitor_id: current_user.id) %>
-
-<% if @notifications.exists? %>
-  <%= render 'public/notifications/notification', notifications: @notifications %>
-<% else %>
-  <p>通知はありません</p>
-<% end %>
-
+      <% @notifications = @notifications.where.not(visitor_id: current_user.id) %>
+      <% if @notifications.exists? %>
+        <%= render 'public/notifications/notification', notifications: @notifications %>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
    </div>
   </div>
 </div>

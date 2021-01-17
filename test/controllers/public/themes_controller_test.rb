@@ -20,5 +20,4 @@ class Public::ThemesControllerTest < ActionDispatch::IntegrationTest
     get public_themes_index_url
     assert_response :success
   end
-
 end

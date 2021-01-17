@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   def create
     @answer = Answer.find(params[:answer_id])
     favorite = current_user.favorites.new(answer_id: @answer.id)
@@ -10,8 +10,8 @@ before_action :authenticate_user!
     @answer.create_notification_like!(current_user)
     # ここまで
 
-# 非同期のjsファイルにある@favorites_countを反映させるために
-# Usersコントローラーに続き、ここでも再定義※destroyも同じく。
+    # 非同期のjsファイルにある@favorites_countを反映させるために
+    # Usersコントローラーに続き、ここでも再定義※destroyも同じく。
     @user = @answer.user
     @answers = @user.answers
     @favorites_count = 0
@@ -21,7 +21,6 @@ before_action :authenticate_user!
 
     # Topページのいいね非同期化
     @all_favorites = Favorite.all
-
   end
 
   def destroy
@@ -37,7 +36,7 @@ before_action :authenticate_user!
       @favorites_count += answer.favorites.count
     end
 
-        # Topページのいいね非同期化
+    # Topページのいいね非同期化
     @all_favorites = Favorite.all
   end
 

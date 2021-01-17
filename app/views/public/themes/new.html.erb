@@ -2,9 +2,9 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-    <h2 class="border-bottom border-gray mt-4 font-weight-bold">
-      <i class="fas fa-globe-asia"></i> お題を投稿する
-    </h2>
+      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-globe-asia"></i> お題を投稿する
+      </h2>
       <nav class="navbar-expand mt-2">
         <ul class="navbar-nav ml-auto nav-tabs">
           <li class="nav-item ml-4 h4 nav-link">
@@ -22,13 +22,13 @@
           </li>
         </ul>
       </nav>
-    <%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
-     <div class="form-body p-4">
-       <%= f.attachment_field :image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
-       <p class="mt-2">※原則お題は削除できませんので、内容にご注意ください。</p>
-       <%= f.submit '投稿する', class: "mt-4 btn btn-info btn-block w-25" %>
-    <% end %>
-     </div>
-   </div>
+      <%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
+       <div class="form-body p-4">
+         <%= f.attachment_field :image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
+         <p class="mt-2">※原則お題は削除できませんので、内容にご注意ください。</p>
+         <%= f.submit '投稿する', class: "mt-4 btn btn-info btn-block w-25" %>
+       </div>
+      <% end %>
+    </div>
   </div>
 </div>
