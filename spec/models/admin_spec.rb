@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'モデルのテスト' do
-  it "有効な管理者情報登録内容の場合は保存されるか" do
+describe 'adminモデルのテスト' do
+  it "有効な登録内容の場合は保存されるか" do
     expect(FactoryBot.build(:admin)).to be_valid
   end
   it "メールアドレスが空白の場合に空白のバリデーションチェックが行われるか" do

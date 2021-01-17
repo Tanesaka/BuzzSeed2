@@ -29,4 +29,8 @@ FactoryBot.define do
     user { answer.user }
     content { Faker::Lorem.characters(number:20) }
   end
+  factory :favorite do
+    association :answer
+    user { answer.user }
+  end
 end
