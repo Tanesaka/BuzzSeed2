@@ -116,7 +116,7 @@
        <p>アカウント登録後は、チュートリアルの内容に沿って進めてみてください！！<br>
      </div>
 <% unless user_signed_in? %>
-<%= link_to "アカウントを作成してチュートリアルに進む","/users/sign_up", class:"btn-info btn mt-2 w-100"; %>
+<%= link_to "アカウントを作成してチュートリアルに進む",new_user_registration_path, class:"btn-info btn mt-2 w-100"; %>
 <%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
 <% else %>
 <%= link_to "マイページに戻る",user_path(current_user), class:"btn-info btn mt-5 w-100"; %>

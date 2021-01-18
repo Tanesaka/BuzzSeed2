@@ -68,7 +68,7 @@
 <% if user_signed_in? %>
 <%= link_to "もっとヒトコトを見る", answers_path, class:"btn-info btn mt-5 w-100"; %>
 <% else %>
-<%= link_to "アカウントを作成してもっとヒトコトを見る", "/users/sign_up", class:"btn-info btn mt-5 w-100"; %>
+<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, class:"btn-info btn mt-5 w-100"; %>
 <%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
 <% end %>
 
