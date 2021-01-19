@@ -10,7 +10,7 @@
           <span class="show-follow-btn">
             <%= render 'public/relations/follow_btn', user: @user %>
           </span>
-          <% if current_user == User.find_by(email: 'guest@example.com') %>
+          <% if current_user == User.find_by(email: 'guest@example.com') && @user.id == current_user.id %>
             <div>
               <small>
                 ※ゲストログイン時は機能が制限されます。また、投稿データは定期的に削除されます。
