@@ -158,3 +158,16 @@ footer{
     margin-top: -67px;
 }
 // ここまで
+
+
+.xs-nav {
+    opacity: 0.95;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+
+@media screen and (min-width:544px) {
+  .xs-nav {
+    display:none;
+  }
+}
