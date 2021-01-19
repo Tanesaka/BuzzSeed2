@@ -5,23 +5,14 @@ class Public::RelationsController < ApplicationController
   def create
     following = current_user.follow(@user)
     following.save
-
     # ここから通知のメゾッド定義（モデルに記載してます）
     @user.create_notification_follow!(current_user)
-    # ここまで
-
     # 非同期化のためリダイレクトしない
   end
 
   def destroy
     following = current_user.unfollow(@user)
     following.destroy
-    # if following.destroy
-    #   redirect_to request.referer
-    # else
-    #   flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-    #   redirect_to request.referer
-    # end
   end
 
   private
