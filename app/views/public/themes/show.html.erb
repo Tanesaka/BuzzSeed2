@@ -1,9 +1,9 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto ">
-      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+      <h4 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fas fa-globe-asia"></i> このお題でヒトコト
-      </h2>
+      </h4>
       <article class="mt-4 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
         <nav class="navbar-expand mt-2">
@@ -28,9 +28,9 @@
         <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
       <% end %>
 <!--そのお題の回答一覧-->
-      <h2 class="border-bottom border-gray mt-4 font-weight-bold">
+      <h4 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fas fa-seedling"></i>  ヒトコト一覧
-      </h2>
+      </h4>
       <%= render 'public/answers/list', answers: @answers %>
     </div>
   </div>
