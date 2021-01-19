@@ -3,20 +3,20 @@
     <div class="col-md-5 col-xs-10 mx-auto">
 
      <h2 class="mt-4 border-bottom border-gray font-weight-bold">
-        <i class="fab fa-font-awesome-flag"></i> BuzzSeed へようこそ
+        <i class="fab fa-font-awesome-flag"></i> BuzzSeed総合データ
         </h2>
         <div class="mt-4 font-weight-bold h5" style="line-height:2rem">
-          <p>ヒトコトであなたの感情を揺さぶるSNSです！<br>
+          <p>
           現時点で<span class="h3 font-weight-bold"> <%= @themes.count %> </span>のお題に対し、
           <span class="h3 font-weight-bold"><%= @all_answers.count %> </span>のヒトコトが投稿され、<br>
          <span class="all-favorites-count h3 font-weight-bold"> <%= @all_favorites.count %> </span>回の
          Good!<i class="fas fa-thumbs-up text-danger"></i>
-          で気持ちよくなっています。
+          が記録されています。
           </p>
         </div>
 
 <% unless user_signed_in? %>
-<%= link_to "ログインはこちら",new_user_session_path, class:"btn-info btn mt-3 w-100"; %>
+<%= link_to "ログインはこちら",new_user_session_path, data: {"turbolinks" => false}, class:"btn-info btn mt-3 w-100"; %>
 <% end %>
 
 <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
@@ -31,7 +31,9 @@
       <% @answers.each do |answer| %>
 
       <article class="mt-4 shadow-lg" id="answer_<%= answer.id %>">
-        <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
+        <%= link_to answer_path(answer) do %>
+          <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
+        <% end %>
         <h1 class="font-weight-bold m-3">
           <%= answer.content %>
         </h1>
@@ -68,8 +70,8 @@
 <% if user_signed_in? %>
 <%= link_to "もっとヒトコトを見る", answers_path, class:"btn-info btn mt-5 w-100"; %>
 <% else %>
-<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, class:"btn-info btn mt-5 w-100"; %>
-<%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
+<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, data: {"turbolinks" => false}, class:"btn-info btn mt-5 w-100"; %>
+<%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, data: {"turbolinks" => false}, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
 <% end %>
 
    </div>

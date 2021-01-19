@@ -69,10 +69,10 @@
             <!--  <%#= link_to "about", about_path %>-->
             <!--</li>-->
             <li class="nav-item ml-4 h6">
-              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false} %>
             </li>
             <li class="nav-item ml-4 h6">
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %>
             </li>
             <li class="nav-item ml-4 h6">
               <%= link_to '企業様向けゲストログイン', users_guest_sign_in_path, method: :post %>
@@ -97,10 +97,40 @@
   <% end %>
   <%= yield %>
 
-<footer class="mt-5 pt-5  w-100">
-<div>
-  <%= link_to "管理者ログイン", new_admin_session_path, class:"text-white"; %>
-</div>
+<footer class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 mx-auto">
+        <div class="row mt-3">
+          <% if user_signed_in? %>
+            <div class="col-3">
+              <h5 class="text-light">ヒトコト</h5>
+              <ul class="mt-2 list-unstyled" style="line-height:1.5rem">
+                <li><%= link_to '新着順', answers_path, class:"text-light"; %></li>
+                <li><%= link_to '人気順',  answers_rankindex_path, class:"text-light"; %></li>
+                <li><%= link_to 'フォロー中',answers_followanswer_path, class:"text-light"; %></li>
+              </ul>
+            </div>
+            <div class="col-3 offset-1">
+              <h5 class="text-light">お題</h5>
+              <ul class="mt-2 list-unstyled" style="line-height:1.5rem">
+                <li><%= link_to '新着順', themes_path, class:"text-light"; %></li>
+                <li><%= link_to '人気順', answers_rankindex_path, class:"text-light"; %></li>
+              </ul>
+            </div>
+            <div class="col-3 offset-1">
+              <h5 class="text-light">ユーザー</h5>
+            </div>
+          <% end %>
+          <div class="col-10 mt-3">
+            <h5 class="text-light">BuzzSeedについて</h5>
+            <ul class="mt-2 list-unstyled" style="line-height:1.5rem">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
    </body>

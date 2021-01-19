@@ -47,10 +47,10 @@
      </h2>
      <div class="mt-2 font-weight-bold h5" style="line-height:2rem">
          <%= image_tag 'hitokoto2.png', class:"w-100 shadow-sm"; %>
-       <p>お題を１つ選んで、ヒトコトを投稿しましょう。<br>
-          ツッコミをいれても、アフレコしても、詩を詠んでも、悟りを開くのも…全てOKです。<br>
+       <p>お題を１つ選んで、ツッコミをいれたり、アフレコしたり、<br>
+          詩を詠んだり、悟りを開いたり…してください。<br>
           コメントやGood!<i class="fas fa-thumbs-up text-danger"></i>されると右上ベルマークに通知されます。<br>
-          Good!<i class="fas fa-thumbs-up text-danger"></i>が多ければ人気上位に表示されるかも…！<br>
+          Good!<i class="fas fa-thumbs-up text-danger"></i>が多ければ人気上位に表示されます。<br>
           あなたのヒトコトでBuzzSeedが完成します。<br>
        </p>
      </div>
@@ -66,7 +66,7 @@
      <div class="mt-2 font-weight-bold h5" style="line-height:2rem">
        <p>何でもない日常の1コマにも、笑いと感動が隠れています。<br>
           あなたの画像をお題として投稿してみましょう。<br>
-          多くのユーザーがあなたの毎日に新しい視点を加えてくれるハズです！<br>
+          多くのユーザーがあなたの毎日に新しい視点を加えてくれるハズです。<br>
           ヒトコトが投稿されると右上ベルマークに通知されます。<br>
           胸を打つヒトコトには、Good!<i class="fas fa-thumbs-up text-danger"></i>を忘れずに。<br>
        </p>
@@ -81,9 +81,8 @@
      </h2>
      <%= image_tag 'users.png', class:"w-100 shadow-sm"; %>
      <div class="mt-2 font-weight-bold h5" style="line-height:2rem">
-       <p>お気に入りのヒトコトを投稿している人をフォローしましょう！<br>
-          フォローしている人だけのヒトコト一覧を表示できます。<br>
-          もちろん、友人のBuzzSeed IDで検索することも可能です。<br>
+       <p>お気に入りのヒトコトを投稿している人をフォローしましょう。<br>
+          友人のBuzzSeed IDで検索することも可能です。<br>
        </p>
      </div>
      <%= link_to "BuzzSeed IDで友人を探す", users_path, class:"btn-info btn mt-2 w-100"; %>
@@ -96,10 +95,9 @@
      </h2>
      <%= image_tag 'random1.png', class:"w-100 shadow-sm"; %>
      <div class="mt-2 font-weight-bold h5" style="line-height:2rem">
-       <p>文字通りランダムに1つお題を表示します。<br>
-          友人と早押しで大喜利大会をしても、<br>
-          それぞれのヒトコトを投稿して、Good!<i class="fas fa-thumbs-up text-danger"></i>数を競っても…<br>
-          きっと盛り上がります！<br>
+       <p>友人と早押しで大喜利大会をしても、<br>
+          それぞれのヒトコトを投稿して、Good!<i class="fas fa-thumbs-up text-danger"></i>数を競っても<br>
+          きっと盛り上がります。<br>
           他のユーザーのヒトコトを見ることも可能です。
        </p>
      </div>
@@ -113,7 +111,7 @@
      </h2>
      <%= image_tag 'tutorial2.png', class:"w-100 shadow-sm"; %>
      <div class="mt-2 font-weight-bold h5" style="line-height:2rem">
-       <p>アカウント登録後は、チュートリアルの内容に沿って進めてみてください！！<br>
+       <p>まずはチュートリアルの内容に沿って進めてみてください。<br>
      </div>
 <% unless user_signed_in? %>
 <%= link_to "アカウントを作成してチュートリアルに進む",new_user_registration_path, class:"btn-info btn mt-2 w-100"; %>
