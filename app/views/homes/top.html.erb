@@ -16,7 +16,7 @@
         </div>
 
 <% unless user_signed_in? %>
-<%= link_to "ログインはこちら",new_user_session_path, class:"btn-info btn mt-3 w-100"; %>
+<%= link_to "ログインはこちら",new_user_session_path, data: {"turbolinks" => false}, class:"btn-info btn mt-3 w-100"; %>
 <% end %>
 
 <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
@@ -70,8 +70,8 @@
 <% if user_signed_in? %>
 <%= link_to "もっとヒトコトを見る", answers_path, class:"btn-info btn mt-5 w-100"; %>
 <% else %>
-<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, class:"btn-info btn mt-5 w-100"; %>
-<%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
+<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, data: {"turbolinks" => false}, class:"btn-info btn mt-5 w-100"; %>
+<%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, data: {"turbolinks" => false}, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
 <% end %>
 
    </div>
