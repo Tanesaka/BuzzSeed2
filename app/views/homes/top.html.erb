@@ -5,7 +5,7 @@
      <h4 class="mt-4 border-bottom border-gray font-weight-bold">
         <i class="fab fa-pagelines"></i>  BuzzSeedへようこそ
         </h4>
-        <div class="mt-4 font-weight-bold" style="line-height:2rem">
+        <div class="mt-4 ml-2 font-weight-bold" style="line-height:2rem">
           <p>
           現時点で<span class="h3 font-weight-bold"> <%= @themes.count %> </span>のお題に対し、<br>
           <span class="h3 font-weight-bold"><%= @all_answers.count %> </span>のヒトコトが投稿され、<br>
@@ -16,7 +16,7 @@
         </div>
 
 <% unless user_signed_in? %>
-<%= link_to "ログインはこちら",new_user_session_path, data: {"turbolinks" => false}, class:"btn-info btn mt-3 w-100"; %>
+<%= link_to "アカウントを作成する",new_user_registration_path, data: {"turbolinks" => false}, class:"btn-info btn mt-3 w-100"; %>
 <% end %>
 
 <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
