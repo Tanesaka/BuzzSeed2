@@ -19,7 +19,7 @@
            <li><%= link_to 'お題を投稿する', about_path(anchor: 'about3') %></li>
            <li><%= link_to '友人をフォローする', about_path(anchor: 'about4') %></li>
            <li><%= link_to 'ランダム1問で遊ぶ', about_path(anchor: 'about5') %></li>
-           <li><%= link_to 'チュートリアル', about_path(anchor: 'about6') %></li>
+           <li><%= link_to 'ご利用について', about_path(anchor: 'about6') %></li>
          </ul>
 
 
@@ -104,11 +104,20 @@
 
 <article  class="aboutcontents_innner mt-1" id="about6">
      <h4 class="mt-5 border-bottom border-gray font-weight-bold">
-        <i class="fas fa-walking"></i> チュートリアル
+        <i class="fas fa-walking"></i> ご利用について
      </h4>
      <div class="mt-2 font-weight-bold" style="line-height:1.7rem">
        <%= image_tag 'tutorial2.png', class:"w-100 shadow-sm"; %>
-       <p>まずはチュートリアルの内容に沿って進めてみてください。<br>
+       <p>まずはチュートリアルの内容に沿って進めてみてください。<br><br>
+          なお、投稿内容によっては、<br>
+          投稿を削除させていただく場合がございます。<br>
+          ※誹謗中傷、著作権侵害など。<br>
+          特にお題投稿は原則削除できませんので内容にご注意ください。<br>
+          その他、お気づきの点がございましたら、<br>
+       <%= link_to contact_path, class:"text-info" do %>
+       お問い合わせフォーム
+       <% end %>
+       よりご連絡ください。<br>
      </div>
 <% unless user_signed_in? %>
 <%= link_to "アカウントを作成してチュートリアルに進む",new_user_registration_path, class:"btn-info btn mt-2 w-100"; %>
