@@ -36,68 +36,62 @@ $(function(){
           <span class="all-favorites-count h3 font-weight-bold" id="count3">0</span> 回の
           Good!<i class="fas fa-thumbs-up text-danger"></i>
           が記録されています。
-          </p>
-        </div>
-
-<% unless user_signed_in? %>
-<%= link_to "アカウントを作成する",new_user_registration_path, data: {"turbolinks" => false}, class:"btn-info btn mt-3 w-100"; %>
-<% end %>
-
-<%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
-
-
-
+        </p>
+      </div>
+      <% unless user_signed_in? %>
+        <%= link_to "アカウントを作成する" ,new_user_registration_path, data: {"turbolinks"=> false}, class:"btn-info btn mt-3 w-100"; %>
+      <% end %>
+      <%= link_to "BuzzSeedの使い方をみる" ,about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
 
       <h4 class="border-bottom border-gray mt-5 font-weight-bold">
         <i class="fas fa-seedling"></i> ヒトコトPick Up!
       </h4>
-
       <% @answers.each do |answer| %>
-
-      <article class="mt-5 shadow-lg" id="answer_<%= answer.id %>">
-        <%= link_to theme_path(answer.theme) do %>
-          <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
-        <% end %>
-        <h2 class="font-weight-bold m-3">
-          <%= answer.content %>
-        </h2>
-        <nav class="navbar-expand mt-2">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item ml-4 h4">
-              <%= link_to user_path(answer.user.id) do %>
-                <i class="fas fa-user"></i>
-                <%= answer.user.name %>
-              <% end %>
-            </li>
-            <li class="nav-item ml-4 h4">
-              <%= link_to answer_path(answer) do %>
-              <i class="fas fa-comment"></i>
-              <%= answer.comments.count %>
-              <% end %>
-            </li>
-            <!--非同期のためクラスを追加-->
-      <li class="nav-item ml-4 h4 favorite-btn">
-        <% if user_signed_in? %>
-          <%= render 'public/favorites/favorites_btn', answer: answer %>
-          <% else %>
+        <article class="mt-5 shadow-lg" id="answer_<%= answer.id %>">
           <%= link_to answer_path(answer) do %>
-          Good!<i class="far fa-thumbs-up"></i><%= answer.favorites.count %>
+            <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
           <% end %>
-          <% end %>
-      </li>
-          </ul>
-        </nav>
+          <h2 class="font-weight-bold m-3">
+            <%= link_to answer_path(answer) do %>
+            <%= answer.content %>
+            <% end %>
+          </h2>
+          <nav class="navbar-expand mt-2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item ml-4 h4">
+                <%= link_to user_path(answer.user.id) do %>
+                  <i class="fas fa-user"></i>
+                  <%= answer.user.name %>
+                <% end %>
+              </li>
+              <li class="nav-item ml-4 h4">
+                <%= link_to answer_path(answer) do %>
+                  <i class="fas fa-comment"></i>
+                  <%= answer.comments.count %>
+                <% end %>
+              </li>
+                <!--非同期のためクラスを追加-->
+              <li class="nav-item ml-4 h4 favorite-btn">
+                <% if user_signed_in? %>
+                  <%= render 'public/favorites/favorites_btn' , answer: answer %>
+                <% else %>
+                  <%= link_to answer_path(answer) do %>
+                    Good!<i class="far fa-thumbs-up"></i>
+                    <%= answer.favorites.count %>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
+        </article>
+      <% end %>
 
-</article>
-<% end %>
-
-<% if user_signed_in? %>
-<%= link_to "もっとヒトコトを見る", answers_path, class:"btn-info btn mt-5 w-100"; %>
-<% else %>
-<%= link_to "アカウントを作成してもっとヒトコトを見る", new_user_registration_path, data: {"turbolinks" => false}, class:"btn-info btn mt-5 w-100"; %>
-<%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, data: {"turbolinks" => false}, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
-<% end %>
-
-   </div>
+      <% if user_signed_in? %>
+        <%= link_to "もっとヒトコトを見る" , answers_path, class:"btn-info btn mt-5 w-100"; %>
+      <% else %>
+        <%= link_to "アカウントを作成してもっとヒトコトを見る" , new_user_registration_path, data: {"turbolinks"=> false}, class:"btn-info btn mt-5 w-100"; %>
+        <%= link_to "既にアカウントをお持ちの方はコチラ" , new_user_session_path, data: {"turbolinks"=> false}, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
+      <% end %>
+    </div>
   </div>
 </div>
