@@ -20,7 +20,7 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-secondary btn-block btn-sm w-100"; %>
             </div>
           <% elsif @user.id == current_user.id %>
-            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-3 btn-sm btn-block"; %>
+            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-5 btn-sm btn-block"; %>
           <% end %>
         </div>
         <div class="col-7 ml-1 mt-3">
