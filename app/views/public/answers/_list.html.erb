@@ -28,7 +28,15 @@
         </li>
   <!--非同期のためクラスを追加-->
         <li class="nav-item ml-4 h4 favorite-btn">
-          <%= render 'public/favorites/favorites_btn', answer: answer %>
+          <% if user_signed_in? %>
+            <%= render 'public/favorites/favorites_btn' , answer: answer %>
+          <% else %>
+          <!--ダミーのリンク-->
+            <%= link_to answer_path(answer) do %>
+              Good!<i class="far fa-thumbs-up"></i>
+              <%= answer.favorites.count %>
+            <% end %>
+          <% end %>
         </li>
       </ul>
     </nav>

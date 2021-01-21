@@ -20,7 +20,7 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-secondary btn-block btn-sm w-100"; %>
             </div>
           <% elsif @user.id == current_user.id %>
-            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-3 btn-sm btn-block"; %>
+            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-5 btn-sm btn-block"; %>
           <% end %>
         </div>
         <div class="col-7 ml-1 mt-3">
@@ -86,9 +86,9 @@
       <% if @user != current_user %>
       <% elsif @user.themes.present? && @user.answers.count >= 2 && @user.favorites.count >= 3 && @user.followings.count >= 3 %>
         <h4 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
-          <i class="fas fa-info-circle"></i> チュートリアル終了です
+          <i class="fas fa-info-circle"></i> チュートリアル完了です
         </h4>
-        <h6 class="ml-4 mt-3 font-weight-bold">引き続きBuzzSeedを盛り上げていきましょう。</h6>
+        <h6 class="ml-3 mt-2 font-weight-bold">引き続きBuzzSeedを盛り上げていきましょう。</h6>
         <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn mt-3 w-100"; %>
       <% else %>
         <h4 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">

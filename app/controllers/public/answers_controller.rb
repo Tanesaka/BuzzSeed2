@@ -1,5 +1,5 @@
 class Public::AnswersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :rankindex]
   def new
     @answer = Answer.new
   end
