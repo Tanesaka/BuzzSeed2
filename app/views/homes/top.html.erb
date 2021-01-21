@@ -9,7 +9,7 @@
 <script>
 $(function(){
     $( function(){
-        let $count1 = $('#count1'),
+        let $count1 = $('#count1'),S
             $count2 = $('#count2'),
             $count3 = $('#count3');
         countUp(0, <%= @themes.count %>, 1000, $count1);
@@ -37,6 +37,7 @@ $(function(){
           Good!<i class="fas fa-thumbs-up text-danger"></i>
           が記録されています。
         </p>
+
       </div>
       <% unless user_signed_in? %>
         <%= link_to "アカウントを作成する" ,new_user_registration_path, data: {"turbolinks"=> false}, class:"btn-info btn mt-3 w-100"; %>
