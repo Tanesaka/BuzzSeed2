@@ -2,15 +2,39 @@
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
 
-     <h4 class="mt-4 border-bottom border-gray font-weight-bold">
-        <i class="fab fa-pagelines"></i>  BuzzSeedへようこそ
-        </h4>
-        <div class="mt-4 ml-2 font-weight-bold" style="line-height:2rem">
+    <h4 class="mt-4 border-bottom border-gray font-weight-bold">
+      <i class="fab fa-pagelines"></i>  BuzzSeedへようこそ
+    </h4>
+<!--カウントアップのJS-->
+<script>
+$(function(){
+    $( function(){
+        let $count1 = $('#count1'),
+            $count2 = $('#count2'),
+            $count3 = $('#count3');
+        countUp(0, <%= @themes.count %>, 1000, $count1);
+        countUp(0, <%= @all_answers.count %> , 1500, $count2);
+        countUp(0, <%= @all_favorites.count %>, 2000, $count3);
+    })
+    function countUp (start, stop, duration, element){
+        $({percent: start}).animate({percent: stop},{
+            duration : duration,
+            progress : function(){
+                element.text(Math.round(this.percent));
+                console.log(Math.round(this.percent));
+            }
+        });
+    }
+});
+</script>
+
+
+        <div class="mt-4 ml-2 font-weight-bold text-center" style="line-height:2rem">
           <p>
-          現時点で<span class="h3 font-weight-bold"> <%= @themes.count %> </span>のお題に対し、<br>
-          <span class="h3 font-weight-bold"><%= @all_answers.count %> </span>のヒトコトが投稿され、<br>
-         <span class="all-favorites-count h3 font-weight-bold"> <%= @all_favorites.count %> </span>回の
-         Good!<i class="fas fa-thumbs-up text-danger"></i>
+          現時点で <span class="h3 font-weight-bold" id="count1">0</span> つのお題に対し、<br>
+          <span class="h3 font-weight-bold" id="count2">0</span> つのヒトコトが投稿され、<br>
+          <span class="all-favorites-count h3 font-weight-bold" id="count3">0</span> 回の
+          Good!<i class="fas fa-thumbs-up text-danger"></i>
           が記録されています。
           </p>
         </div>
@@ -31,7 +55,7 @@
       <% @answers.each do |answer| %>
 
       <article class="mt-5 shadow-lg" id="answer_<%= answer.id %>">
-        <%= link_to answer_path(answer) do %>
+        <%= link_to theme_path(answer.theme) do %>
           <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
         <% end %>
         <h2 class="font-weight-bold m-3">
