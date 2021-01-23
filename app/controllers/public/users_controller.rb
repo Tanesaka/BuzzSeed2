@@ -41,10 +41,9 @@ class Public::UsersController < ApplicationController
     end
 
     @client.update(@user.name + "はBuzzSeedを利用しています。\r
-    総ヒトコト数：" + @answers.count.to_s + "件\r
-    総獲得Good!数：" + @favorites_count.to_s + " Good!
-    \r" + @user.name + "のヒトコトを見る\r
-    buzzseed.info/users/" + @user.id.to_s)
+    総ヒトコト数：" + @answers.count.to_s + "\r
+    総獲得Good!数：" + @favorites_count.to_s + "
+    \r" + @user.name + "のヒトコトを見る\rbuzzseed.info/users/" + @user.id.to_s)
     redirect_to user_path(current_user), notice: 'tweetが完了しました！'
   end
 
