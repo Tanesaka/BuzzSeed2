@@ -24,6 +24,7 @@
       </nav>
       <%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
        <div class="form-body p-4">
+          <%= attachment_image_tag @theme, :image, fallback: "preview.png", id: "img_prev", style: "background-color: gray; object-fit: contain; max-height: 420px; width:100%;" %>
          <%= f.attachment_field :image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
          <p class="mt-2">※原則お題は削除できませんので、内容にご注意ください。</p>
          <%= f.submit '投稿する', class: "mt-4 btn btn-info btn-block w-25" %>
@@ -32,3 +33,20 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#theme_image").change(function(){
+    readURL(this);
+  });
+});
+</script>

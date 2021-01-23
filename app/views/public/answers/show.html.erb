@@ -49,6 +49,7 @@
             <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
             <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
           <% end %>
+          <%= link_to "このお題でヒトコト" ,theme_path(@answer.theme), class:"btn-secondary btn btn-sm btm-block mt-2 w-100"; %>
         </div>
       </article>
     </div>
