@@ -24,6 +24,7 @@
       </nav>
       <%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
        <div class="form-body p-4">
+         <!--プレビュー機能-->
           <%= attachment_image_tag @theme, :image, fallback: "preview.png", id: "img_prev", style: "background-color: gray; object-fit: contain; max-height: 420px; width:100%;" %>
          <%= f.attachment_field :image, class: "mt-2 btn btn-outline-secondary btn-block w-100" %>
          <p class="mt-2">※原則お題は削除できませんので、内容にご注意ください。</p>
@@ -34,6 +35,7 @@
   </div>
 </div>
 
+ <!--プレビュー機能-->
 <script>
 $(document).on("turbolinks:load", function(){
   function readURL(input) {
