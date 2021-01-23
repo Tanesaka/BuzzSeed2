@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get 'tweet' => 'users#tweet'
     resources :users, only: [:edit, :update, :show, :index] do
       get 'following' => 'users#following'
       get 'follower' => 'users#follower'
