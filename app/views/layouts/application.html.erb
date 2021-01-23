@@ -18,19 +18,19 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav pt-5 ml-auto">
+            <ul class="navbar-nav pt-2 ml-auto">
               <% if user_signed_in? %>
-               <li class="nav-item ml-4 h3 mt-1">
+               <li class="nav-item ml-4 h3 mt-2">
                  <%= link_to answers_path do %>
                    <i class="fas fa-seedling"></i>
                  <% end %>
                </li>
-               <li class="nav-item ml-4 h3 mt-1">
+               <li class="nav-item ml-4 h3 mt-2">
                  <%= link_to themes_path do %>
                    <i class="fas fa-globe-asia"></i>
                  <% end %>
                </li>
-               <li class="nav-item ml-4 h3 mt-1">
+               <li class="nav-item ml-4 h3 mt-2">
                  <%= link_to notifications_path do %>
                    <% if unchecked_notifications.any? %>
                     <i class="fas fa-circle noticemark"></i>
@@ -40,12 +40,12 @@
                    <% end %>
                  <% end %>
                </li>
-               <li class="nav-item ml-4 h3 mt-1">
+               <li class="nav-item ml-4 h3 mt-2">
                  <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} do %>
                    <i class="fas fa-sign-out-alt"></i>
                  <% end %>
                </li>
-               <li class="nav-item ml-4 h3 mt-1">
+               <li class="nav-item ml-4 h3 mt-2">
                  <%= link_to user_path(current_user) do %>
                    <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle shadow-sm"; %>
                  <% end %>

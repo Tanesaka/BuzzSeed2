@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
+  before_action :twitter_client, only: [:tweet]
+
 
   def edit
     @user = User.find(params[:id])
@@ -30,6 +32,22 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def tweet
+    @user = current_user
+    @answers = @user.answers
+    @favorites_count = 0
+    @answers.each do |answer|
+      @favorites_count += answer.favorites.count
+    end
+
+    @client.update(@user.name + "はBuzzSeedを利用しています。\r
+    総ヒトコト数：" + @answers.count.to_s + "件\r
+    総獲得Good!数：" + @favorites_count.to_s + " Good!
+    \r" + @user.name + "のヒトコトを見る\r
+    buzzseed.info/users/" + @user.id.to_s)
+    redirect_to user_path(current_user), notice: 'tweetが完了しました！'
+  end
+
   def index
     # ユーザー検索フォームに受け渡す変数
     @q = User.ransack(params[:q])
@@ -56,5 +74,14 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :unique_code)
+  end
+
+  def twitter_client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV['api_key']
+      config.consumer_secret = ENV['api_secret_key']
+      config.access_token = ENV['access_token']
+      config.access_token_secret = ENV['access_token_secret']
+    end
   end
 end
