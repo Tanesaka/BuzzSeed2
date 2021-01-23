@@ -1,12 +1,12 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h4 class="border-bottom border-gray mt-4 font-weight-bold">
+      <h4 class="mt-4 font-weight-bold">
         <i class="fas fa-user"></i> <%= @user.name %>
       </h4>
-      <div class="row mt-2">
-        <div class="col-4 mt-3 ml-1 text-center">
-          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class:"rounded-circle shadow-sm"; %>
+      <div class="row pb-3 border-bottom border-gray">
+        <div class="col-4 ml-1 text-center">
+          <%= attachment_image_tag @user, :profile_image, :fill, 110, 110, format: 'jpeg', fallback: "no_image.jpg", size: "110x110", class:"rounded-circle shadow-sm mt-2"; %>
           <span class="show-follow-btn">
             <%= render 'public/relations/follow_btn', user: @user %>
           </span>
@@ -20,10 +20,10 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-secondary btn-block btn-sm w-100"; %>
             </div>
           <% elsif @user.id == current_user.id %>
-            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-5 btn-sm btn-block"; %>
+            <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-4 btn-sm btn-block"; %>
           <% end %>
         </div>
-        <div class="col-7 ml-1 mt-3">
+        <div class="col-7 ml-1">
           <table class="table-sm font-weight-bold">
             <tbody>
               <tr>
