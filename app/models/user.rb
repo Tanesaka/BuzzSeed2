@@ -12,10 +12,12 @@ class User < ApplicationRecord
     end
   end
 
+
   has_many :themes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :tweets
 
   # foreign_key: 'user_id'が省略されている
   has_many :relations

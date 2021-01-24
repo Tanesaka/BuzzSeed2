@@ -5,13 +5,13 @@
     <% end %>
     <nav class="navbar-expand mt-2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item ml-4 h4">
+        <li class="nav-item ml-4 h5">
           <%= link_to user_path(theme.user.id) do %>
             <i class="fas fa-user"></i>
             <%= theme.user.name %>
           <% end %>
         </li>
-        <li class="nav-item ml-4 h4">
+        <li class="nav-item ml-4 h5">
           <%= link_to theme_path(theme.id) do %>
             <i class="fas fa-seedling"></i>
             <%= theme.answers.count %>

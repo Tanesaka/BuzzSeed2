@@ -29,24 +29,45 @@ $(function(){
 </script>
 
 
-        <div class="mt-4 ml-2 font-weight-bold text-center" style="line-height:2rem">
-          <p>
-          現時点で <span class="h3 font-weight-bold" id="count1">0</span> つのお題に対し、<br>
-          <span class="h3 font-weight-bold" id="count2">0</span> つのヒトコトが投稿され、<br>
-          <span class="all-favorites-count h3 font-weight-bold" id="count3">0</span> 回の
-          Good!<i class="fas fa-thumbs-up text-danger"></i>
-          が記録されています。
-        </p>
-
+        <div class="mt-3 font-weight-bold">
+          <div class="w-75 mx-auto">
+<p class="text-left">
+          <span class="display-4 font-weight-bold" id="count1">0</span> つのお題で
+          </p>
+          <p class="text-center">
+          <span class="display-4 font-weight-bold" id="count2">0</span> つのヒトコト
+          </p>
+<p class="text-right">
+          <span class="all-favorites-count display-4 font-weight-bold" id="count3">0</span>
+          のGood!<i class="fas fa-thumbs-up text-danger"></i>
+          </p>
+</div>
       </div>
       <% unless user_signed_in? %>
         <%= link_to "アカウントを作成する" ,new_user_registration_path, data: {"turbolinks"=> false}, class:"btn-info btn mt-3 w-100"; %>
       <% end %>
-      <%= link_to "BuzzSeedとは" ,about_path, class:"btn-secondary btn btn-sm btm-block mt-3 w-100"; %>
+      <%= link_to "BuzzSeedとは" ,about_path, class:"btn-secondary btn btn-sm btn-block mt-1"; %>
 
-      <h4 class="border-bottom border-gray mt-5 font-weight-bold">
+
+      <h5 class="border-bottom border-gray mt-5 font-weight-bold">
+        <i class="fab fa-twitter"></i> @BuzzSeedBot
+      </h5>
+      <div class="row font-weight-bold">
+        <div class="col-4 text-right">
+          <%= image_tag asset_path('logo10.png'), :size =>'80x80', class:"mt-2"; %>
+        </div>
+        <div class="col-7 text-left">
+          <p class="mt-3">
+          <span class="display-4 font-weight-bold"><%= @tweets.count %></span>回利用
+          <p>
+        </div>
+        <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm btn-block mt-2";  %>
+      </div>
+
+
+      <h5 class="border-bottom border-gray mt-5 font-weight-bold">
         <i class="fas fa-seedling"></i> ヒトコトPick Up!
-      </h4>
+      </h5>
       <% @answers.each do |answer| %>
         <article class="mt-5 shadow-lg" id="answer_<%= answer.id %>">
           <%= link_to answer_path(answer) do %>

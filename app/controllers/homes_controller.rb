@@ -10,6 +10,7 @@ class HomesController < ApplicationController
 
     @all_favorites = Favorite.all
     @themes = Theme.all
+    @tweets = Tweet.all
   end
 
   def about
