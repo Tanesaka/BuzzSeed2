@@ -12,16 +12,7 @@
             <span class="show-follow-btn">
               <%= render 'public/relations/follow_btn', user: @user %>
             </span>
-            <% if current_user == User.find_by(email: 'guest@example.com') && @user.id == current_user.id %>
-              <div>
-                <small>
-                  ※ゲストログイン時は機能が制限されます。
-                </small>
-              </div>
-              <div class="mt-1">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"btn-secondary btn-block btn-sm w-100"; %>
-              </div>
-            <% elsif @user.id == current_user.id %>
+            <% if @user.id == current_user.id %>
               <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-4 btn-sm btn-block"; %>
             <% end %>
           <% end %>
@@ -89,11 +80,11 @@
     <!--プロフィール終わり-->
       <% if @user != current_user %>
       <% elsif @user.themes.present? && @user.answers.count >= 2 && @user.favorites.count >= 3 && @user.followings.count >= 3 %>
-        <p class="ml-2 mt-4 font-weight-bold">
+        <p class="ml-2 mt-4">
           チュートリアル完了です！<br>
           引き続きBuzzSeedを盛り上げていきましょう。
         </p>
-        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-secondary btn-sm mt-3 btn-block text-center"; %>
+        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn-sm mt-3 btn-block text-center"; %>
       <% else %>
         <h5 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
           <i class="fas fa-info-circle"></i> チュートリアル
@@ -162,7 +153,7 @@
            がツイートします。<br><br>
            ツイート内容
         </p>
-        <div class="border border-gray bg-light ml-2 mr-2 p-2">
+        <div class="border border-gray bg-white ml-2 mr-2 p-2">
           <p>
             <%= @user.name %>はBuzzSeedを利用しています。<br>
             総ヒトコト数：<%= @mypage_answers.count %><br>

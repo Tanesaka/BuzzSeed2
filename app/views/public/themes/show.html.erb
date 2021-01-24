@@ -1,20 +1,20 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto ">
-      <h4 class="border-bottom border-gray mt-4 font-weight-bold">
+      <h5 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fas fa-globe-asia"></i> このお題でヒトコト
-      </h4>
+      </h5>
       <article class="mt-4 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
         <nav class="navbar-expand mt-2">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item ml-4 h4">
+            <li class="nav-item ml-4 h5">
               <%= link_to user_path(@theme.user.id) do %>
                 <i class="fas fa-user"></i>
                 <%= @theme.user.name %>
               <% end %>
             </li>
-            <li class="nav-item ml-4 h4">
+            <li class="nav-item ml-4 h5">
               <i class="fas fa-seedling"></i>
               <%= @theme.answers.count %>
             </li>
@@ -28,9 +28,9 @@
         <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
       <% end %>
 <!--そのお題の回答一覧-->
-      <h4 class="border-bottom border-gray mt-4 font-weight-bold">
+      <h5 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fas fa-seedling"></i>  ヒトコト一覧
-      </h4>
+      </h5>
       <%= render 'public/answers/list', answers: @answers %>
     </div>
   </div>

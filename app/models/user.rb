@@ -12,6 +12,7 @@ class User < ApplicationRecord
     end
   end
 
+
   has_many :themes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
