@@ -36,7 +36,8 @@ class Public::AnswersController < ApplicationController
   def followanswer
     # フォローしているユーザーと自分も含めた全ての投稿を取得
     # following_ids→ モデル間でアソシエーションが完了しているとRailsが自動生成してくれるメソッド
-    @answers = Answer.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).reverse_order
+    @answers = Answer.where(user_id: [current_user.id, *current_user.following_ids]).
+      page(params[:page]).reverse_order
   end
 
   def destroy

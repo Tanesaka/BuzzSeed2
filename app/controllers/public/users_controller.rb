@@ -53,13 +53,12 @@ class Public::UsersController < ApplicationController
       総獲得Good!数：" + @favorites_count.to_s + "
       \r" + @user.name + "のヒトコトを見る\r
       buzzseed.info/users/" + @user.id.to_s + "\r
-      #BuzzSeed" + @tweet.content )
+      #BuzzSeed" + @tweet.content)
       redirect_to user_path(current_user), notice: 'tweetが完了しました！'
     else
       redirect_to user_path(current_user), alert: 'tweetできませんでした…（追加コメントは60字までです。）'
     end
   end
-
 
   def index
     # ユーザー検索フォームに受け渡す変数
