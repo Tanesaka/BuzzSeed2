@@ -16,7 +16,7 @@
             <%= link_to 'ランダム1問', themes_introduction_path %>
           </li>
           <li class="nav-item ml-4 nav-link">
-            <%= link_to 'お題投稿', new_theme_path %>
+            <%= link_to 'お題投稿', new_theme_path, data: {"turbolinks" => false} %>
             <i class="fas fa-file-upload"></i>
           </li>
         </ul>
