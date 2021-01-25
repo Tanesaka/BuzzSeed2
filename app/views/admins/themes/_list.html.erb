@@ -3,23 +3,23 @@
 <% themes.each do |theme| %>
  <article class="mt-4 shadow-lg">
     <%= attachment_image_tag theme, :image, class:"card-img-top"; %>
-      <nav class="navbar-expand mt-2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item ml-4 h4">
-            <%= link_to admins_user_path(theme.user.id) do %>
+    <nav class="navbar-expand mt-2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ml-4 h4">
+          <%= link_to admins_user_path(theme.user.id) do %>
             <i class="fas fa-user"></i>
              <%= theme.user.name %>
-              <% end %>
-          </li>
-          <li class="nav-item ml-4 h4">
-              <i class="fas fa-seedling"></i>
-              <%= theme.answers.count %>
-          </li>
-        </ul>
-      </nav>
-      <div>
-<%= link_to "このお題を削除", admins_theme_path(theme), method: :delete, data: {confirm: "削除しますか？紐づく回答も削除されます"} %>
-</div>
+          <% end %>
+        </li>
+        <li class="nav-item ml-4 h4">
+          <i class="fas fa-seedling"></i>
+          <%= theme.answers.count %>
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <%= link_to "このお題を削除", admins_theme_path(theme), method: :delete, data: {confirm: "削除しますか？紐づく回答も削除されます"} %>
+    </div>
   </article>
 <% end %>
 <div class="row">

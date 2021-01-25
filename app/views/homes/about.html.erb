@@ -34,7 +34,7 @@
             <button type="button" class="list-group-item list-group-item-action">ランダム1問で遊ぶ</button>
             <% end %>
             <%= link_to about_path(anchor: 'about7') do %>
-            <button type="button" class="list-group-item list-group-item-action">ヒトコトを拡散する</button>
+            <button type="button" class="list-group-item list-group-item-action">ヒトコトをシェアする</button>
             <% end %>
             <%= link_to about_path(anchor: 'about8') do %>
             <button type="button" class="list-group-item list-group-item-action">ご利用について</button>
@@ -104,7 +104,7 @@
      </h5>
      <div class="mt-2" style="line-height:1.3rem">
        <%= image_tag 'theme1.png', class:"w-100 shadow-sm"; %>
-       <p class="ml-1">日常の1コマに、笑いと感動が隠れています。<br>
+       <p class="ml-1">
           あなたの画像をお題として投稿してみましょう。<br>
           多くのユーザーが新しい視点を加えてくれます。<br>
           あなたのお題にヒトコトが投稿されると<br>
@@ -147,7 +147,7 @@
 
     <article  class="aboutcontents_innner mt-1" id="about7">
        <h5 class="mt-5 border-bottom border-gray font-weight-bold">
-        <i class="fas fa-walking"></i> ヒトコトを拡散する
+        <i class="fas fa-walking"></i> ヒトコトをシェアする
      </h5>
      <div class="mt-2" style="line-height:1.3rem">
        <%= image_tag 'tweet1.png', class:"w-100 shadow-sm"; %>
@@ -156,7 +156,8 @@
           <%= link_to "@BuzzSeedBot", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"text-info"; %>
           がツイートします。<br>
           ツイートが完了しましたらBuzzSeedBotアカウントを見に行きましょう。<br>
-          マイページから投稿可能です。
+          マイページから投稿可能です。<br>
+          ご自身のアカウントでのシェアも是非お願いします！（ページ下部にリンクあり）
        </p>
      </div>
       <% unless user_signed_in? %>
