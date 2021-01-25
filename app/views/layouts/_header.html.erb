@@ -1,0 +1,71 @@
+  <header class="shadow-sm sticky-top w-100">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <body>
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag('logo5.png') %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+               <li class="nav-item ml-4 h3 mt-4">
+                 <%= link_to answers_path do %>
+                   <i class="fas fa-seedling"></i>
+                 <% end %>
+               </li>
+               <li class="nav-item ml-4 h3 mt-4">
+                 <%= link_to themes_path do %>
+                   <i class="fas fa-globe-asia"></i>
+                 <% end %>
+               </li>
+               <li class="nav-item ml-4 h3 mt-4">
+                 <%= link_to notifications_path do %>
+                   <% if unchecked_notifications.any? %>
+                    <i class="fas fa-circle noticemark"></i>
+                    <i class="fas fa-bell"></i>
+                   <% else %>
+                     <i class="fas fa-bell"></i>
+                   <% end %>
+                 <% end %>
+               </li>
+               <li class="nav-item ml-4 h3 mt-4">
+                 <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} do %>
+                   <i class="fas fa-sign-out-alt"></i>
+                 <% end %>
+               </li>
+               <li class="nav-item ml-4 h3 mt-4">
+                 <%= link_to user_path(current_user) do %>
+                   <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle shadow-sm"; %>
+                 <% end %>
+               </li>
+             <% elsif admin_signed_in? %>
+              <p>管理者ログイン中です</p>
+              <li class="nav-item ml-4 h4">
+                <%= link_to 'お題一覧', admins_themes_path %>
+              </li>
+              <li class="nav-item ml-4 h4">
+                <%= link_to '回答一覧', admins_answers_path %>
+              </li>
+              <li class="nav-item ml-4 h4">
+                <%= link_to 'ユーザー一覧', admins_users_path %>
+              </li>
+              <li class="nav-item ml-4 h4">
+                <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item ml-4 h6">
+                <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false} %>
+              </li>
+              <li class="nav-item ml-4 h6">
+                <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %>
+              </li>
+              <li class="nav-item ml-4 h6">
+                <%= link_to '企業様向けゲストログイン', users_guest_sign_in_path, method: :post %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>

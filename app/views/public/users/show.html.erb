@@ -78,80 +78,17 @@
         </div>
       </div>
     <!--プロフィール終わり-->
-      <% if @user != current_user %>
-      <% elsif @user.themes.present? && @user.answers.count >= 2 && @user.favorites.count >= 3 && @user.followings.count >= 3 %>
-        <p class="ml-2 mt-4">
-          チュートリアル完了です！<br>
-          引き続きBuzzSeedを盛り上げていきましょう。
-        </p>
-        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn-sm mt-3 btn-block text-center"; %>
-      <% else %>
-        <h5 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
-          <i class="fas fa-info-circle"></i> チュートリアル
-        </h5>
-        <div class="mt-3 ml-3">
-
-          <%= link_to about_path(anchor: 'about2') do %>
-            <p class="ml-1 mt-2">
-              <i class="fas fa-walking"></i>
-              3つ以上のヒトコトにGood!<i class="fas fa-thumbs-up text-danger"></i>
-          <% end %>
-          <% if @user.favorites.count < 3 %>
-              <span class="ml-3 font-weight-bold">(<%= @user.favorites.count %> / 3)</span>
-          <% else %>
-              <span class="ml-3 text-primary font-weight-bold">クリア！</span>
-          <% end %>
-            </p>
-
-
-          <%= link_to about_path(anchor: 'about4') do %>
-            <p class="ml-1 mt-2">
-              <i class="fas fa-walking"></i>
-              1つ以上お題を投稿
-          <% end %>
-          <% if @user.themes.blank? %>
-              <span class="ml-3 font-weight-bold">(0 / 1)</span>
-          <% else %>
-              <span class="ml-3 text-primary font-weight-bold">クリア！</span>
-          <% end %>
-            </p>
-
-          <%= link_to about_path(anchor: 'about3') do %>
-            <p class="ml-1 mt-2">
-              <i class="fas fa-walking"></i>
-              2つ以上ヒトコトを投稿
-          <% end %>
-          <% if @user.answers.count < 2 %>
-             <span class="ml-3 font-weight-bold">(<%= @user.answers.count %> / 2)</span>
-          <% else %>
-             <span class="ml-3 text-primary font-weight-bold">クリア！</span>
-          <% end %>
-            </p>
-
-          <%= link_to about_path(anchor: 'about5') do %>
-            <p class="ml-1 mt-2">
-              <i class="fas fa-walking"></i>
-              3人以上のユーザーをフォロー
-          <% end %>
-          <% if @user.followings.count < 3 %>
-              <span class="ml-3 font-weight-bold">(<%= @user.followings.count %> / 3)</span>
-          <% else %>
-              <span class="ml-3 text-primary font-weight-bold">クリア！</span>
-          <% end %>
-            </p>
-        </div>
-        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn-block btn-sm text-center mt-3 w-100"; %>
-      <% end %>
-    <!--チュートリアル終わり-->
+      <%= render 'public/users/tutorial', user: @user %>
+  <!--チュートリアル終わり-->
       <% if user_signed_in? && @user == current_user %>
         <h5 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
-          <i class="fab fa-twitter"></i> ヒトコトを拡散する
+          <i class="fab fa-twitter"></i> ヒトコトをシェアする
         </h5>
         <p class="ml-2 mt-2">
           あなたの代わりに
-           <%= link_to "@BuzzSeedBot", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"text-info"; %>
-           がツイートします。<br><br>
-           ツイート内容
+          <%= link_to "@BuzzSeedBot", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"text-info"; %>
+          がツイート。<br><br>
+          ツイート内容
         </p>
         <div class="border border-gray bg-white ml-2 mr-2 p-2">
           <p>
@@ -164,10 +101,9 @@
         <div class="pl-2 pr-2">
           <%= form_with model:[@tweet], url: tweet_path, method: :post, local: true do |f| %>
             <%= f.text_area :content, rows:'3', class: "w-100", placeholder: "コメントを追加しますか？（60字以内）" %>
-            <%= f.submit "BuzzSeedBotでツイートする", class: "mt-1 btn-sm btn-info btn-block" %>
+            <%= f.submit "BuzzSeedBotでツイートする", data: {confirm: "BuzzSeedBotでツイートします。よろしいですか？"}, class: "mt-1 btn-sm btn-info btn-block" %>
           <% end %>
         </div>
-        <%#= link_to "BuzzSeedBotでツイートする", tweet_path, class:"btn-info btn mt-3 w-100"; %>
       <% end %>
     <!--Twitter連携終わり-->
       <h5 class="border-bottom border-gray mt-5 font-weight-bold">

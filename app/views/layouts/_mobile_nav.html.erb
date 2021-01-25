@@ -1,0 +1,31 @@
+  <% if user_signed_in? %>
+    <nav class="navbar xs-nav w-100 shadow-lg fixed-bottom list-unstyled">
+      <li class="nav-item mx-auto h2">
+        <%= link_to answers_path do %>
+         <p><i class="fas fa-seedling"></i></p>
+        <% end %>
+      </li>
+      <li class="nav-item mx-auto h2">
+        <%= link_to themes_path do %>
+        <p><i class="fas fa-globe-asia"></i></p>
+        <% end %>
+      </li>
+      <li class="nav-item mx-auto h2">
+        <%= link_to notifications_path do %>
+          <% if unchecked_notifications.any? %>
+            <i class="fas fa-circle noticemark"></i>
+            <p><i class="fas fa-bell"></i></p>
+          <% else %>
+            <p><i class="fas fa-bell"></i></p>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="nav-item mx-auto">
+        <%= link_to user_path(current_user) do %>
+         <p>
+           <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle shadow-sm"; %>
+         </p>
+        <% end %>
+      </li>
+    </nav>
+  <% end %>

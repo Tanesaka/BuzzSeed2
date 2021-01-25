@@ -1,0 +1,80 @@
+ <footer class="mt-5 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 mx-auto">
+            <% if user_signed_in? %>
+            <div class="row">
+              <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
+                <h5 class="text-light">ヒトコトを見る</h5>
+                <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
+                  <li><%= link_to '新着順', answers_path, class:"text-light"; %></li>
+                  <li><%= link_to '人気順',  answers_rankindex_path, class:"text-light"; %></li>
+                  <li><%= link_to 'フォロー中',answers_followanswer_path, class:"text-light"; %></li>
+                </ul>
+              </div>
+              <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
+                <h5 class="text-light">お題を見る</h5>
+                <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
+                  <li><%= link_to '新着順', themes_path, class:"text-light"; %></li>
+                  <li><%= link_to '人気順', themes_rankindex_path, class:"text-light"; %></li>
+                  <li><%= link_to 'ランダム1問', themes_introduction_path, class:"text-light"; %></li>
+                  <li><%= link_to 'お題投稿', new_theme_path, class:"text-light"; %></li>
+                </ul>
+              </div>
+              <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
+                <h5 class="text-light">ユーザーページ</h5>
+                <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
+                  <li><%= link_to 'マイページ', user_path(current_user), class:"text-light"; %></li>
+                  <li><%= link_to 'プロフィール編集', edit_user_path(current_user), class:"text-light"; %></li>
+                  <li><%= link_to 'ユーザー検索', users_path, class:"text-light"; %></li>
+                  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"text-light"; %></li>
+                </ul>
+              </div>
+              <hr class="w-75 mx-auto">
+            </div>
+            <% end %>
+            <div class="mb-3">
+              <div class="row mb-4">
+                <div class="col-md-3 col-xs-11 offset-1 mt-4">
+                  <h5 class="text-light">BuzzSeedその他</h5>
+                    <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
+                      <li><%= link_to 'トップページ', root_path, class:"text-light"; %></li>
+                      <li><%= link_to '使い方', about_path, class:"text-light"; %></li>
+                      <li><%= link_to 'ご利用について', about_path(anchor: 'about8'), class:"text-light"; %></li>
+                      <li><%= link_to 'お問い合わせ', contact_path, class:"text-light"; %></li>
+                      <li class="mt-2"><%= link_to '管理者ページ', new_admin_session_path, class:"text-light"; %></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xs-11 offset-1 mt-4">
+                  <h5 class="text-light">SNSシェア</h5>
+                    <ul class="mt-2 list-unstyled nav" style="line-height:1.3rem">
+                      <li class="nav-item ml-1">
+                      <%= link_to "https://twitter.com/share?url=https://buzzseed.info/&text=BuzzSeedを利用しています。早速アクセス！&hashtags=BuzzSeed", title: 'Twitter', target: '_blank' do %>
+                        <%= image_tag 'twitter_icon.png', :size =>'30x30' %>
+                      <% end %>
+                      </li>
+                      <li class="nav-item ml-2">
+                        <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="https://buzzseed.info/" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
+                        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+                        <!--Turbolinksを無効化-->
+                        <script type="text/javascript">
+                        $(document).on('turbolinks:load', function() {
+                            LineIt.loadButton();
+                          });
+                        </script>
+
+                      </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xs-11 offset-1">
+                </div>
+              </div>
+              <hr class="w-75 mx-auto">
+              <p class="text-center mt-4">
+                <small class="text-light">Copyright © 2021 BuzzSeed All Rights Reserved.</small>
+              </p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </footer>
