@@ -23,10 +23,9 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-ENV.each { |k, v| env(k, v) }
 env :PATH, ENV['PATH']
 env :GEM_PATH, ENV['GEM_PATH']
-every 5.minute do
+every 3.minute do
   begin
     runner "Sns::DataTweet.data_tweet"
   rescue => e
