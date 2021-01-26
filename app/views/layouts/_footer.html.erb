@@ -18,14 +18,14 @@
                   <li><%= link_to '新着順', themes_path, class:"text-light"; %></li>
                   <li><%= link_to '人気順', themes_rankindex_path, class:"text-light"; %></li>
                   <li><%= link_to 'ランダム1問', themes_introduction_path, class:"text-light"; %></li>
-                  <li><%= link_to 'お題投稿', new_theme_path, class:"text-light"; %></li>
+                  <li><%= link_to 'お題投稿', new_theme_path, data: {"turbolinks" => false}, class:"text-light"; %></li>
                 </ul>
               </div>
               <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
                 <h5 class="text-light">ユーザーページ</h5>
                 <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
                   <li><%= link_to 'マイページ', user_path(current_user), class:"text-light"; %></li>
-                  <li><%= link_to 'プロフィール編集', edit_user_path(current_user), class:"text-light"; %></li>
+                  <li><%= link_to 'プロフィール編集', edit_user_path(current_user), data: {"turbolinks" => false}, class:"text-light"; %></li>
                   <li><%= link_to 'ユーザー検索', users_path, class:"text-light"; %></li>
                   <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"text-light"; %></li>
                 </ul>
@@ -59,8 +59,8 @@
                         <!--Turbolinksを無効化-->
                         <script type="text/javascript">
                         $(document).on('turbolinks:load', function() {
-                            LineIt.loadButton();
-                          });
+                          LineIt.loadButton();
+                        });
                         </script>
 
                       </li>

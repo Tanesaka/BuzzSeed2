@@ -7,16 +7,14 @@
       <div class="row pb-3 border-bottom border-gray">
         <div class="col-4 ml-1 text-center">
           <%= attachment_image_tag @user, :profile_image, :fill, 110, 110, format: 'jpeg', fallback: "no_image.jpg", size: "110x110", class:"rounded-circle shadow-sm mt-2"; %>
-        <!--ログインしなくても見れるページ-->
           <% if user_signed_in? %>
             <span class="show-follow-btn">
               <%= render 'public/relations/follow_btn', user: @user %>
             </span>
             <% if @user.id == current_user.id %>
-              <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn mt-4 btn-sm btn-block"; %>
+              <%= link_to "編集",edit_user_path(@user), data: {"turbolinks" => false}, class:"btn-secondary btn mt-4 btn-sm btn-block"; %>
             <% end %>
           <% end %>
-        <!--ここまで-->
         </div>
         <div class="col-7 ml-1">
           <table class="table-sm font-weight-bold">
