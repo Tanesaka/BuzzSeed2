@@ -1,24 +1,52 @@
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-
-<table>
-  <tbody>
-    <tr>
-      <th>ニックネーム</th>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th>BuzzSeed ID</th>
-      <td><%= @user.unique_code %></td>
-    </tr>
-    <tr>
-      <th>総合いいね数</th>
-      <td><%= @favorites_count %></td>
-    </tr>
-  </tbody>
-</table>
-
-  <p><%= @user.name %>の回答一覧</p>
 
 
-<!--そのユーザーの回答一覧-->
-  <%= render 'admins/answers/list', answers: @answers %>
+  <div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> <%= @user.name %>
+      </h2>
+      <div class="row mt-2">
+        <div class="col-4 mt-2 text-center">
+          <%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle shadow-sm"; %>
+          <%= form_with model:@user, url: admins_user_path(@user.id), method: :patch, local:true do |f| %>
+            <p>会員ステータス</p>
+            <%= f.select :is_active, [ ["有効"], ["無効"] ] %>
+            <%= f.submit '変更を保存する', class:"btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="col-7 offset-1 mt-3">
+          <table class="h5">
+                <tr>
+                <th><i class="fas fa-seedling"></i>ID：</th>
+                <td><%= @user.unique_code %></td>
+              </tr>
+                <tr>
+                <th>お題：</th>
+                <td>
+                  <%= link_to admins_user_mytheme_path(@user) do %>
+                    <%= @user.themes.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                 <th>回答：</th>
+                <td>
+                  <%= link_to admins_user_myanswer_path(@user) do %>
+                    <%= @user.themes.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                 <th>会員ステータス：</th>
+                <td>
+                    <%= @user.is_active %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

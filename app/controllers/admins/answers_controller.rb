@@ -1,4 +1,5 @@
 class Admins::AnswersController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @answers = Answer.page(params[:page]).reverse_order
   end

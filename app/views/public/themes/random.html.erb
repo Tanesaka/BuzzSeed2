@@ -1,9 +1,26 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> このお題でヒトコト
-      </h2>
+      <h5 class="border-bottom border-gray mt-4 text-dange">
+        <i class="fas fa-globe-asia"></i> このお題でヒトコト
+      </h5>
+        <nav class="navbar-expand mt-2">
+        <ul class="navbar-nav ml-auto nav-tabs">
+          <li class="nav-item ml-4 nav-link">
+            <%= link_to "新着", themes_path %>
+          </li>
+          <li class="nav-item ml-4 nav-link">
+            <%= link_to "人気", themes_rankindex_path %>
+          </li>
+          <li class="nav-item ml-4 nav-link active">
+            <%= link_to 'ランダム1問', themes_introduction_path %>
+          </li>
+          <li class="nav-item ml-4 nav-link">
+            <%= link_to 'お題投稿', new_theme_path, data: {"turbolinks" => false} %>
+            <i class="fas fa-file-upload"></i>
+          </li>
+        </ul>
+      </nav>
       <article class="mt-4 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
         <nav class="navbar-expand mt-2">
@@ -21,17 +38,13 @@
           </ul>
         </nav>
       </article>
-
 <!--ヒトコト投稿フォーム-->
       <%= form_with model:@answer, url: answers_path, local:true do |f| %>
         <%= f.hidden_field :theme_id, value: @theme.id %>
         <%= f.text_area :content, rows:'4',autofocus: true, class: "mt-2 w-100", placeholder: "このお題でヒトコト!!" %>
-        <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
+        <%= f.submit "投稿する", class: "mt-2 btn btn-info btn-block w-100" %>
       <% end %>
-
-<%= link_to 'このお題のヒトコトを見る', theme_path(@theme), class: "mt-2 btn btn-info btn-block w-100" %>
-
-
-   </div>
+      <%= link_to '他のユーザーのヒトコトを見る', theme_path(@theme), class: "mt-2 btn btn-secondary btn-block w-100" %>
+    </div>
   </div>
 </div>

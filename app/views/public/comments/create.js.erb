@@ -1,0 +1,3 @@
+$(".comments-count").html("<%= @answer.comments.count %>");
+$(".comments-list").html("<%= j(render 'public/comments/comments_list', answer: @answer) %>");
+$("#comment_content").val("");

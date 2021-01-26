@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :tweets
 
   # foreign_key: 'user_id'が省略されている
   has_many :relations
@@ -28,28 +29,49 @@ class User < ApplicationRecord
 
   def follow(other_user)
     unless self == other_user
-      self.relations.find_or_create_by(follow_id: other_user.id)
+      relations.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    relation = self.relations.find_by(follow_id: other_user.id)
+    relation = relations.find_by(follow_id: other_user.id)
     relation.destroy if relations
   end
-User
+
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
 
+  # active_notifications：自分からの通知※疑似クラス
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # passive_notifications：相手からの通知※疑似クラス
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  # フォローの通知作成メゾッド
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
   validates :name, :unique_code, :email, presence: true
-  validates :name, length: { minimum: 2, maximum: 20}
+  validates :name, length: { minimum: 1, maximum: 20 }
   validates :unique_code, uniqueness: true
   # 5-12文字の半角英数字
-  validates :unique_code, format: { with: /\A[a-z0-9]+\z/i,message: "は半角英数字である必要があります"}
-  validates :unique_code, length: { minimum: 5, maximum: 12}
-
+  validates :unique_code, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数字である必要があります" }
+  validates :unique_code, length: { minimum: 5, maximum: 12 }
 
   attachment :profile_image
+
+  # 有効会員はtrue、退会済み会員はfalse
+  enum is_active: { 有効: true, 無効: false }
+  # is_activeが有効の場合は有効会員(ログイン可能)
+  def active_for_authentication?
+    super && (is_active === "有効")
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_173958) do
+ActiveRecord::Schema.define(version: 2021_01_24_083939) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2021_01_08_173958) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "theme_id"
+    t.integer "answer_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_notifications_on_answer_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["theme_id"], name: "index_notifications_on_theme_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "relations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "follow_id"
@@ -55,18 +72,15 @@ ActiveRecord::Schema.define(version: 2021_01_08_173958) do
     t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
-    t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_reviews_on_answer_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
   create_table "themes", force: :cascade do |t|
     t.string "image_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_173958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
+    t.boolean "is_active", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

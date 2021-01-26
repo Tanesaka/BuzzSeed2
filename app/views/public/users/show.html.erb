@@ -1,56 +1,114 @@
 <div class="containar">
   <div class="row">
     <div class="col-md-5 col-xs-10 mx-auto">
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> <%= @user.name %>
-      </h2>
-
-
-  <div class="row mt-2">
-    <div class="col-4 mt-2">
-<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle"; %>
-  </div>
-
-
-<div class="col-7 offset-1 mt-3">
-<table class="h5">
-  <tbody>
-    <tr>
-      <th><i class="fas fa-heart text-danger"></i>総数：</th>
-      <td><%= @favorites_count %></td>
-    </tr>
-    <tr>
-      <th><i class="fas fa-seedling"></i>ID：</th>
-      <td><%= @user.unique_code %></td>
-    </tr>
-      <tr>
-      <th>フォロー：</th>
-      <td><%= @user.followings.count %></td>
-    </tr>
-    </tr>
-      <tr>
-      <th>フォロワー：</th>
-      <td><%= @user.followers.count %></td>
-    </tr>
-  </tbody>
-</table>
-
-<%= render 'public/relations/follow_btn', user: @user %>
-
-<% if current_user == User.find_by(email: 'guest@example.com') %>
-<% elsif @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn w-50 mt-2 btn-sm"; %>
-<% end %>
-
-  </div>
-</div>
-
-      <h2 class="border-bottom border-gray mt-4">
-        <i class="fab fa-pagelines"></i> ヒトコト
-      </h2>
-
+      <h5 class="mt-4 font-weight-bold">
+        <i class="fas fa-user"></i> <%= @user.name %>
+      </h5>
+      <div class="row pb-3 border-bottom border-gray">
+        <div class="col-4 ml-1 text-center">
+          <%= attachment_image_tag @user, :profile_image, :fill, 110, 110, format: 'jpeg', fallback: "no_image.jpg", size: "110x110", class:"rounded-circle shadow-sm mt-2"; %>
+          <% if user_signed_in? %>
+            <span class="show-follow-btn">
+              <%= render 'public/relations/follow_btn', user: @user %>
+            </span>
+            <% if @user.id == current_user.id %>
+              <%= link_to "編集",edit_user_path(@user), data: {"turbolinks" => false}, class:"btn-secondary btn mt-4 btn-sm btn-block"; %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-7 ml-1">
+          <table class="table-sm font-weight-bold">
+            <tbody>
+              <tr>
+                <th>
+                  <i class="fas fa-thumbs-up text-danger"></i> 総数
+                </th>
+                <td>
+        <!--非同期のためのクラス、-->
+                <span class="favorites-count">
+                  <%= @favorites_count %>
+                </span>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <i class="fas fa-globe-asia"></i> お題
+                </th>
+                <td>
+                  <%= link_to user_mytheme_path(@user) do %>
+                    <%= @user.themes.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  フォロー
+                </th>
+                <td>
+                  <%= link_to user_following_path(@user) do %>
+                    <%= @user.followings.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  フォロワー
+                </th>
+                <td>
+                  <%= link_to user_follower_path(@user) do %>
+                   <%= @user.followers.count %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>ID</th>
+                <td><%= @user.unique_code %></td>
+              </tr>
+            </tbody>
+          </table>
+<!--検索フォーム-->
+          <div class="mt-3">
+            <%= search_form_for @q, url: users_path do |f| %>
+              <%= f.search_field :unique_code_cont , placeholder: "IDで友人を探す", class:"w-75"; %>
+              <%= f.submit "検索", class:"btn-secondary btn mt-2 btn-sm"; %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <!--プロフィール終わり-->
+      <%= render 'public/users/tutorial', user: @user %>
+  <!--チュートリアル終わり-->
+      <% if user_signed_in? && @user == current_user %>
+        <h5 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
+          <i class="fab fa-twitter"></i> ヒトコトをシェアする
+        </h5>
+        <p class="ml-2 mt-2">
+          あなたの代わりに
+          <%= link_to "@BuzzSeedBot", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"text-info"; %>
+          がツイート。<br><br>
+          ツイート内容
+        </p>
+        <div class="border border-gray bg-white ml-2 mr-2 p-2">
+          <p>
+            <%= @user.name %>はBuzzSeedを利用しています。<br>
+            総ヒトコト数：<%= @mypage_answers.count %><br>
+            総獲得Good!数：<%= @favorites_count %><br>
+            <%= @user.name %>のヒトコトを見る buzzseed.inf...
+          </p>
+        </div>
+        <div class="pl-2 pr-2">
+          <%= form_with model:[@tweet], url: tweet_path, method: :post, local: true do |f| %>
+            <%= f.text_area :content, rows:'3', class: "w-100", placeholder: "コメントを追加しますか？（60字以内）" %>
+            <%= f.submit "BuzzSeedBotでツイートする", data: {confirm: "BuzzSeedBotでツイートします。よろしいですか？"}, class: "mt-1 btn-sm btn-info btn-block" %>
+          <% end %>
+        </div>
+      <% end %>
+    <!--Twitter連携終わり-->
+      <h5 class="border-bottom border-gray mt-5 font-weight-bold">
+        <i class="fas fa-seedling"></i> ヒトコト（全<%= @mypage_answers.count %>件）
+      </h5>
 <!--そのユーザーの回答一覧-->
-  <%= render 'public/answers/list', answers: @answers %>
-   </div>
+      <%= render 'public/answers/list', answers: @mypage_answers %>
+    </div>
   </div>
 </div>

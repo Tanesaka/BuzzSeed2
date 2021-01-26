@@ -1,4 +1,5 @@
 class Admins::ThemesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @themes = Theme.page(params[:page]).reverse_order
   end

@@ -1,0 +1,11 @@
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h4 class="border-bottom border-gray mt-4  font-weight-bold">
+        <i class="fab fa-pagelines"></i> <%= @user.name %>のお題
+      </h4>
+<!--そのユーザーの回答一覧-->
+      <%= render 'public/themes/list', themes: @mypage_themes %>
+    </div>
+  </div>
+</div>

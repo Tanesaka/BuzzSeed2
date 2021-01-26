@@ -1,4 +1,5 @@
 class Public::ThemesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @theme = Theme.new
   end
@@ -7,7 +8,7 @@ class Public::ThemesController < ApplicationController
     @theme = Theme.new(theme_params)
     @theme.user_id = current_user.id
     if @theme.save
-    redirect_to themes_path
+      redirect_to themes_path
     else
       render "new"
     end
@@ -24,9 +25,9 @@ class Public::ThemesController < ApplicationController
     @themes = Theme.page(params[:page]).reverse_order
   end
 
-    # 回答数順のお題一覧
+  # 回答数順のお題一覧
   def rankindex
-    theme = Theme.all.sort {|a,b| b.answers.count <=> a.answers.count}
+    theme = Theme.all.sort { |a, b| b.answers.count <=> a.answers.count }
     @themes = Kaminari.paginate_array(theme).page(params[:page])
     @answer = Answer.new
   end
@@ -36,13 +37,14 @@ class Public::ThemesController < ApplicationController
 
   def random
     # randomに取得し、idに代入、最後に一倍最初のidを1つ取得
-    @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
+    @theme = Theme.where('id >= ?', rand(Theme.first.id..Theme.last.id)).first
     @count = 0
 
-    # 基本的に回答付きのお題が出るようにする。5回繰り返して全て回答なしであれば繰り返し処理終了。
-    while @theme.answers.blank? do
-      @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
+    # 基本的に回答付きのお題が出るようにする。繰り返して全て回答なしであれば繰り返し処理終了。
+    while @theme.answers.blank?
+      @theme = Theme.where('id >= ?', rand(Theme.first.id..Theme.last.id)).first
       @count += 1
+      # 確率を操作する場合は下記数字を変更
       if @count == 5
         break
       end

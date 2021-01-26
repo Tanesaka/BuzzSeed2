@@ -1,0 +1,43 @@
+<% notifications.each do |notification| %>
+  <article class="h6">
+    <% visitor = notification.visitor %>
+    <% visited = notification.visited %>
+    <div class="ml-3">
+      <%= link_to user_path(visitor) do %>
+        <p>
+          <%= attachment_image_tag visitor, :profile_image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class:"rounded-circle shadow-sm"; %>
+          <%= visitor.name %>さんが
+        </p>
+      <% end %>
+      <% case notification.action
+        when 'follow' %>
+        <p>あなたをフォローしました</p>
+      <% when 'like' %>
+        <p>
+          <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+          にGood!<i class="fas fa-thumbs-up text-danger"></i>しました
+        </p>
+      <% when 'comment' %>
+        <p>
+          <%= link_to "あなたのヒトコト", answer_path(notification.answer) %>
+          にコメントしました
+        </p>
+
+      <% when 'answer' %>
+        <p>
+          <%= link_to "あなたのお題", theme_path(notification.theme) %>
+          でヒトコトを投稿しました
+        </p>
+      <% end %>
+      <small>
+        <%= time_ago_in_words(notification.created_at).upcase %>前
+      </small>
+    </div>
+    <hr>
+  </article>
+<% end %>
+<div class="row">
+  <div class="mx-auto mt-2 h2">
+    <%= paginate notifications %>
+  </div>
+</div>

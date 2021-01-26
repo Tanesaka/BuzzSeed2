@@ -1,1 +1,193 @@
-<h1>aboutページ</h1>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+
+<!--アンカーリンクの位置調整-->
+      <div class="aboutcontents">
+        <h5 class="border-bottom border-gray font-weight-bold">
+          <i class="fab fa-pagelines"></i>  BuzzSeed とは
+        </h5>
+        <div class="mt-2">
+          <p class="ml-2 font-weight-bold" style="line-height:1.3rem">
+            人生に新しい視点を加えるSNSです。<br>
+            日常の1コマにあなたの感性を加え、<br>
+            笑いと感動を生み出しましょう！<br>
+            使い方は下記をご確認ください。<br>
+          </p>
+          <ul class="ml-1 mt-3 list-group list-group-flush text-center" style="line-height:0.2rem">
+            <%= link_to about_path(anchor: 'about1') do %>
+            <button type="button" class="list-group-item list-group-item-action">チュートリアル</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about2') do %>
+            <button type="button" class="list-group-item list-group-item-action">Good! をつける</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about3') do %>
+            <button type="button" class="list-group-item list-group-item-action">ヒトコトを投稿する</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about4') do %>
+            <button type="button" class="list-group-item list-group-item-action">お題を投稿する</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about5') do %>
+            <button type="button" class="list-group-item list-group-item-action">友人をフォローする</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about6') do %>
+            <button type="button" class="list-group-item list-group-item-action">ランダム1問で遊ぶ</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about7') do %>
+            <button type="button" class="list-group-item list-group-item-action">ヒトコトをシェアする</button>
+            <% end %>
+            <%= link_to about_path(anchor: 'about8') do %>
+            <button type="button" class="list-group-item list-group-item-action">ご利用について</button>
+            <% end %>
+          </ul>
+
+          <article  class="aboutcontents_innner" id="about1">
+            <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+              <i class="fas fa-walking"></i> チュートリアル
+            </h5>
+            <div class="mt-2 ml-1" style="line-height:1.3rem">
+              <%= image_tag 'tutorial2.png', class:"w-100 shadow-sm"; %>
+            <p class="ml-1">まずは内容に沿って進めてみてください。<br>
+               各項目がこのページのリンクになっています。<br><br>
+               ログイン後に表示されるメニューアイコンは<br>
+               それぞれ下記にアクセスします。<br>
+               <i class="fas fa-seedling"></i>：ヒトコト一覧<br>
+               <i class="fas fa-globe-asia"></i>：お題一覧<br>
+               <i class="fas fa-bell"></i>：通知一覧<br>
+               <i class="fas fa-sign-out-alt"></i>：ログアウト
+            </p>
+            </div>
+            <% unless user_signed_in? %>
+              <%= link_to "アカウントを作成してチュートリアルに進む",new_user_registration_path, class:"btn-info btn mt-2 w-100"; %>
+              <%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
+            <% else %>
+              <%= link_to "マイページに戻る",user_path(current_user), class:"btn-info btn mt-2 w-100"; %>
+            <% end %>
+          </article>
+
+          <article class="aboutcontents_innner mt-1" id="about2">
+            <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+              <i class="fas fa-walking"></i> Good!<i class="fas fa-thumbs-up text-danger"></i>をつける
+            </h5>
+            <div class="mt-2" style="line-height:1.3rem">
+              <%= image_tag 'good1.png', class:"w-100 shadow-sm"; %>
+              <p class="ml-1">ヒトコト一覧画面からお気に入りを見つけ、<br>
+                Good!<i class="fas fa-thumbs-up text-danger"></i>アイコンをクリックして下さい。<br>
+                積極的にGood!<i class="fas fa-thumbs-up text-danger"></i>してBuzzSeedを盛り上げましょう。<br>
+                コメントでリアクションすることも可能です。
+             </p>
+            </div>
+            <%= link_to "人気のヒトコトを見に行く",answers_rankindex_path, class:"btn-info btn mt-2 w-100"; %>
+            <%= link_to "このページの最上部へ戻る",about_path, class:"btn-secondary btn btn-sm btn-block mt-2 w-100"; %>
+          </article>
+
+     <article class="aboutcontents_innner mt-1" id="about3">
+     <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> ヒトコトを投稿する
+     </h5>
+     <div class="mt-2" style="line-height:1.3rem">
+         <%= image_tag 'hitokoto2.png', class:"w-100 shadow-sm"; %>
+       <p class="ml-1">お題を１つ選んで、ツッコミやアフレコしたり、<br>
+          詩を詠んだり、悟りを開いたり…してください。<br>
+          リアクションがあると<i class="fas fa-bell"></i>マークに通知されます<br>
+          Good!<i class="fas fa-thumbs-up text-danger"></i>が多ければ人気上位に表示されます。<br>
+          あなたのヒトコトでBuzzSeedが完成します。<br>
+       </p>
+     </div>
+     <%= link_to "人気のお題を見に行く",themes_rankindex_path, class:"btn-info btn mt-2 w-100"; %>
+     <%= link_to "このページの最上部へ戻る",about_path, class:"btn-secondary btn btn-sm btn-block mt-2 w-100"; %>
+     </article>
+
+     <article class="aboutcontents_innner mt-1" id="about4">
+     <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> お題を投稿する
+     </h5>
+     <div class="mt-2" style="line-height:1.3rem">
+       <%= image_tag 'theme1.png', class:"w-100 shadow-sm"; %>
+       <p class="ml-1">
+          あなたの画像をお題として投稿してみましょう。<br>
+          多くのユーザーが新しい視点を加えてくれます。<br>
+          あなたのお題にヒトコトが投稿されると<br>
+          <i class="fas fa-bell"></i>マークに通知されます。<br>
+          胸を打つヒトコトには、Good!<i class="fas fa-thumbs-up text-danger"></i>を忘れずに。<br>
+       </p>
+     </div>
+     <%= link_to "お題を投稿する",new_theme_path, class:"btn-info btn mt-2 w-100"; %>
+     <%= link_to "このページの最上部へ戻る",about_path, class:"btn-secondary btn btn-sm btn-block mt-2 w-100"; %>
+     </article>
+
+     <article class="aboutcontents_innner mt-1" id="about5">
+     <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> 友人をフォローする
+     </h5>
+     <div class="mt-2" style="line-height:1.3rem">
+       <%= image_tag 'users.png', class:"w-100 shadow-sm"; %>
+       <p class="ml-1">お気に入りのヒトコトを投稿している人をフォローしましょう。<br>
+          友人のBuzzSeed IDで検索することも可能です。<br>
+       </p>
+     </div>
+     <%= link_to "BuzzSeed IDで友人を探す", users_path, class:"btn-info btn mt-2 w-100"; %>
+     <%= link_to "このページの最上部へ戻る",about_path, class:"btn-secondary btn btn-sm btn-block mt-2 w-100"; %>
+     </article>
+
+     <article  class="aboutcontents_innner mt-1" id="about6">
+     <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> ランダム1問で遊ぶ
+     </h5>
+     <div class="mt-2" style="line-height:1.3rem">
+       <%= image_tag 'random1.png', class:"w-100 shadow-sm"; %>
+       <p class="ml-1">友人と早押しで大喜利大会をしても、<br>
+          それぞれのヒトコトで、Good!<i class="fas fa-thumbs-up text-danger"></i>数を競っても<br>
+          きっと盛り上がります。
+       </p>
+     </div>
+     <%= link_to "ランダム1問で遊ぶ", themes_introduction_path, class:"btn-info btn mt-2 w-100"; %>
+     <%= link_to "このページの最上部へ戻る",about_path, class:"btn-secondary btn btn-sm btn-block mt-2 w-100"; %>
+     </article>
+
+    <article  class="aboutcontents_innner mt-1" id="about7">
+       <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> ヒトコトをシェアする
+     </h5>
+     <div class="mt-2" style="line-height:1.3rem">
+       <%= image_tag 'tweet1.png', class:"w-100 shadow-sm"; %>
+       <p class="ml-1">
+          あなたの代わりに
+          <%= link_to "@BuzzSeedBot", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"text-info"; %>
+          がツイートします。<br>
+          ツイートが完了しましたらBuzzSeedBotアカウントを見に行きましょう。<br>
+          マイページから投稿可能です。<br>
+          ご自身のアカウントでのシェアも是非お願いします！（ページ下部にリンクあり）
+       </p>
+     </div>
+      <% unless user_signed_in? %>
+        <%= link_to "アカウントを作成してBuzzSeedBotでツイート",new_user_registration_path, class:"btn-info btn mt-2 w-100"; %>
+        <%= link_to "既にアカウントをお持ちの方はコチラ", new_user_session_path, class:"btn-secondary btn btn-sm mt-2 btn-block"; %>
+    　<% else %>
+        <%= link_to "マイページに戻る",user_path(current_user), class:"btn-info btn mt-2 w-100"; %>
+      <% end %>
+     </article>
+
+
+　　<article  class="aboutcontents_innner mt-1" id="about8">
+      <h5 class="mt-5 border-bottom border-gray font-weight-bold">
+        <i class="fas fa-walking"></i> ご利用について
+      </h5>
+      <div class="mt-2" style="line-height:1.3rem">
+        <p class="ml-1">誹謗中傷、著作権侵害等が疑われる、<br>
+          その他、内容が好ましくない投稿につきましては、<br>
+          投稿を削除させていただく場合がございます。<br>
+          特にお題投稿に関しましては、<br>
+          ユーザー側で削除できませんのでご注意ください。<br>
+          その他、お気づきの点がございましたら、下記よりお問い合わせください。<br>
+        </p>
+      </div>
+      <%= link_to "お問い合わせフォームはコチラ",contact_path, class:"btn-info btn mt-5 w-100"; %>
+     </article>
+
+</div>
+<!--aboutcontents-->
+
+   </div>
+  </div>
+</div>
