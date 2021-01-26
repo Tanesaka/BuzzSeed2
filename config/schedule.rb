@@ -23,7 +23,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-every 3.minute do
+every 1.days do
   begin
     runner "Sns::DataTweet.data_tweet"
   rescue => e
