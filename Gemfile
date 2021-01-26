@@ -86,3 +86,4 @@ group :production do
 end
 
 gem 'twitter'
+gem 'whenever', require: false
