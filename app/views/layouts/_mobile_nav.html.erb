@@ -1,16 +1,16 @@
   <% if user_signed_in? %>
-    <nav class="navbar xs-nav w-100 shadow-lg fixed-bottom list-unstyled">
-      <li class="nav-item mx-auto h3">
+    <ul class="xs-nav w-100 shadow-lg fixed-bottom list-unstyled list-group list-group-horizontal text-center">
+      <button class="mx-auto h4 list-group-item list-group-item-action">
         <%= link_to answers_path do %>
          <p><i class="fas fa-seedling"></i></p>
         <% end %>
-      </li>
-      <li class="nav-item mx-auto h3">
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
         <%= link_to themes_path do %>
         <p><i class="fas fa-globe-asia"></i></p>
         <% end %>
-      </li>
-      <li class="nav-item mx-auto h3">
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
         <%= link_to notifications_path do %>
           <% if unchecked_notifications.any? %>
             <i class="fas fa-circle noticemark"></i>
@@ -19,13 +19,13 @@
             <p><i class="fas fa-bell"></i></p>
           <% end %>
         <% end %>
-      </li>
-      <li class="nav-item mx-auto">
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
         <%= link_to user_path(current_user) do %>
          <p>
            <%= attachment_image_tag current_user, :profile_image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class:"rounded-circle shadow-sm"; %>
          </p>
         <% end %>
-      </li>
-    </nav>
+      </button>
+    </ul>
   <% end %>

@@ -14,7 +14,8 @@ class Sns::DataTweet
       総お題数：" + @themes.count.to_s + "\r
       総ヒトコト数：" + @answers.count.to_s + "\r
       総Good!数：" + @favorites.count.to_s + "
-      \r早速アクセス!!\rbuzzseed.info/\r#BuzzSeed")
+      \r早速アクセス!!\rbuzzseed.info/\r
+      #BuzzSeed")
   end
 
 end
