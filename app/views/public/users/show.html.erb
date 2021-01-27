@@ -105,7 +105,7 @@
       <% end %>
     <!--Twitter連携終わり-->
       <h5 class="border-bottom border-gray mt-5 font-weight-bold">
-        <i class="fas fa-seedling"></i> ヒトコト（全<%= @mypage_answers.count %>件）
+        <i class="fas fa-seedling"></i> ヒトコト（全<%= @answers.count %>件）
       </h5>
 <!--そのユーザーの回答一覧-->
       <%= render 'public/answers/list', answers: @mypage_answers %>
