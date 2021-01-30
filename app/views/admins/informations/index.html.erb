@@ -6,7 +6,7 @@
       </h5>
 <!-- form_with部分 -->
       <div>
-        <%= form_with model:@infomation, url: admins_infomations_path, local:true do |f| %>
+        <%= form_with model:@information, url: admins_informations_path, local:true do |f| %>
           <%= f.text_area :content, rows:'4',autofocus: true, class: "mt-2 w-100", placeholder: "新規お知らせ" %>
           <%= f.submit '投稿', class: "mt-2 btn btn-info btn-block w-100" %>
         <% end %>
@@ -16,15 +16,15 @@
       </h5>
       <div>
         <table class="table table-sm">
-          <% @infomations.each do |infomation| %>
+          <% @informations.each do |information| %>
             <tr>
               <td class="text-left">
                 <span class="small">
-                  <%= infomation.created_at.strftime('%Y/%m/%d') %>
-                  <%= link_to "削除", admins_infomation_path(infomation), method: :delete %>
+                  <%= information.created_at.strftime('%Y/%m/%d') %>
+                  <%= link_to "削除", admins_information_path(information), method: :delete %>
                 </span>
                 <br>
-                <%= infomation.content %>
+                <%= information.content %>
               </td>
             </tr>
           <% end %>
@@ -32,7 +32,7 @@
       </div>
       <div class="row">
         <div class="mx-auto mt-2 h2">
-          <%= paginate @infomations %>
+          <%= paginate @informations %>
         </div>
       </div>
     </div>

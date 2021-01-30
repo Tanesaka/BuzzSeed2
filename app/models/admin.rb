@@ -7,5 +7,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, presence: true
-  has_many :infomations
+  has_many :informations
 end

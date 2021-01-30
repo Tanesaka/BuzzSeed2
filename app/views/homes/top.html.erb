@@ -48,10 +48,8 @@
         <h5 class="mt-5 font-weight-bold">
           <i class="fas fa-info-circle"></i> お知らせ (新着2件)
         </h5>
-        <%= render 'homes/infomations_list', infomations: @infomations %>
-        <p class="text-right mr-4">
-          <%= link_to "全件みる", infomations_path, class:"btn-secondary btn btn-sm btn-block mt-2"; %>
-        </p>
+        <%= render 'homes/informations_list', informations: @informations %>
+          <%= link_to "全件みる", informations_path, class:"btn-secondary btn btn-sm btn-block mt-2"; %>
 
         <h5 class="border-bottom border-gray mt-5 font-weight-bold">
           <i class="fas fa-seedling"></i> ヒトコトPick Up!
