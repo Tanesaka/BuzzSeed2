@@ -1,0 +1,40 @@
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto ">
+      <h5 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-info-circle"></i> お知らせ追加
+      </h5>
+<!-- form_with部分 -->
+      <div>
+        <%= form_with model:@infomation, url: admins_infomations_path, local:true do |f| %>
+          <%= f.text_area :content, rows:'4',autofocus: true, class: "mt-2 w-100", placeholder: "新規お知らせ" %>
+          <%= f.submit '投稿', class: "mt-2 btn btn-info btn-block w-100" %>
+        <% end %>
+      </div>
+      <h5 class="border-bottom border-gray mt-4 font-weight-bold">
+        <i class="fas fa-info-circle"></i> お知らせ一覧
+      </h5>
+      <div>
+        <table class="table table-sm">
+          <% @infomations.each do |infomation| %>
+            <tr>
+              <td class="text-left">
+                <span class="small">
+                  <%= infomation.created_at.strftime('%Y/%m/%d') %>
+                  <%= link_to "削除", admins_infomation_path(infomation), method: :delete %>
+                </span>
+                <br>
+                <%= infomation.content %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="row">
+        <div class="mx-auto mt-2 h2">
+          <%= paginate @infomations %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

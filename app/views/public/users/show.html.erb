@@ -104,7 +104,7 @@
             <%= f.text_area :content, rows:'3', class: "w-100", placeholder: "コメントを追加しますか？（60字以内）" %>
             <%= f.submit "BuzzSeedBotでツイートする", data: {confirm: "BuzzSeedBotでツイートします。よろしいですか？"}, class: "mt-1 btn-sm btn-info btn-block" %>
           <% end %>
-          <p class="mt-2">
+          <p class="mt-1">
            <%= link_to "ご自身のアカウントを使いますか？", "https://twitter.com/share?url=https://buzzseed.info/users/#{ @user.id }&text=#{ @user.name }はBuzzSeedを利用しています。%0a総ヒトコト数：#{ @answers.count }%0a総獲得Good!数：#{ @favorites_count }%0a#{ @user.name }のヒトコトを見る&hashtags=BuzzSeed", title: 'Twitter', target: '_blank' %>
           </p>
         </div>
