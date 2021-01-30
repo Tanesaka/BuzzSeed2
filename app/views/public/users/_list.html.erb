@@ -21,9 +21,8 @@
           <td class="align-bottom">
             <%= link_to user_path(user.id) do %>
               <%= user.name %>
-              <% if user.themes.present? && user.answers.count >= 2 && user.favorites.count >= 3 && user.followings.count >= 3 && user.tweets.present? %>
-              <% else %>
-                <%= image_tag 'beginner.png', :size =>'12x12' %>
+              <% if user.beginner == true %>
+                <%= image_tag 'beginner.png', :size =>'11x11' %>
               <% end %>
             <% end %>
           </td>

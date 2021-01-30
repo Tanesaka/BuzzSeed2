@@ -36,8 +36,13 @@ class Public::UsersController < ApplicationController
       @favorites_count += answer.favorites.count
     end
     @tweet = Tweet.new
+
+    # チュートリアルが終わっていればbeginnerをfalseにする
+    if @user.beginner == true && @user.themes.present? && @user.answers.count >= 2 && @user.favorites.count >= 3 && @user.followings.count >= 3 && @user.tweets.present?
+      @user.update(beginner: false)
+    end
   end
-  
+
   def index
     # ユーザー検索フォームに受け渡す変数
     @q = User.ransack(params[:q])
