@@ -3,9 +3,8 @@
     <div class="col-md-5 col-xs-10 mx-auto">
       <h5 class="mt-4 font-weight-bold">
         <%= @user.name %>
-        <% if @user.themes.present? && @user.answers.count >= 2 && @user.favorites.count >= 3 && @user.followings.count >= 3 && @user.tweets.present? %>
-        <% else %>
-          <%= image_tag 'beginner.png', :size =>'16x16' %>
+        <% if @user.beginner == true %>
+          <%= image_tag 'beginner.png', :size =>'14x14' %>
         <% end %>
       </h5>
       <div class="row pb-3 border-bottom border-gray">
