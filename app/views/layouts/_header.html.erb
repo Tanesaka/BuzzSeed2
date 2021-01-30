@@ -40,15 +40,18 @@
                  <% end %>
                </li>
              <% elsif admin_signed_in? %>
-              <p>管理者ログイン中です</p>
+              <p>管理者ログイン中</p>
               <li class="nav-item ml-4 h6">
-                <%= link_to 'お題一覧', admins_themes_path %>
+                <%= link_to 'お題', admins_themes_path %>
               </li>
               <li class="nav-item ml-4 h6">
-                <%= link_to '回答一覧', admins_answers_path %>
+                <%= link_to '回答', admins_answers_path %>
               </li>
               <li class="nav-item ml-4 h6">
-                <%= link_to 'ユーザー一覧', admins_users_path %>
+                <%= link_to 'ユーザー', admins_users_path %>
+              </li>
+              <li class="nav-item ml-4 h6">
+                <%= link_to 'お知らせ', admins_informations_path %>
               </li>
               <li class="nav-item ml-4 h6">
                 <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>

@@ -1,0 +1,19 @@
+<% if informations.blank? %>
+  <p class="mt-1 ml-3">お知らせははありません。</p>
+<% end %>
+
+<div class="mt-1">
+  <table class="table table-sm ml-2">
+    <% informations.each do |information| %>
+      <tr>
+        <td class="text-left">
+          <span class="small font-weight-bold">
+            <%= information.created_at.strftime('%Y/%m/%d') %>
+          </span>
+          <br>
+          <%= information.content %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

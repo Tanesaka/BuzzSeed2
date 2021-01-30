@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'contact' => 'homes#contact'
+  get 'informations' => 'homes#informations'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
+    resources :informations, only: [:index, :destroy, :create]
     resources :users, only: [:index, :show, :update] do
       get 'mytheme' => 'users#mytheme'
       get 'myanswer' => 'users#myanswer'

@@ -42,8 +42,14 @@
               <span class="display-4 font-weight-bold"><%= @tweets.count %></span>回利用
             <p>
           </div>
-          <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm btn-block mt-2";  %>
+          <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm btn-block mt-2"; %>
         </div>
+
+        <h5 class="mt-5 font-weight-bold">
+          <i class="fas fa-info-circle"></i> お知らせ (新着2件)
+        </h5>
+        <%= render 'homes/informations_list', informations: @informations %>
+          <%= link_to "全件みる", informations_path, class:"btn-secondary btn btn-sm btn-block mt-2"; %>
 
         <h5 class="border-bottom border-gray mt-5 font-weight-bold">
           <i class="fas fa-seedling"></i> ヒトコトPick Up!
@@ -90,7 +96,7 @@
         <% end %>
         <%= link_to "もっとヒトコトを見る" , answers_path, class:"btn-info btn mt-5 w-100"; %>
         <% unless user_signed_in? %>
-          <p class="mt-2 font-weight-bold">
+          <p class="mt-1">
            ※ログイン前はヒトコトのみ閲覧頂けます。
           </p>
         <% end %>
