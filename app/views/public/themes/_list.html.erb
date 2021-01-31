@@ -20,7 +20,10 @@
           </li>
         </ul>
       </nav>
-      <p class="small mt-1 ml-1"><%= image_tag 'hint.png', :size =>'14x12' %>ヒント</p>
+      <!--GoogleCloudAPIで取得したラベル-->
+      <% if theme.theme_tags.present? %>
+        <p class="small mt-1 ml-1"><%= image_tag 'hint.png', :size =>'14x12' %>ヒントになるかも</p>
+      <% end %>
       <% theme.theme_tags.each do |theme_tag| %>
         <span class="tag ml-1"><%= theme_tag.name %></span>
       <% end %>
