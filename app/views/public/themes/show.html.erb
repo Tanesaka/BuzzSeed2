@@ -4,7 +4,7 @@
       <h5 class="border-bottom border-gray mt-4 font-weight-bold">
         <i class="fas fa-globe-asia"></i> このお題でヒトコト
       </h5>
-      <article class="mt-4 shadow-lg">
+      <article class="mt-4 pb-1 shadow-lg">
         <%= attachment_image_tag @theme, :image, class:"card-img-top card-img-lg"; %>
         <nav class="navbar-expand mt-2">
           <ul class="navbar-nav ml-auto">
@@ -20,6 +20,9 @@
             </li>
           </ul>
         </nav>
+        <% @theme.theme_tags.each do |theme_tag| %>
+          <span class="tag ml-1"><%= theme_tag.name %></span>
+        <% end %>
       </article>
 <!--ヒトコト投稿フォーム-->
       <%= form_with model:@answer, url: answers_path, local:true do |f| %>

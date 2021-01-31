@@ -8,6 +8,10 @@ class Public::ThemesController < ApplicationController
     @theme = Theme.new(theme_params)
     @theme.user_id = current_user.id
     if @theme.save
+      theme_tags = Vision.get_image_data(@theme.image)
+      theme_tags.each do |theme_tag|
+       @theme.theme_tags.create(name: theme_tag)
+      end
       redirect_to themes_path
     else
       render "new"

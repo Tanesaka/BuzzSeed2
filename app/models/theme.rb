@@ -8,6 +8,7 @@ class Theme < ApplicationRecord
 
   has_many :answers, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :theme_tags, dependent: :destroy
 
   # Answerの通知作成メゾッド
   def create_notification_answer!(current_user, answer_id)

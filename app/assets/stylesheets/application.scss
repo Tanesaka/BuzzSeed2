@@ -159,6 +159,20 @@ footer {
 }
 // ここまで
 
+.tag {
+  background-color: gray;
+  display: inline;
+  padding: .2em .4em .2em;
+  font-size: 60%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
 
 .xs-nav {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
