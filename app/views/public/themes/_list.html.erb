@@ -2,7 +2,7 @@
   <% themes.each do |theme| %>
     <article class="mt-5 shadow-lg mx-auto" style="width:48%;">
       <%= link_to theme_path(theme.id) do %>
-        <%= attachment_image_tag theme, :image, class:"card-img-top"; %>
+        <%= attachment_image_tag theme, :image, class:"card-img-top card-img-sm"; %>
       <% end %>
       <nav class="navbar-expand mt-2">
         <ul class="navbar-nav ml-auto">

@@ -57,7 +57,7 @@
         <% @answers.each do |answer| %>
           <article class="mt-5 shadow-lg" id="answer_<%= answer.id %>">
             <%= link_to answer_path(answer) do %>
-              <%= attachment_image_tag answer.theme, :image, class:"card-img-top"; %>
+              <%= attachment_image_tag answer.theme, :image, class:"card-img-top card-img-lg"; %>
             <% end %>
             <h2 class="font-weight-bold m-3">
               <%= link_to answer_path(answer) do %>

@@ -119,13 +119,7 @@ input, select {
     vertical-align:middle;
 }
 
-// 取り急ぎ
-// img{
-//   width: 200px; height: 200px;
-// }
-
 header {
-    // opacity: 0.8;
     background-color:#fafafa;
 }
 
@@ -134,8 +128,14 @@ footer {
     background-blend-mode: multiply,multiply;
 }
 
-.card-img-top {
+.card-img-lg {
     max-height:410px;
+    object-fit: contain;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.card-img-sm {
+    max-height:215px;
     object-fit: contain;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
@@ -161,7 +161,6 @@ footer {
 
 
 .xs-nav {
-    // opacity: 0.95;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
