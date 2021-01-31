@@ -18,7 +18,14 @@
                <%= attachment_image_tag user, :profile_image, :fill, 35, 35, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class:"rounded-circle shadow-sm"; %>
              <% end %>
           </td>
-          <td class="align-bottom"><%= user.name %></td>
+          <td class="align-bottom">
+            <%= link_to user_path(user.id) do %>
+              <%= user.name %>
+              <% if user.beginner == true %>
+                <%= image_tag 'beginner.png', :size =>'11x11' %>
+              <% end %>
+            <% end %>
+          </td>
           <td class="align-bottom"><%= user.unique_code %></td>
           <td class="align-bottom">
             <span class="follow-btn">

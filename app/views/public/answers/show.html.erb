@@ -8,7 +8,7 @@
       <!--非同期のためidを追加-->
       <article class="mt-4 shadow-lg" id="answer_<%= @answer.id %>">
         <%= link_to theme_path(@answer.theme) do %>
-          <%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
+          <%= attachment_image_tag @theme, :image, class:"card-img-top card-img-lg"; %>
         <% end %>
         <h2 class="font-weight-bold m-3">
           <%= @answer.content %>
