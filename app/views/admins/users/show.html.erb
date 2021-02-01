@@ -12,8 +12,9 @@
           <%= form_with model:@user, url: admins_user_path(@user.id), method: :patch, local:true do |f| %>
             <p>会員ステータス</p>
             <%= f.select :is_active, [ ["有効"], ["無効"] ] %>
-            <%= f.submit '変更を保存する', class:"btn btn-primary" %>
+            <%= f.submit '変更を保存する', class:"btn btn-primary btn-sm block" %>
           <% end %>
+          <%= link_to '削除（開発用）', admins_user_path(@user.id), method: :delete, data: {confirm: "削除しますか？開発用です。紐づく投稿全て消えます。"}, class:"btn btn-secondary btn-sm block" %>
         </div>
         <div class="col-7 offset-1 mt-3">
           <table class="h5">
