@@ -35,6 +35,12 @@ class Admins::UsersController < ApplicationController
     @mypage_answers = @user.answers.page(params[:page]).reverse_order
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admins_users_path
+  end
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :unique_code, :is_active)
   end

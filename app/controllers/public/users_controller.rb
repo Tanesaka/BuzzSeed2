@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :check_guest, only: [:edit]
+  # before_action :check_guest, only: [:edit]
 
   def check_guest
     if current_user.email == 'guest@example.com'
