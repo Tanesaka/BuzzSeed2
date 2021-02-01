@@ -1,5 +1,14 @@
 class Public::AnswersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :rankindex]
+  before_action :check_guest, only: [:destroy]
+
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      redirect_to user_path(current_user), alert: 'その操作はゲストユーザーの場合、制限されています。'
+    end
+  end
+
+
   def new
     @answer = Answer.new
   end
