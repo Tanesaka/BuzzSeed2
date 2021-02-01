@@ -8,9 +8,11 @@ class Public::ThemesController < ApplicationController
     @theme = Theme.new(theme_params)
     @theme.user_id = current_user.id
     if @theme.save
+      # Vision APIでラベル取得
       theme_tags = Vision.get_image_data(@theme.image)
       theme_tags.each do |theme_tag|
-       @theme.theme_tags.create(name: theme_tag)
+        # Translate APIで翻訳して保存
+       @theme.theme_tags.create(name: Translate.translate_to_japanese(theme_tag))
       end
       redirect_to themes_path
     else
