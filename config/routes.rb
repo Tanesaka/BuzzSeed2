@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :informations, only: [:index, :destroy, :create]
-    resources :users, only: [:index, :show, :update] do
+    resources :users, only: [:index, :show, :update, :destroy] do
       get 'mytheme' => 'users#mytheme'
       get 'myanswer' => 'users#myanswer'
     end

@@ -35,7 +35,7 @@
             </li>
             <% if @answer.user == current_user %>
               <li class="nav-item ml-4 h5">
-                <%= link_to answer_path, method: :delete do %>
+                <%= link_to answer_path, method: :delete, data: {confirm: "削除しますか？"} do %>
                   <i class="far fa-trash-alt"></i>
                 <% end %>
               </li>
