@@ -20,4 +20,16 @@ describe 'Users', type: :request do
     get user_path(@user)
     expect(response.body).to include @user.unique_code
   end
+  it "マイページにuserのフォロー数が表示されている" do
+    get user_path(@user)
+    expect(response.body).to include "#{@user.followings.count}"
+  end
+  it "マイページにuserのフォロワーー数が表示されている" do
+    get user_path(@user)
+    expect(response.body).to include "#{@user.followers.count}"
+  end
+  it "マイページにuserのお題数が表示されている" do
+    get user_path(@user)
+    expect(response.body).to include "#{@user.themes.count}"
+  end
 end
