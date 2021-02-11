@@ -13,6 +13,10 @@ FactoryBot.define do
     password { password }
     password_confirmation { password }
   end
+  factory :information do
+    association :admin
+    content { Faker::Lorem.characters(number: 20) }
+  end
   factory :theme do
     association :user
     # fixture_file_uploadはfactorybotで使えないためRack::Test::UploadedFile.newと記載
