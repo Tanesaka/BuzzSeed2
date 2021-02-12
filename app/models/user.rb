@@ -64,7 +64,7 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 1, maximum: 20 }
   validates :unique_code, uniqueness: true
   # 5-12文字の半角英数字（更新時のみのバリデーション※新規登録時には自動でランダム登録）
-  validates :name, :email, presence: true, on: :update
+  validates :unique_code, presence: true, on: :update
   validates :unique_code, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数字である必要があります" }, on: :update
   validates :unique_code, length: { minimum: 5, maximum: 12 }, on: :update
 
