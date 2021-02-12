@@ -87,3 +87,4 @@ end
 
 gem 'twitter'
 gem 'whenever', require: false
+gem 'public_uid'
