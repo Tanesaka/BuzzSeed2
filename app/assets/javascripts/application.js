@@ -22,6 +22,6 @@
 //= require bootstrap-sprockets
 
 $(function(){
-  setTimeout("$('.time-limit').fadeOut('slow')", 2000)
+  setTimeout("$('.time-limit').fadeOut('slow')", 7000)
 });
 
