@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  generate_public_uid column: :unique_code
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -59,12 +60,13 @@ class User < ApplicationRecord
     end
   end
 
-  validates :name, :unique_code, :email, presence: true
+  validates :name, :email, presence: true
   validates :name, length: { minimum: 1, maximum: 20 }
   validates :unique_code, uniqueness: true
-  # 5-12文字の半角英数字
-  validates :unique_code, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数字である必要があります" }
-  validates :unique_code, length: { minimum: 5, maximum: 12 }
+  # 5-12文字の半角英数字（更新時のみのバリデーション※新規登録時には自動でランダム登録）
+  validates :name, :email, presence: true, on: :update
+  validates :unique_code, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数字である必要があります" }, on: :update
+  validates :unique_code, length: { minimum: 5, maximum: 12 }, on: :update
 
   attachment :profile_image
 
