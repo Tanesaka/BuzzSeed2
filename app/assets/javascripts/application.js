@@ -21,7 +21,9 @@
 
 //= require bootstrap-sprockets
 
-$(function(){
-  setTimeout("$('.time-limit').fadeOut('slow')", 7000)
-});
+
+// アラートのフェードアウト
+// $(function(){
+//   setTimeout("$('.time-limit').fadeOut('slow')", 7000)
+// });
 
