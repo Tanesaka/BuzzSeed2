@@ -51,4 +51,8 @@ Rails.application.routes.draw do
     end
     resources :notifications, only: :index
   end
+
+  # どこにも当てはまらないPath（例外処理）
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 end
