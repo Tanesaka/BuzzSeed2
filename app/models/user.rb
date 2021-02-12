@@ -8,7 +8,7 @@ class User < ApplicationRecord
   def self.guest
     # 探してなければCreate。Passは変更されても大丈夫なようにランダム
     find_or_create_by!(email: 'guest@example.com', name: 'ゲスト') do |user|
-      user.password = ENV['GUEST_PASS'],
+      user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
