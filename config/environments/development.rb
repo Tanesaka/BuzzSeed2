@@ -63,7 +63,7 @@ Rails.application.configure do
 # メール認証の記述
   # default url
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { protocol: 'https' , host: 'https://buzzseed.info/' }
+  config.action_mailer.default_url_options = { protocol: 'https' , host: 'https://21a8596ca6c94a628b801c83bbd04978.vfs.cloud9.ap-northeast-1.amazonaws.com/' }
   # mail setting
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
