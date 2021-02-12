@@ -1,5 +1,8 @@
 <p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>BuzzSeedへのユーザー登録ありがとうございます。</br>
+アカウント認証を行いますので下記から再度ログインをお願い致します!</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'BuzzSeedへ戻る', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>※このメールは返信しても届きません。</br>
+お問い合わせはWebアプリ内「お問い合わせ」からお願いいたします。</p>
