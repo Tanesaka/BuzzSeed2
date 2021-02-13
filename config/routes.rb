@@ -1,3 +1,15 @@
+ # Refileの画像投稿時に404を返さないようにする記述
+class ErrorAvoid
+  def initialize
+    @url = "attachments/"
+  end
+
+  def matches?(request)
+    @url.include?(request.url)
+  end
+end
+
+
 Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -52,21 +64,8 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
   end
 
-  class ErrorAvoid
-    # Refileの画像投稿時に404とみなされないようにする記述
-    def initialize
-      @url = "attachments/"
-    end
-
-    def matches?(request)
-      @url.include?(request.url)
-    end
-  end
-
-  Rails.application.routes.draw do
   # どこにも当てはまらないPath（例外処理）
-    get '*path', to: 'application#routing_error',
+    get '*not_found', to: 'application#render_404',
       constraints: ErrorAvoid.new
-  end
 
 end
