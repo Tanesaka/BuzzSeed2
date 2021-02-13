@@ -1,4 +1,4 @@
- # Refileの画像投稿時に404を返さないようにする記述
+  # Refileの画像投稿時に404を返さないようにする記述
 class ErrorAvoid
   def initialize
     @url = "attachments/"
@@ -65,7 +65,7 @@ Rails.application.routes.draw do
   end
 
   # どこにも当てはまらないPath（例外処理）
-    get '*not_found', to: 'application#render_404',
+    get '*path', to: 'application#render_404',
       constraints: ErrorAvoid.new
 
 end
