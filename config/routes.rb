@@ -65,8 +65,8 @@ Rails.application.routes.draw do
 
   Rails.application.routes.draw do
   # どこにも当てはまらないPath（例外処理）
-    get '*not_found', to: 'application#routing_error',
+    get '*path', to: 'application#routing_error',
       constraints: ErrorAvoid.new
   end
-  
+
 end
