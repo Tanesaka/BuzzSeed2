@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 
 # 例外処理
-  unless Rails.env.development?
+  unless Rails.env.production?
     rescue_from Exception,                        with: :_render_500
     rescue_from ActiveRecord::RecordNotFound,     with: :_render_404
     rescue_from ActionController::RoutingError,   with: :_render_404
