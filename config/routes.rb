@@ -1,15 +1,3 @@
-  # Refileの画像投稿時に404を返さないようにする記述
-class ErrorAvoid
-  def initialize
-    @url = "attachments/"
-  end
-
-  def matches?(request)
-    @url.include?(request.url)
-  end
-end
-
-
 Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -64,8 +52,9 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
   end
 
+  # Refileの画像投稿時に404を返さないようにする記述https://qiita.com/ko02/items/99e92956be02ffa5e59b
+  mount Refile.app, at: Refile.mount_point, as: :refile_app
   # どこにも当てはまらないPath（例外処理）
-    get '*path', to: 'application#render_404',
-      constraints: ErrorAvoid.new
+  get '*not_found' => 'application#render_404'
 
 end
