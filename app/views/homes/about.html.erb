@@ -18,28 +18,28 @@
             使い方は下記をご確認ください。<br>
           </p>
           <ul class="ml-1 mt-3 list-group list-group-flush text-center" style="line-height:0.2rem">
-            <%= link_to about_path(anchor: 'about1') do %>
+            <%= link_to about_path(anchor: 'about1'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">チュートリアル</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about2') do %>
+            <%= link_to about_path(anchor: 'about2'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">Good! をつける</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about3') do %>
+            <%= link_to about_path(anchor: 'about3'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">ヒトコトを投稿する</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about4') do %>
+            <%= link_to about_path(anchor: 'about4'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">お題を投稿する</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about5') do %>
+            <%= link_to about_path(anchor: 'about5'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">友人をフォローする</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about6') do %>
+            <%= link_to about_path(anchor: 'about6'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">ランダム1問で遊ぶ</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about7') do %>
+            <%= link_to about_path(anchor: 'about7'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">ヒトコトをシェアする</button>
             <% end %>
-            <%= link_to about_path(anchor: 'about8') do %>
+            <%= link_to about_path(anchor: 'about8'), :style=>"text-decoration:none;" do %>
             <button type="button" class="list-group-item list-group-item-action">ご利用について</button>
             <% end %>
           </ul>
@@ -92,7 +92,8 @@
          <%= image_tag 'hitokoto3.png', class:"w-100 shadow-sm"; %>
        <p class="ml-1">お題を１つ選んで、ツッコミやアフレコしたり、<br>
           詩を詠んだり、悟りを開いたり…してください。<br>
-          お題から抽出した特徴に気付きやツッコミどころがあるかも…？<br><br>
+          お題から抽出した特徴に気付きやツッコミどころがあるかもしれません。<br>
+          なお、お題の特徴ラベルをクリックすると同じ特徴を持ったお題を表示させます。<br><br>
           リアクションがあると<i class="fas fa-bell"></i>マークに通知されます<br>
           Good!<i class="fas fa-thumbs-up text-danger"></i>が多ければ人気上位に表示されます。<br>
           あなたのヒトコトでBuzzSeedが完成します。<br>
