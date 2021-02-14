@@ -4,7 +4,7 @@
           チュートリアル完了です！<br>
           引き続きBuzzSeedを盛り上げていきましょう。
         </p>
-        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn-sm mt-1 btn-block text-center"; %>
+        <%= link_to "BuzzSeedの使い方をみる",about_path, :style=>"text-decoration:none;", class:"btn-info btn-sm mt-1 btn-block text-center"; %>
       <% else %>
         <h5 class="border-bottom border-gray mt-5 pt-2 font-weight-bold">
           <i class="fas fa-walking"></i> チュートリアル
@@ -20,7 +20,7 @@
               <span class="ml-3 text-primary font-weight-bold">クリア！</span>
           <% end %>
             </p>
-            
+
           <%= link_to about_path(anchor: 'about4') do %>
             <p class="ml-1 mt-2">
               お題を投稿
@@ -65,5 +65,5 @@
           <% end %>
             </p>
         </div>
-        <%= link_to "BuzzSeedの使い方をみる",about_path, class:"btn-info btn-block btn-sm text-center mt-2 w-100"; %>
+        <%= link_to "BuzzSeedの使い方をみる",about_path, :style=>"text-decoration:none;", class:"btn-info btn-block btn-sm text-center mt-2 w-100"; %>
       <% end %>
