@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'themes/rankindex' => 'themes#rankindex'
     get 'themes/random' => 'themes#random'
     get 'themes/introduction' => 'themes#introduction'
+    get 'themes/tagsearch/:theme_tag_name' => 'themes#tagsearch', as: "tagsearch"
     resources :themes, only: [:index, :create, :new, :show]
     get 'answers/rankindex' => 'answers#rankindex'
     get 'answers/followanswer' => 'answers#followanswer'

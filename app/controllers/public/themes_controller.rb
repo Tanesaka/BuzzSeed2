@@ -38,6 +38,10 @@ class Public::ThemesController < ApplicationController
     @answer = Answer.new
   end
 
+  def tagsearch
+    @themes = Theme.joins(:theme_tags).where(theme_tags: {name: params[:theme_tag_name]}).page(params[:page]).reverse_order
+  end
+
   def introduction
   end
 

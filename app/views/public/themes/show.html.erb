@@ -24,7 +24,9 @@
           <p class="small ml-2"><%= image_tag 'hint.png', :size =>'12x11' %>ヒントになるかも</p>
         <% end %>
         <% @theme.theme_tags.each do |theme_tag| %>
-          <span class="tag ml-2"><%= theme_tag.name %></span>
+          <%= link_to tagsearch_path(theme_tag.name), :style=>"text-decoration:none;" do %>
+            <span class="tag ml-2"><%= theme_tag.name %></span>
+          <% end %>
         <% end %>
       </article>
 <!--ヒトコト投稿フォーム-->
