@@ -31,3 +31,11 @@ every 1.days do
     raise e
   end
 end
+every 60.minute do
+  begin
+    runner "Guestuser::DataGuest.data_reset"
+  rescue => e
+    Rails.logger.error("aborted rails runner")
+    raise e
+  end
+end
