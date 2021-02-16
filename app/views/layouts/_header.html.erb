@@ -57,14 +57,25 @@
                 <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
             <% else %>
-              <li class="nav-item ml-4 h6">
-                <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false} %>
+              <li class="nav-item ml-4 h3 mt-4">
+                <%= link_to answers_path, title: 'ヒトコト' do %>
+                  <i class="fas fa-seedling"></i>
+                <% end %>
               </li>
-              <li class="nav-item ml-4 h6">
-                <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %>
+              <li class="nav-item ml-4 h3 mt-4">
+                <%= link_to themes_path, title: 'お題' do %>
+                  <i class="fas fa-globe-asia"></i>
+                <% end %>
               </li>
-              <li class="nav-item ml-4 h6">
-                <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+              <li class="nav-item ml-4 h3 mt-4">
+                <%= link_to new_user_registration_path, data: {"turbolinks" => false}, title: '新規登録' do  %>
+                  <i class="fas fa-user-plus"></i>
+                <% end %>
+              </li>
+              <li class="nav-item ml-4 h3 mt-4">
+                <%= link_to new_user_session_path, data: {"turbolinks" => false}, title: 'ログイン' do  %>
+                  <i class="fas fa-sign-in-alt"></i>
+                <% end %>
               </li>
             <% end %>
           </ul>

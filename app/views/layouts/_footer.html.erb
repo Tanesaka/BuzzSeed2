@@ -2,7 +2,6 @@
     <div class="container">
       <div class="row">
         <div class="col-10 mx-auto">
-            <% if user_signed_in? %>
             <div class="row">
               <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
                 <h5 class="text-light">ヒトコトを見る</h5>
@@ -24,15 +23,20 @@
               <div class="col-md-3 col-xs-11 offset-1 mt-5 mb-3">
                 <h5 class="text-light">ユーザーページ</h5>
                 <ul class="mt-2 list-unstyled" style="line-height:1.3rem">
-                  <li><%= link_to 'マイページ', user_path(current_user), class:"text-light"; %></li>
-                  <li><%= link_to 'プロフィール編集', edit_user_path(current_user), data: {"turbolinks" => false}, class:"text-light"; %></li>
-                  <li><%= link_to 'ユーザー検索', users_path, class:"text-light"; %></li>
-                  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"text-light"; %></li>
+                  <% if user_signed_in? %>
+                    <li><%= link_to 'マイページ', user_path(current_user), class:"text-light"; %></li>
+                    <li><%= link_to 'プロフィール編集', edit_user_path(current_user), data: {"turbolinks" => false}, class:"text-light"; %></li>
+                    <li><%= link_to 'ユーザー検索', users_path, class:"text-light"; %></li>
+                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}, class:"text-light"; %></li>
+                  <% else %>
+                    <li><%= link_to '新規登録', new_user_registration_path, data: {"turbolinks"=> false}, class:"text-light"; %></li>
+                    <li><%= link_to "ログイン" ,new_user_session_path, data: {"turbolinks"=> false}, class:"text-light"; %></li>
+                    <li><%= link_to "お試しログイン" ,users_guest_sign_in_path, method: :post, class:"text-light"; %></li>
+                  <% end %>
                 </ul>
               </div>
               <hr class="w-75 mx-auto">
             </div>
-            <% end %>
             <div class="mb-5">
               <div class="row mb-4">
                 <div class="col-md-3 col-xs-11 offset-1 mt-4">
