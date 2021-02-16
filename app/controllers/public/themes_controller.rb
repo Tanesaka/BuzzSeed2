@@ -1,5 +1,5 @@
 class Public::ThemesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :rankindex, :show]
   def new
     @theme = Theme.new
   end

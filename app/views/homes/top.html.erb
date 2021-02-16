@@ -26,7 +26,11 @@
           </div>
         </div>
         <% unless user_signed_in? %>
-          <%= link_to "アカウントを作成する" ,new_user_registration_path, data: {"turbolinks"=> false}, class:"btn-info btn mt-3 w-100"; %>
+        <div class="text-center">
+          <%= link_to "新規登録" ,new_user_registration_path, data: {"turbolinks"=> false}, :style=>"width:25%;", class:"btn-outline-info btn mt-3 mx-auto font-weight-bold"; %>
+          <%= link_to "ログイン" ,new_user_session_path, data: {"turbolinks"=> false}, :style=>"width:25%;", class:"btn-outline-info btn mt-3 mx-auto font-weight-bold"; %>
+          <%= link_to "お試しログイン" ,users_guest_sign_in_path, method: :post, :style=>"width:47%;", class:"btn-outline-info btn mt-3 mx-auto font-weight-bold"; %>
+        </div>
         <% end %>
         <%= link_to "BuzzSeedとは" ,about_path, class:"btn-secondary btn btn-block mt-1"; %>
 
@@ -42,7 +46,7 @@
               <span class="display-4 font-weight-bold"><%= @tweets.count %></span>回利用
             <p>
           </div>
-          <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm btn-block mt-2"; %>
+          <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm mt-2 w-100"; %>
         </div>
 
         <h5 class="mt-5 font-weight-bold">
@@ -97,7 +101,7 @@
         <%= link_to "もっとヒトコトを見る" , answers_path, class:"btn-info btn mt-5 w-100"; %>
         <% unless user_signed_in? %>
           <p class="mt-1">
-           ※ログイン前はヒトコトのみ閲覧頂けます。
+           ※ログイン前は機能が制限されます。
           </p>
         <% end %>
     </div>
