@@ -1,5 +1,12 @@
 class Public::TweetsController < ApplicationController
   before_action :twitter_client, only: [:tweet]
+  before_action :check_guest, only: [:tweet]
+
+  def check_guest
+    if current_user.email == 'guest@example.com'
+      redirect_to user_path(current_user), alert: 'その操作はゲストユーザーの場合、制限されています。'
+    end
+  end
 
   def tweet
     @user = current_user

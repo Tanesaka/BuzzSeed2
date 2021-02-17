@@ -28,4 +28,28 @@
         <% end %>
       </button>
     </ul>
+  <% elsif admin_signed_in? %>
+  <% else %>
+    <ul class="xs-nav w-100 shadow-lg fixed-bottom list-unstyled list-group list-group-horizontal text-center">
+      <button class="mx-auto h4 list-group-item list-group-item-action">
+        <%= link_to answers_path do %>
+         <p><i class="fas fa-seedling"></i></p>
+        <% end %>
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
+        <%= link_to themes_path do %>
+        <p><i class="fas fa-globe-asia"></i></p>
+        <% end %>
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
+        <%= link_to new_user_registration_path, data: {"turbolinks" => false}, title: '新規登録' do  %>
+          <i class="fas fa-user-plus"></i>
+        <% end %>
+      </button>
+      <button class="mx-auto h4 list-group-item list-group-item-action">
+        <%= link_to new_user_session_path, data: {"turbolinks" => false}, title: 'ログイン' do  %>
+          <i class="fas fa-sign-in-alt"></i>
+        <% end %>
+      </button>
+    </ul>
   <% end %>

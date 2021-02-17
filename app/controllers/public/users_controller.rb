@@ -1,15 +1,19 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :check_guest, only: [:edit]
+  before_action :check_guest, only: [:edit, :update]
 
   def check_guest
     if current_user.email == 'guest@example.com'
-      redirect_to user_path(current_user), alert: 'その操作はゲストユーザーの場合、制限されています。'
+      redirect_to user_path(current_user), alert: 'ゲストユーザーの場合、その操作は制限されています。'
     end
   end
 
   def edit
     @user = User.find(params[:id])
+    # 他ユーザーの情報編集をできなくする
+    unless @user == current_user
+      redirect_to user_path(current_user), alert: 'その操作は制限されています。'
+    end
   end
 
   def update
