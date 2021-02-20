@@ -9,9 +9,8 @@
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/9c0bf09418.js" crossorigin="anonymous"></script>
   </head>
-
-<%= render 'layouts/header' %>
-
+  <body>
+    <%= render 'layouts/header' %>
     <% if notice.present? %>
       <div class="time-limit h6 font-weight-bold alert alert-primary"><%= flash[:notice] %></div>
     <% end %>
@@ -19,10 +18,7 @@
       <div class="time-limit h6 font-weight-bold alert alert-warning"><%= flash[:alert] %></div>
     <% end %>
     <%= yield %>
-
-<%= render 'layouts/footer' %>
-
-<%= render 'layouts/mobile_nav' %>
-
+    <%= render 'layouts/footer' %>
+    <%= render 'layouts/mobile_nav' %>
   </body>
 </html>
