@@ -1,12 +1,14 @@
 FactoryBot.define do
   password = Faker::Internet.password(min_length: 6, max_length: 8)
 
+# unique_codeは自動生成される
   factory :user do
     email { Faker::Internet.email }
     password { password }
     password_confirmation { password }
     name { Faker::Lorem.characters(number: 5) }
-    unique_code { Faker::Lorem.characters(number: 8) }
+    # メール認証をパスするための記述
+    confirmed_at { Date.today }
   end
   factory :admin do
     email { Faker::Internet.email }
