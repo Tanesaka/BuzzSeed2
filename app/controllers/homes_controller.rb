@@ -3,14 +3,13 @@ class HomesController < ApplicationController
     # 総合データ用
     @all_answers = Answer.all
     # randomに取得し、最大３つを取得
-    # 開発環境では下記。本番環境のMySQLではRAND()が必須
-# unless Rails.env.development?だと、Rspec回す際に参照してしまう。
-    if Rails.env.produciton?
-      # mySQL対応(RAND)
-      @answers = Answer.order("RAND()").limit(3)
-    else
+    # 本番環境のMySQLではRAND()が必須
+    if Rails.env.development? || Rails.env.test?
       # SQLite
       @answers = Answer.order("RANDOM()").limit(3)
+    else
+      # mySQL対応(RAND)
+      @answers = Answer.order("RAND()").limit(3)
     end
 
 
