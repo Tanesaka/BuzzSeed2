@@ -5,6 +5,10 @@ describe 'Homes', type: :request do
     @information = FactoryBot.create(:information)
   end
 
+  it "Top画面へリクエストが成功する" do
+    get root_path
+    expect(response.status).to eq 200
+  end
 
   it "Topにヒトコト、お題、Good合計数がある" do
     get root_path

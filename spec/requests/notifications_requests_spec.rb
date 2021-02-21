@@ -14,6 +14,10 @@ describe 'Notifications', type: :request do
   after do
     sign_out @visited
   end
+  it "一覧画面へリクエストが成功する" do
+    get notifications_path
+    expect(response.status).to eq 200
+  end
 
   it "index画面にフォローの通知が表示される" do
     Notification.create(visitor_id: @visitor.id, visited_id: @visited.id)
