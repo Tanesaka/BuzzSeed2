@@ -54,8 +54,10 @@ Rails.application.routes.draw do
   end
 
   # Refileの画像投稿時に404を返さないようにする記述https://qiita.com/ko02/items/99e92956be02ffa5e59b
-  mount Refile.app, at: Refile.mount_point, as: :refile_app
+    mount Refile.app, at: Refile.mount_point, as: :refile_app
+  unless Rails.env.development? || Rails.env.test?
   # どこにも当てはまらないPath（例外処理）
-  get '*not_found' => 'application#render_404'
+    get '*not_found' => 'application#render_404'
+  end
 
 end
