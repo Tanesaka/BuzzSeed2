@@ -11,10 +11,17 @@ describe 'Users', type: :request do
   after do
     sign_out @user
   end
-
+  it "一覧画面へリクエストが成功する" do
+    get users_path
+    expect(response.status).to eq 200
+  end
   it "一覧画面にuserが表示されている" do
     get users_path
     expect(response.body).to include @user.name
+  end
+  it "マイページへリクエストが成功する" do
+    get user_path(@user)
+    expect(response.status).to eq 200
   end
   it "マイページにuserのunique_codeが表示されている" do
     get user_path(@user)
