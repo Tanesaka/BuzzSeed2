@@ -12,6 +12,11 @@ describe 'Themes', type: :request do
     sign_out @user
   end
 
+  it "show画面へリクエストが成功する" do
+    get theme_path(@theme)
+    expect(response.status).to eq 200
+  end
+
   it "show画面にお題画像が表示される" do
     get theme_path(@theme)
     expect(response.body).to include @theme.image_id
@@ -24,7 +29,12 @@ describe 'Themes', type: :request do
     get theme_path(@theme)
     expect(response.body).to include "#{@theme.answers.count}"
   end
-  it "一覧画面にお題画像が表示される" do
+  
+  it "一覧画面へリクエストが成功する" do
+    get themes_path
+    expect(response.status).to eq 200
+  end
+  it "一覧画面に投稿したお題画像が表示される" do
     get themes_path
     expect(response.body).to include @theme.image_id
   end

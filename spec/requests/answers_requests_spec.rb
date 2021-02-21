@@ -13,9 +13,17 @@ describe 'Answers', type: :request do
     sign_out @user
   end
 
-  context 'Viewに関するテスト' do
+  context 'ヒトコトのViewに関するテスト' do
+    it "show画面へリクエストが成功する" do
+      get answer_path(@answer)
+      expect(response.status).to eq 200
+    end
     it "show画面にヒトコト文が表示される" do
       get answer_path(@answer)
+      expect(response.body).to include @answer.content
+    end
+    it "Top画面にヒトコト文が表示される" do
+      get root_path
       expect(response.body).to include @answer.content
     end
     it "show画面にヒトコトのGood数が表示される" do
@@ -29,6 +37,10 @@ describe 'Answers', type: :request do
     it "ヒトコトのshow画面にコメントが表示される" do
       get answer_path(@answer)
       expect(response.body).to include @comment.content
+    end
+    it "一覧画面へリクエストが成功する" do
+      get answers_path
+      expect(response.status).to eq 200
     end
     it "一覧画面にヒトコト文が表示される" do
       get answers_path
