@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
 
 # 例外処理
-unless Rails.env.development?
+# unless Rails.env.development?だと、Rspec回す際に参照してしまう。
+if Rails.env.produciton?
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from Exception, with: :render_500
