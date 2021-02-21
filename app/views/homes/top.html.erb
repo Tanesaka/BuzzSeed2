@@ -1,6 +1,6 @@
-<div class="containar">
+<div class="container">
   <div class="row">
-    <div class="col-md-5 col-xs-10 mx-auto">
+    <div class="col-md-7 col-xs-12 mx-auto">
 
 <!--カウントアップのJS変数を渡す-->
 <%= javascript_tag do %>
@@ -46,8 +46,8 @@
               <span class="display-4 font-weight-bold"><%= @tweets.count %></span>回利用
             <p>
           </div>
-          <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm mt-2 w-100"; %>
         </div>
+        <%= link_to "Twitterアカウントをみる", "https://twitter.com/BuzzSeedBot",target: :_blank, class:"btn-info btn btn-sm mt-2 w-100"; %>
 
         <h5 class="mt-5 font-weight-bold">
           <i class="fas fa-info-circle"></i> お知らせ (新着2件)
