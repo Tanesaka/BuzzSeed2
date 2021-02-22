@@ -14,10 +14,7 @@ class Public::FavoritesController < ApplicationController
     # Usersコントローラーに続き、ここでも再定義※destroyも同じく。
     @user = @answer.user
     @answers = @user.answers
-    @favorites_count = 0
-    @answers.each do |answer|
-      @favorites_count += answer.favorites.count
-    end
+    @favorites_count = @user.all_favorites
 
     # Topページのいいね非同期化
     @all_favorites = Favorite.all
@@ -31,17 +28,10 @@ class Public::FavoritesController < ApplicationController
 
     @user = @answer.user
     @answers = @user.answers
-    @favorites_count = 0
-    @answers.each do |answer|
-      @favorites_count += answer.favorites.count
-    end
+    @favorites_count = @user.all_favorites
 
     # Topページのいいね非同期化
     @all_favorites = Favorite.all
   end
 
-  # private
-  # def favorite_params
-  #   params.require(:favorite).permit(:user_id, :answer_id)
-  # end
 end

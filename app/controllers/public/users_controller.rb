@@ -34,11 +34,11 @@ class Public::UsersController < ApplicationController
     @q = User.ransack(params[:q])
 
     # ユーザーが持つ全投稿のいいね合計
+    # Userモデルに定義したall_favoritesメゾッドを参照
     @answers = @user.answers
-    @favorites_count = 0
-    @answers.each do |answer|
-      @favorites_count += answer.favorites.count
-    end
+    @favorites_count = @user.all_favorites
+
+    # TwitterBotの追加文章
     @tweet = Tweet.new
 
     # チュートリアルが終わっていればbeginnerをfalseにする
