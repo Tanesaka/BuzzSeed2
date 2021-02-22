@@ -2,7 +2,7 @@
 
 ## サイト概要
 お題画像に対して心を動かすヒトコトをいれる大喜利アプリです。  
-GoogleCloud VisionAPIのLABEL_DETECTIONが画像から抽出する特徴が、
+GoogleCloud VisionAPIのLABEL_DETECTIONが画像から抽出する特徴が、  
 画像の一般的な第一印象と微妙に差がある点に着目し、  
 抽出される特徴を画像に対する別視点のベクトルとして、  
 ヒトコト投稿の一助となるよう工夫しております。  
