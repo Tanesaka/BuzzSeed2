@@ -78,7 +78,6 @@ class User < ApplicationRecord
   end
 
 # ユーザーが持つ全投稿のいいね合計をだすメゾッド
-# 特定のuserに呼び出させるインスタンス
   def all_favorites
     favorites_count = 0
     answers.each do |answer|
