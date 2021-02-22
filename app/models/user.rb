@@ -76,4 +76,27 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_active === "有効")
   end
+
+# ユーザーが持つ全投稿のいいね合計をだすメゾッド
+  def all_favorites
+    favorites_count = 0
+    answers.each do |answer|
+      favorites_count += answer.favorites.count
+    end
+    favorites_count
+  end
+
+  def say_hello
+    puts "hello!!!"
+  end
+
+  def self.say_hi
+    puts "hi!!"
+  end
+
+  def all_answers
+    # @user = User.find(1)
+    puts name + "さんです"
+    puts answers.inspect
+  end
 end
