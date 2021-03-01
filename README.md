@@ -36,7 +36,8 @@ GoogleCloud VisionAPIのLABEL_DETECTIONが画像から抽出する特徴と、
 - 環境変数を利用し、Gitへ反映させる情報の管理（dotenv-rails）
 - rubocopを利用
 - AWSを使用したデプロイ(EC2,RDS)
-- ドメイン取得、HTTPS化
+- ドメイン取得
+- HTTPS化
 - GitHub Actionsを使用した自動デプロイ
 
 ### サイトテーマ
