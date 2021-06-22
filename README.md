@@ -1,4 +1,5 @@
 # BuzzSeed
+<img src="https://user-images.githubusercontent.com/72225170/122899983-45cc6180-d387-11eb-9774-f89004b3d362.jpg" width=35%>
 
 ## サイト概要
 お題画像に対して心を動かすヒトコトをいれる大喜利アプリです。 
